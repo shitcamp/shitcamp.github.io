@@ -22,4 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# server config files
 /cmd/*.json
+
+# IDEA IDE configs
+.idea
