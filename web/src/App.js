@@ -1,11 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
-import ButtonToolbar from "react-bootstrap/ButtonToolbar";
-import { LinkContainer } from "react-router-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
-import TwitchEmbed from "./TwitchEmbed";
+import TwitchEmbed from "./components/TwitchEmbed/TwitchEmbed";
+import Vods from "./components/Vods/Vods";
+import { getVods } from "./apis/api";
+
+import "./App.css";
+import peepoShy from "./assets/peepoShy.gif";
+import { ReactComponent as ShitcampSvg } from "./assets/logo.svg";
 
 const Home = () => <span>Home</span>;
 
@@ -15,59 +20,69 @@ const Users = () => <span>Users</span>;
 
 function App() {
   return (
-    <React.Fragment>
-      <Router>
-        <Container className="p-3">
-          <h1 className="header">Welcome To React-Bootstrap</h1>
-          <h2>
-            Current Page is{" "}
-            {/* look through the children <Route>s and render the first one that matches the current URL */}
-            <Switch>
-              <Route path="/about" component={About} />
-              <Route path="/users" component={Users} />
-              <Route path="/" component={Home} />
-            </Switch>
-          </h2>
+    <Router>
+      <Navbar
+        collapseOnSelect
+        expand="sm"
+        fixed="top"
+        bg="shitcamp"
+        variant="dark"
+      >
+        <Container>
+          <Navbar.Brand href="/">
+            Shitcamp <h6>unofficial</h6>
+          </Navbar.Brand>
 
-          <h2>
-            Navigate to{" "}
-            <ButtonToolbar className="custom-btn-toolbar">
-              <LinkContainer to="/">
-                <Button>Home</Button>
-              </LinkContainer>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-              <LinkContainer to="/about">
-                <Button>About</Button>
-              </LinkContainer>
-
-              <LinkContainer to="/users">
-                <Button>Users</Button>
-              </LinkContainer>
-            </ButtonToolbar>
-          </h2>
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="/schedule">Schedule</Nav.Link>
+              <Nav.Link href="/about">About</Nav.Link>
+              <Nav.Link href="/clips">Top Clips</Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link
+                href="https://shitcamp.gg/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Get Merch{" "}
+                <img src={peepoShy} alt="" className="peepo-shy-gif" />
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
         </Container>
-      </Router>
+      </Navbar>
 
-      <div className="App">
-        <header className="App-header">
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      {"Shit's gettin' litty, come thru <3"}
 
-        <TwitchEmbed
-          id="qtcinderella-1"
-          channel="ludwig" // name of the chat room and channel to stream
-          // video="1144988822" // ID of VOD to play
-          // chat="mobile" // TODO: detect mobile devices
-        />
+      {/* look through the children <Route>s and render the first one that matches the current URL */}
+      <Switch>
+        <Route path="/schedule" component={Users} />
+        <Route path="/about" component={About} />
+        <Route path="/clips" component={Users} />
+        <Route path="/" component={Home} />
+      </Switch>
+
+      <Vods vods={getVods()} />
+      {/* <TwitchEmbed
+        id="qtcinderella-1"
+        channel="ludwig" // name of the chat room and channel to stream
+        // video="1144988822" // ID of VOD to play
+        // chat="mobile" // TODO: detect mobile devices
+      /> */}
+
+      <div>
+        <Navbar bg="shitcamp" variant="dark" className="bottom-navbar">
+          <Container>
+            <Nav />
+            <ShitcampSvg className="shitcamp-logo" />
+            <Nav />
+          </Container>
+        </Navbar>
       </div>
-    </React.Fragment>
+    </Router>
   );
 }
 
