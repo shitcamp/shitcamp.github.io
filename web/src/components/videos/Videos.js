@@ -1,19 +1,17 @@
 import React from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
+import { Row, Col, Container, Card } from "react-bootstrap";
 
 import * as utils from "utils";
 
-import "components/vods/Vods.css";
+import "components/videos/Videos.css";
 
 const THUMBNAIL_SIZE = {
   width: 320,
   height: 180,
 };
 
-function Vod(props) {
+function VideoCard(props) {
+  const { video, onVideoClick } = props;
   const {
     title,
     user_name,
@@ -23,17 +21,20 @@ function Vod(props) {
     thumbnail_url,
     created_at,
     featured_users,
-  } = props.vod;
+  } = video;
 
   var thumbnailUrl = thumbnail_url;
   if (thumbnailUrl) {
     thumbnailUrl = thumbnailUrl.replace("%{width}", THUMBNAIL_SIZE.width);
+    thumbnailUrl = thumbnailUrl.replace("{width}", THUMBNAIL_SIZE.width);
+
     thumbnailUrl = thumbnailUrl.replace("%{height}", THUMBNAIL_SIZE.height);
+    thumbnailUrl = thumbnailUrl.replace("{height}", THUMBNAIL_SIZE.height);
   }
 
   return (
     <Card>
-      <div className="thumbnail">
+      <div className="thumbnail" onClick={onVideoClick}>
         <a href={url} target="_blank" rel="noreferrer" className="link">
           <Card.Img variant="top" alt="thumbnail" src={thumbnailUrl} />
         </a>
@@ -60,10 +61,9 @@ function Vod(props) {
           <Card.Text className="truncate">
             Featuring:{" "}
             {featured_users.map((user, i, users) => (
-              <React.Fragment>
+              <React.Fragment key={user}>
                 <a
                   href={`https://www.twitch.tv/${user}`}
-                  text-decoration="none"
                   target="_blank"
                   rel="noreferrer"
                   className="link"
@@ -81,7 +81,6 @@ function Vod(props) {
         <small>
           <a
             href={`https://www.twitch.tv/${user_name}`}
-            text-decoration="none"
             target="_blank"
             rel="noreferrer"
             className="link text-muted"
@@ -94,7 +93,7 @@ function Vod(props) {
   );
 }
 
-class Vods extends React.Component {
+class Videos extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -102,23 +101,34 @@ class Vods extends React.Component {
   componentDidMount() {}
 
   render() {
-    const { vods } = this.props;
+    const { videos, titleMsg, emptyErrMsg, onVideoClick } = this.props;
 
     return (
-      <Container>
-        <Row xs={1} sm={2} md={3} lg={5} xl={8} className="g-4">
-          {vods.map((vod) => (
-            <Col
-              key={vod.id}
-              style={{ display: "flex" } /* make all columns same height */}
-            >
-              <Vod vod={vod} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
+      <React.Fragment>
+        {Array.isArray(videos) && videos.length > 0 ? (
+          <React.Fragment>
+            {titleMsg != null && <h5>{titleMsg}</h5>}
+            <Container>
+              <Row xs={1} sm={2} md={3} lg={5} xl={8} className="g-4">
+                {videos.map((v) => (
+                  <Col
+                    key={v.id}
+                    style={
+                      { display: "flex" } /* make all columns same height */
+                    }
+                  >
+                    <VideoCard video={v} onVideoClick={onVideoClick} />
+                  </Col>
+                ))}
+              </Row>
+            </Container>
+          </React.Fragment>
+        ) : (
+          <h5>{emptyErrMsg}</h5>
+        )}
+      </React.Fragment>
     );
   }
 }
 
-export default Vods;
+export default Videos;

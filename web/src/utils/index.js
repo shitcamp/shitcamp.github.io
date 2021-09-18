@@ -2,6 +2,33 @@ function pad(n) {
   return n > 9 ? "" + n : "0" + n;
 }
 
+// 2021-09-02T19:56:12Z -> 7h3m28s
+export function getElapsedDuration(t) {
+  var date1 = Date.parse(t);
+  var date2 = Date.now();
+  var diffMs = Math.abs(date2 - date1);
+
+  let h = 0,
+    m = 0,
+    s = 0;
+
+  s = (diffMs / 1000).toFixed(0);
+
+  m = (s / 60).toFixed(0);
+  s = (s % 60).toFixed(0);
+
+  h = (m / 60).toFixed(0);
+  m = (m % 60).toFixed(0);
+
+  if (h > 0) {
+    return `${h}h${m}m${s}s`;
+  }
+  if (m > 0) {
+    return `${m}m${s}s`;
+  }
+  return `${s}s`;
+}
+
 // 7h3m28s -> 7:03:28
 // 3m28s -> 3:28
 // 8s -> 0:08
@@ -63,7 +90,7 @@ export function getDisplayedViewCount(v) {
   return `${v} views`;
 }
 
-// 2021-09-02T19:56:12Z ->
+// 2021-09-02T19:56:12Z -> 2 days ago
 export function getRelativeTime(t) {
   var date1 = Date.parse(t);
   var date2 = Date.now();
@@ -114,18 +141,18 @@ export async function get(url, params) {
 
   try {
     const response = await fetch(url);
-    if (response.status < 200 || response.status > 299) {
+    if (!response.ok || response.status < 200 || response.status > 299) {
       var err = new Error(
         `API status code ${response.status}: ${response.statusText}`
       );
-      return null, err;
+      return { resp: null, error: err };
     }
 
     const jsonResponse = await response.json();
     // console.log(jsonResponse);
-    return jsonResponse, null;
+    return { resp: jsonResponse, error: null };
   } catch (err) {
     var e = new Error(`API error: ${err}`);
-    return null, e;
+    return { resp: null, error: e };
   }
 }

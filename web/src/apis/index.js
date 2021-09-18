@@ -1,7 +1,31 @@
-import { get } from "utils";
+import { get, getElapsedDuration } from "utils";
 
-export function getVods() {
-  return [
+export async function getLiveStreams() {
+  let streams = [
+    {
+      id: "43740004317",
+      user_name: "tonytigre",
+      title: "drawing doodles for new followers! | !insta !doodle",
+      view_count: 102,
+      created_at: "2021-09-18T08:17:04Z",
+      url: `https://www.twitch.tv/tonytigre`,
+      thumbnail_url:
+        "https://static-cdn.jtvnw.net/previews-ttv/live_user_tonytigre-{width}x{height}.jpg",
+    },
+  ];
+
+  streams.forEach((stream) => {
+    stream.duration = getElapsedDuration(stream.created_at);
+  });
+
+  return {
+    resp: streams,
+    err: null,
+  };
+}
+
+export async function getVods(userNames) {
+  let vods = [
     {
       id: "1151405309",
       user_name: "ludwig",
@@ -38,4 +62,9 @@ export function getVods() {
       duration: "7h3m28s",
     },
   ];
+
+  return {
+    resp: vods,
+    error: null,
+  };
 }
