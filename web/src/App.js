@@ -18,9 +18,17 @@ const About = () => <span>About</span>;
 
 const Users = () => <span>Users</span>;
 
+function getRelUrl(path) {
+  // use prefix for GitHub Pages homepage, and query param to redirect to 404.html to fix routing.
+  return process.env.PUBLIC_URL + "/?" + path;
+}
+
 function App() {
+  console.log("v4");
+
   return (
-    <Router>
+    <Router basename={"/" + process.env.PUBLIC_URL}>
+      {/* <Router> */}
       <Navbar
         collapseOnSelect
         expand="sm"
@@ -29,7 +37,7 @@ function App() {
         variant="dark"
       >
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand href={getRelUrl("/")}>
             Shitcamp <h6>unofficial</h6>
           </Navbar.Brand>
 
@@ -37,9 +45,9 @@ function App() {
 
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/schedule">Schedule</Nav.Link>
-              <Nav.Link href="/about">About</Nav.Link>
-              <Nav.Link href="/clips">Top Clips</Nav.Link>
+              <Nav.Link href={getRelUrl("/schedule")}>Schedule</Nav.Link>
+              <Nav.Link href={getRelUrl("/about")}>About</Nav.Link>
+              <Nav.Link href={getRelUrl("/clips")}>Top Clips</Nav.Link>
             </Nav>
             <Nav>
               <Nav.Link
@@ -59,19 +67,20 @@ function App() {
 
       {/* look through the children <Route>s and render the first one that matches the current URL */}
       <Switch>
-        <Route path="/schedule" component={Users} />
-        <Route path="/about" component={About} />
-        <Route path="/clips" component={Users} />
+        <Route path={process.env.PUBLIC_URL + "/schedule"} component={Users} />
+        <Route path={process.env.PUBLIC_URL + "/about"} component={About} />
+        <Route path={process.env.PUBLIC_URL + "/clips"} component={Users} />
         <Route path="/" component={Home} />
+        <Route path="" component={Home} />
       </Switch>
 
       <Vods vods={getVods()} />
-      {/* <TwitchEmbed
+      <TwitchEmbed
         id="qtcinderella-1"
         channel="ludwig" // name of the chat room and channel to stream
         // video="1144988822" // ID of VOD to play
         // chat="mobile" // TODO: detect mobile devices
-      /> */}
+      />
 
       <div>
         <Navbar bg="shitcamp" variant="dark" className="bottom-navbar">

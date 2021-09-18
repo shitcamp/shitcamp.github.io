@@ -68,7 +68,6 @@ export function getRelativeTime(t) {
   var date1 = Date.parse(t);
   var date2 = Date.now();
   var diffMs = Math.abs(date2 - date1);
-  console.log(diffMs);
 
   const diffMonths = (diffMs / (1000 * 60 * 60 * 24 * 30)).toFixed(0);
   if (diffMonths >= 1) {
