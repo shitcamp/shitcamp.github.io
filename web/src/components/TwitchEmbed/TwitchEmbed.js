@@ -1,37 +1,45 @@
 import ReactTwitchEmbedVideo from "react-twitch-embed-video";
 
-function getRandomString() {
-  return (Math.random() + 1).toString(36).substring(7);
-}
-
-// TODO:
-const DEFAULT_HEIGHT = "480"; // 600
-const DEFAULT_WIDTH = "940"; // '100%'
+import "components/twitchEmbed/TwitchEmbed.css";
 
 // https://dev.twitch.tv/docs/embed/everything
 // https://github.com/talk2MeGooseman/react-twitch-embed-video
+//https://philna.sh/blog/2020/03/23/responsive-twitch-embed/
 function TwitchEmbed(props) {
-  var params = {
-    id: props.id, // || getRandomString(),
-    autoplay: !!props.channel,
-    height: props.height || DEFAULT_HEIGHT,
-    width: props.width || DEFAULT_WIDTH,
-    chat: props.chat,
-  };
+  const { channel } = props;
+
+  const domainName = window.location.hostname;
+
+  let url = new URL("https://player.twitch.tv");
+  let qParams = new URLSearchParams();
+  qParams.append("autoplay", true);
+  qParams.append("channel", channel);
+  qParams.append("parent", domainName);
+  qParams.append("muted", false);
+  url.search = qParams.toString();
+  const videoSrc = url.toString();
+
+  url = new URL(`https://twitch.tv/embed/${channel}/chat`);
+  qParams = new URLSearchParams();
+  qParams.append("parent", domainName);
+  qParams.append("darkpopout", true);
+  url.search = qParams.toString();
+  const chatSrc = url.toString();
 
   return (
-    <div className="twitch-embed">
-      <ReactTwitchEmbedVideo
-        targetId={params.id} // custom id to target, if we have multiple embedded players on the page
-        autoplay={params.autoplay}
-        channel={props.channel} // name of the chat room and channel to stream
-        video={props.video} // ID of VOD to play
-        // collection={{ video: "124085610", collection: "GMEgKwTQpRQwyA" }} // VOD collection to play
+    <div className="twitch">
+      <div className="twitch-video">
+        <iframe
+          src={videoSrc}
+          frameBorder="0"
+          scrolling="no"
+          allowFullScreen={true}
+        ></iframe>
+      </div>
 
-        height={params.height}
-        width={params.width}
-        chat={params.chat}
-      />
+      <div className="twitch-chat">
+        <iframe frameBorder="0" scrolling="no" src={chatSrc}></iframe>
+      </div>
     </div>
   );
 }

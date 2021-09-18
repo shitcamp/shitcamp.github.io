@@ -45,6 +45,7 @@ class Home extends React.PureComponent {
         liveStreams: ret.resp,
       });
     }
+
     ret = await getUsers();
     if (ret.error != null) {
       console.error(ret.error);
@@ -68,11 +69,7 @@ class Home extends React.PureComponent {
     return (
       <React.Fragment>
         {selectedUserStream !== "" && (
-          <TwitchEmbed
-            channel={selectedUserStream}
-            id={"homepage-stream"}
-            // chat="mobile" // TODO: detect mobile devices
-          />
+          <TwitchEmbed channel={selectedUserStream} id={"homepage-stream"} />
         )}
         <Container className="home">
           <AccordianWrapper title="Live Now">

@@ -34,7 +34,7 @@ function VideoCard(props) {
 
   return (
     <Card>
-      <div className="thumbnail" onClick={onVideoClick}>
+      <div className="thumbnail" onClick={(e) => onVideoClick(e, video)}>
         <a href={url} target="_blank" rel="noreferrer" className="link">
           <Card.Img variant="top" alt="thumbnail" src={thumbnailUrl} />
         </a>

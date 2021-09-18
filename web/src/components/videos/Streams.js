@@ -9,19 +9,15 @@ class Streams extends React.Component {
 
   componentDidMount() {}
 
-  handleStreamClick = (stream) => {
-    console.log("stream is clicked", stream);
-  };
-
   render() {
-    const { streams } = this.props;
+    const { streams, handleStreamClick } = this.props;
 
     return (
       <Videos
         videos={streams}
         titleMsg="Shit's gettin' litty, come thru <3"
         emptyErrMsg="No live streams found"
-        onVideoClick={this.handleStreamClick}
+        onVideoClick={handleStreamClick}
       />
     );
   }
