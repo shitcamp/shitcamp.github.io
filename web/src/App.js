@@ -21,53 +21,54 @@ function App() {
 
   return (
     <Router basename={"/" + process.env.PUBLIC_URL}>
-      {/* <Router> */}
-      <Navbar
-        collapseOnSelect
-        expand="sm"
-        fixed="top"
-        bg="shitcamp"
-        variant="dark"
-      >
-        <Container>
-          <Navbar.Brand href={getRelUrl("/")}>
-            Shitcamp <h6>unofficial</h6>
-          </Navbar.Brand>
+      <div className="push">
+        {/* <Router> */}
+        <Navbar
+          collapseOnSelect
+          expand="sm"
+          fixed="top"
+          bg="shitcamp"
+          variant="dark"
+        >
+          <Container>
+            <Navbar.Brand href={getRelUrl("/")}>
+              Shitcamp <h6>unofficial</h6>
+            </Navbar.Brand>
 
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
-          <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href={getRelUrl("/schedule")}>Schedule</Nav.Link>
-              <Nav.Link href={getRelUrl("/about")}>About</Nav.Link>
-              <Nav.Link href={getRelUrl("/clips")}>Top Clips</Nav.Link>
-            </Nav>
-            <Nav>
-              <Nav.Link
-                href="https://shitcamp.gg/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Get Merch{" "}
-                <img src={peepoShy} alt="" className="peepo-shy-gif" />
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="me-auto">
+                <Nav.Link href={getRelUrl("/schedule")}>Schedule</Nav.Link>
+                <Nav.Link href={getRelUrl("/about")}>About</Nav.Link>
+                <Nav.Link href={getRelUrl("/clips")}>Top Clips</Nav.Link>
+              </Nav>
+              <Nav>
+                <Nav.Link
+                  href="https://shitcamp.gg/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Get Merch{" "}
+                  <img src={peepoShy} alt="" className="peepo-shy-gif" />
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
 
-      {/* look through the children <Route>s and render the first one that matches the current URL */}
-      <Switch>
-        <Route
-          path={process.env.PUBLIC_URL + "/schedule"}
-          component={Schedule}
-        />
-        <Route path={process.env.PUBLIC_URL + "/about"} component={About} />
-        <Route path={process.env.PUBLIC_URL + "/clips"} component={Clips} />
-        <Route path="/" component={Home} />
-        <Route path="" component={Home} />
-      </Switch>
-
+        {/* look through the children <Route>s and render the first one that matches the current URL */}
+        <Switch>
+          <Route
+            path={process.env.PUBLIC_URL + "/schedule"}
+            component={Schedule}
+          />
+          <Route path={process.env.PUBLIC_URL + "/about"} component={About} />
+          <Route path={process.env.PUBLIC_URL + "/clips"} component={Clips} />
+          <Route path="/" component={Home} />
+          <Route path="" component={Home} />
+        </Switch>
+      </div>
       <div>
         <Navbar bg="shitcamp" variant="dark" className="bottom-navbar">
           <Container>

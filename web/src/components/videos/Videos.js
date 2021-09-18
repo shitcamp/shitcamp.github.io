@@ -53,7 +53,7 @@ function VideoCard(props) {
       <Card.Body>
         <Card.Title className="card-title truncate">
           <a href={url} target="_blank" rel="noreferrer" className="link">
-            {title}
+            <h6>{title}</h6>
           </a>
         </Card.Title>
 
