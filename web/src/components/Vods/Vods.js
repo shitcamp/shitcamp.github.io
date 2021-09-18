@@ -4,9 +4,9 @@ import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 
-import * as utils from "../../utils/utils";
+import * as utils from "utils";
 
-import "./Vods.css";
+import "components/vods/Vods.css";
 
 const THUMBNAIL_SIZE = {
   width: 320,

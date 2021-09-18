@@ -4,19 +4,14 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
-import TwitchEmbed from "./components/TwitchEmbed/TwitchEmbed";
-import Vods from "./components/Vods/Vods";
-import { getVods } from "./apis/api";
+import Home from "pages/home/Home";
+import About from "pages/about/About";
+import Schedule from "pages/schedule/Schedule";
+import Clips from "pages/clips/Clips";
 
-import "./App.css";
-import peepoShy from "./assets/peepoShy.gif";
-import { ReactComponent as ShitcampSvg } from "./assets/logo.svg";
-
-const Home = () => <span>Home</span>;
-
-const About = () => <span>About</span>;
-
-const Users = () => <span>Users</span>;
+import "App.css";
+import peepoShy from "assets/peepoShy.gif";
+import { ReactComponent as ShitcampSvg } from "assets/logo.svg";
 
 function getRelUrl(path) {
   // use prefix for GitHub Pages homepage, and query param to redirect to 404.html to fix routing.
@@ -63,24 +58,17 @@ function App() {
         </Container>
       </Navbar>
 
-      {"Shit's gettin' litty, come thru <3"}
-
       {/* look through the children <Route>s and render the first one that matches the current URL */}
       <Switch>
-        <Route path={process.env.PUBLIC_URL + "/schedule"} component={Users} />
+        <Route
+          path={process.env.PUBLIC_URL + "/schedule"}
+          component={Schedule}
+        />
         <Route path={process.env.PUBLIC_URL + "/about"} component={About} />
-        <Route path={process.env.PUBLIC_URL + "/clips"} component={Users} />
+        <Route path={process.env.PUBLIC_URL + "/clips"} component={Clips} />
         <Route path="/" component={Home} />
         <Route path="" component={Home} />
       </Switch>
-
-      <Vods vods={getVods()} />
-      <TwitchEmbed
-        id="qtcinderella-1"
-        channel="ludwig" // name of the chat room and channel to stream
-        // video="1144988822" // ID of VOD to play
-        // chat="mobile" // TODO: detect mobile devices
-      />
 
       <div>
         <Navbar bg="shitcamp" variant="dark" className="bottom-navbar">

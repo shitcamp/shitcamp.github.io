@@ -1,4 +1,4 @@
-import { get } from "../utils/utils";
+import { get } from "utils";
 
 export function getVods() {
   return [
