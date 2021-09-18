@@ -1,5 +1,22 @@
 import { get, getElapsedDuration } from "utils";
 
+export async function getUsers() {
+  let users = [
+    "ludwig",
+    "qtcinderella",
+    "nmplol",
+    "mizkif",
+    "hasanabi",
+    "tonytigre",
+    "AnnaCramling",
+  ];
+
+  return {
+    resp: users,
+    err: null,
+  };
+}
+
 export async function getLiveStreams() {
   let streams = [
     {
@@ -11,6 +28,16 @@ export async function getLiveStreams() {
       url: `https://www.twitch.tv/tonytigre`,
       thumbnail_url:
         "https://static-cdn.jtvnw.net/previews-ttv/live_user_tonytigre-{width}x{height}.jpg",
+    },
+    {
+      id: "43742009789",
+      user_name: "AnnaCramling",
+      title:
+        "24 HOUR STREAM !info ~ Playing Against Subs & Later Guess The ELO And EVAL With Dad <3 ",
+      view_count: 2756,
+      created_at: "2021-09-18T13:05:29Z",
+      thumbnail_url:
+        "https://static-cdn.jtvnw.net/previews-ttv/live_user_annacramling-{width}x{height}.jpg",
     },
   ];
 

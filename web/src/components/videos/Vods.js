@@ -14,6 +14,7 @@ class Vods extends React.Component {
     const { userNames } = this.props;
 
     this.state = {
+      userNames: userNames,
       selectedUserNames: userNames,
       pastStreams: [],
     };
@@ -25,22 +26,35 @@ class Vods extends React.Component {
     let ret = await getVods(selectedUserNames);
     if (ret.error != null) {
       console.error(ret.error);
+    } else {
+      this.setState({
+        pastStreams: ret.resp,
+      });
     }
-    this.setState({
-      pastStreams: ret.resp,
-    });
-    console.log("Mounted", ret);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
+    const { userNames: currUsers } = this.props;
+    const { userNames: nextUsers } = nextProps;
+
+    if (currUsers.length !== nextUsers.length) {
+      return true;
+    }
+
     const {
       selectedUserNames: currSelectedUserNames,
       pastStreams: currStreams,
+      userNames: currUserNames,
     } = this.state;
     const {
       selectedUserNames: nextSelectedUserNames,
       pastStreams: nextStreams,
+      userNames: nextUserNames,
     } = nextState;
+
+    if (currUserNames.length !== nextUserNames.length) {
+      return true;
+    }
 
     if (currSelectedUserNames.length !== nextSelectedUserNames.length) {
       return true;
@@ -49,14 +63,14 @@ class Vods extends React.Component {
       return true;
     }
 
-    let users = {};
+    let selected = {};
     currSelectedUserNames.forEach((u) => {
-      users[u] = true;
+      selected[u] = true;
     });
     nextSelectedUserNames.forEach((u) => {
-      delete users[u];
+      delete selected[u];
     });
-    if (Object.keys(users).length !== 0) {
+    if (Object.keys(selected).length !== 0) {
       return true;
     }
 
@@ -74,17 +88,27 @@ class Vods extends React.Component {
     return false;
   }
 
-  async componentDidUpdate() {
-    console.log("upda");
+  async componentDidUpdate(prevProps) {
+    const { userNames: oldUserNames } = prevProps;
+    const { userNames: newUserNames } = this.props;
+    if (newUserNames.length !== oldUserNames.length) {
+      this.setState({
+        userNames: newUserNames,
+        selectedUserNames: newUserNames,
+      });
+    }
+
     const { selectedUserNames } = this.state;
 
+    // TODO: debounce
     let ret = await getVods(selectedUserNames);
     if (ret.error != null) {
       console.error(ret.error);
+    } else {
+      this.setState({
+        pastStreams: ret.resp,
+      });
     }
-    this.setState({
-      pastStreams: ret.resp,
-    });
   }
 
   handleSelectionChange = (selected) => {
@@ -94,22 +118,23 @@ class Vods extends React.Component {
   };
 
   render() {
-    const { userNames } = this.props;
-    const { pastStreams, selectedUserNames } = this.state;
+    const { userNames, pastStreams, selectedUserNames } = this.state;
 
     return (
       <React.Fragment>
-        <DropdownMultiselect
-          options={userNames}
-          selected={selectedUserNames}
-          placeholder="Filter by streamer"
-          placeholderMultipleChecked="Filter by streamer"
-          handleOnChange={(selected) => {
-            this.handleSelectionChange(selected);
-          }}
-          name="streamers"
-          className="dropdown  btn-dark"
-        />
+        {userNames.length !== 0 && (
+          <DropdownMultiselect
+            options={userNames}
+            selected={selectedUserNames}
+            placeholder="Filter by streamer"
+            placeholderMultipleChecked="Filter by streamer"
+            handleOnChange={(selected) => {
+              this.handleSelectionChange(selected);
+            }}
+            name="streamers"
+            className="dropdown"
+          />
+        )}
         <Videos videos={pastStreams} emptyErrMsg="No past live streams found" />
       </React.Fragment>
     );

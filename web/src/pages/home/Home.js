@@ -6,7 +6,7 @@ import TwitchEmbed from "components/twitchEmbed/TwitchEmbed";
 import Streams from "components/videos/Streams";
 import Vods from "components/videos/Vods";
 
-import { getLiveStreams } from "apis";
+import { getLiveStreams, getUsers } from "apis";
 
 import "pages/home/Home.css";
 
@@ -25,13 +25,14 @@ function AccordianWrapper(props) {
   );
 }
 
-class Home extends React.Component {
+class Home extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedUserStream: "ludwig",
+      selectedUserStream: "",
       liveStreams: [],
+      userNames: [],
     };
   }
 
@@ -39,29 +40,46 @@ class Home extends React.Component {
     let ret = await getLiveStreams();
     if (ret.error != null) {
       console.error(ret.error);
+    } else {
+      this.setState({
+        liveStreams: ret.resp,
+      });
     }
-    this.setState({
-      liveStreams: ret.resp,
-    });
+    ret = await getUsers();
+    if (ret.error != null) {
+      console.error(ret.error);
+    } else {
+      this.setState({
+        userNames: ret.resp,
+      });
+    }
   }
 
+  handleStreamClick = (e, stream) => {
+    e.preventDefault();
+    this.setState({
+      selectedUserStream: stream.user_name,
+    });
+  };
+
   render() {
-    const { selectedUserStream, liveStreams } = this.state;
+    const { selectedUserStream, liveStreams, userNames } = this.state;
 
     return (
       <React.Fragment>
+        {selectedUserStream !== "" && (
+          <TwitchEmbed
+            channel={selectedUserStream}
+            id={"homepage-stream"}
+            // chat="mobile" // TODO: detect mobile devices
+          />
+        )}
         <Container className="home">
-          {selectedUserStream !== "" && (
-            <TwitchEmbed
-              channel={selectedUserStream}
-              // id="qtcinderella-1"
-              // video="1144988822" // ID of VOD to play
-              // chat="mobile" // TODO: detect mobile devices
-            />
-          )}
-
           <AccordianWrapper title="Live Now">
-            <Streams streams={liveStreams} />
+            <Streams
+              streams={liveStreams}
+              handleStreamClick={this.handleStreamClick}
+            />
           </AccordianWrapper>
 
           <AccordianWrapper title="Upcoming streams">
@@ -69,16 +87,7 @@ class Home extends React.Component {
           </AccordianWrapper>
 
           <AccordianWrapper title="Past streams">
-            <Vods
-              userNames={[
-                "Australia",
-                "Canada",
-                "USA",
-                "Poland",
-                "Spain",
-                "France",
-              ]}
-            />
+            <Vods userNames={userNames} />
           </AccordianWrapper>
         </Container>
       </React.Fragment>
