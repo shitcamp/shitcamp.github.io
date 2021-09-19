@@ -9,12 +9,12 @@ function AboutPage() {
     <Container className="about-page">
       <h3>About</h3>
       <p>
-        <i>Shitcamp</i> is the fall installment of the Shit stream collabs- the
-        summer <i>Shitcon</i> has already occurred, and the winter{" "}
-        <i>Shitsummit</i>(?) is expected next - involving the biggest streamers
-        on Twitch such as xQc, HasanAbi, Ludwig and many more. <i>Shitcamp</i>{" "}
-        will be held in Los Angeles from 26-29 September 2021, and is organized
-        by popular streamer, QTCinderella.
+        <i>ShitCamp</i> is the fall installment of the <i>Shit</i> collaboration
+        series involving the biggest streamers on Twitch such as xQc, HasanAbi,
+        Ludwig and many more. <i>ShitCon</i> took place this summer, and{" "}
+        <i>ShitSummit</i> (?) is expected to be the next one this winter.{" "}
+        <i>ShitCamp</i> will be held in Los Angeles from 26-29 September 2021,
+        and is organized by popular streamer, QTCinderella.
       </p>
       <p>
         16 creators staying in a house together and live streaming "organized"

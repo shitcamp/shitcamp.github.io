@@ -56,7 +56,7 @@ class App extends React.PureComponent {
           >
             <Container>
               <Navbar.Brand href={getRelUrl("/")}>
-                Shitcamp <h6>unofficial</h6>
+                <ShitcampSvg className="shitcamp-logo" />
               </Navbar.Brand>
 
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
