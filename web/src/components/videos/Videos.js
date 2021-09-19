@@ -93,42 +93,32 @@ function VideoCard(props) {
   );
 }
 
-class Videos extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function Videos(props) {
+  const { videos, titleMsg, emptyErrMsg, onVideoClick } = props;
 
-  componentDidMount() {}
-
-  render() {
-    const { videos, titleMsg, emptyErrMsg, onVideoClick } = this.props;
-
-    return (
-      <React.Fragment>
-        {Array.isArray(videos) && videos.length > 0 ? (
-          <React.Fragment>
-            {titleMsg != null && <h5>{titleMsg}</h5>}
-            <Container>
-              <Row xs={1} sm={2} md={3} lg={5} xl={8} className="g-4">
-                {videos.map((v) => (
-                  <Col
-                    key={v.id}
-                    style={
-                      { display: "flex" } /* make all columns same height */
-                    }
-                  >
-                    <VideoCard video={v} onVideoClick={onVideoClick} />
-                  </Col>
-                ))}
-              </Row>
-            </Container>
-          </React.Fragment>
-        ) : (
-          <h5>{emptyErrMsg}</h5>
-        )}
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      {Array.isArray(videos) && videos.length > 0 ? (
+        <React.Fragment>
+          {titleMsg != null && <h5>{titleMsg}</h5>}
+          <Container>
+            <Row xs={1} sm={2} md={3} lg={5} xl={8} className="g-4">
+              {videos.map((v) => (
+                <Col
+                  key={v.id}
+                  style={{ display: "flex" } /* make all columns same height */}
+                >
+                  <VideoCard video={v} onVideoClick={onVideoClick} />
+                </Col>
+              ))}
+            </Row>
+          </Container>
+        </React.Fragment>
+      ) : (
+        <h5>{emptyErrMsg}</h5>
+      )}
+    </React.Fragment>
+  );
 }
 
 export default Videos;

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container, Navbar, Nav } from "react-bootstrap";
 
 import Home from "pages/home/Home";
-import About from "pages/about/About";
+import AboutPage from "pages/about/AboutPage";
 import Schedule from "pages/schedule/Schedule";
 import ClipsPage from "pages/clips/ClipsPage";
 
@@ -87,7 +87,10 @@ class App extends React.PureComponent {
               path={process.env.PUBLIC_URL + "/schedule"}
               component={Schedule}
             />
-            <Route path={process.env.PUBLIC_URL + "/about"} component={About} />
+            <Route
+              path={process.env.PUBLIC_URL + "/about"}
+              component={AboutPage}
+            />
             <Route
               path={process.env.PUBLIC_URL + "/clips"}
               render={() => <ClipsPage userNames={userNames} />}

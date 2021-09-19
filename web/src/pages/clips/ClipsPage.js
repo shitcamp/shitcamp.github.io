@@ -4,6 +4,8 @@ import { Container } from "react-bootstrap";
 import ClipEmbed from "components/twitch/ClipEmbed";
 import Clips from "components/videos/Clips";
 
+import "pages/clips/ClipsPage.css";
+
 class ClipsPage extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class ClipsPage extends React.PureComponent {
     const { selectedClipName } = this.state;
 
     return (
-      <Container className="home">
+      <Container className="clips-page">
         <h3>Popular Clips</h3>
 
         {selectedClipName !== "" && (

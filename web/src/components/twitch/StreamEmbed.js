@@ -29,6 +29,7 @@ function StreamEmbed(props) {
       <div className="twitch-video-embed">
         <iframe
           src={videoSrc}
+          title="Twitch stream"
           frameBorder="0"
           scrolling="no"
           allowFullScreen={true}
@@ -36,7 +37,12 @@ function StreamEmbed(props) {
       </div>
 
       <div className="twitch-video-chat">
-        <iframe frameBorder="0" scrolling="no" src={chatSrc}></iframe>
+        <iframe
+          frameBorder="0"
+          scrolling="no"
+          title="Twitch chat"
+          src={chatSrc}
+        ></iframe>
       </div>
     </div>
   );

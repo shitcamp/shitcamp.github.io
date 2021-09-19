@@ -22,6 +22,7 @@ function ClipEmbed(props) {
       <div className="twitch-clip-embed">
         <iframe
           src={videoSrc}
+          title="Twitch clip"
           frameBorder="0"
           scrolling="no"
           allowFullScreen={true}

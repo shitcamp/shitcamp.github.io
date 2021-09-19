@@ -1,0 +1,48 @@
+.about-page {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.trailer-video {
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.trailer-video .trailer-video-embed {
+  padding-top: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.trailer-video .trailer-video-embed iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+@media screen and (min-width: 450px) {
+  .trailer-video {
+    position: relative;
+  }
+
+  .trailer-video .trailer-video-embed {
+    margin: auto;
+    width: 80%;
+    padding-top: 45%;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .trailer-video {
+    position: relative;
+  }
+
+  .trailer-video .trailer-video-embed {
+    margin: auto;
+    width: 60%;
+    padding-top: 33.5%;
+  }
+}
