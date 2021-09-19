@@ -7,8 +7,6 @@ import AboutPage from "pages/about/AboutPage";
 import Schedule from "pages/schedule/Schedule";
 import ClipsPage from "pages/clips/ClipsPage";
 
-import { getUsers } from "apis";
-
 import "App.css";
 import peepoShy from "assets/peepoShy.gif";
 import { ReactComponent as ShitcampSvg } from "assets/logo.svg";
@@ -18,6 +16,25 @@ function getRelUrl(path) {
   return process.env.PUBLIC_URL + "/?" + path;
 }
 
+const SHITCAMP_STREAMERS = [
+  "AdeptTheBest",
+  "AustinShow",
+  "Cyr",
+  "EsfandTV",
+  "HasanAbi",
+  "JustaMinx",
+  "Jschlatt",
+  "Kaceytron",
+  "Ludwig",
+  "Malena",
+  "Myth",
+  "Nmplol",
+  "QTCinderella",
+  "Sodapoppin",
+  "WillNeff",
+  "xQcOW",
+];
+
 class App extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -25,19 +42,19 @@ class App extends React.PureComponent {
     console.log("v4");
 
     this.state = {
-      userNames: [],
+      userNames: SHITCAMP_STREAMERS,
     };
   }
 
   async componentDidMount() {
-    let ret = await getUsers();
-    if (ret.error != null) {
-      console.error(ret.error);
-    } else {
-      this.setState({
-        userNames: ret.resp.users,
-      });
-    }
+    // let ret = await getUsers();
+    // if (ret.error != null) {
+    //   console.error(ret.error);
+    // } else {
+    //   this.setState({
+    //     userNames: ret.resp.users,
+    //   });
+    // }
   }
 
   render() {

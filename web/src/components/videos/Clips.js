@@ -82,10 +82,24 @@ class Clips extends React.Component {
     const { userNames } = this.props;
 
     this.state = {
-      userNames: userNames,
       selectedUserNames: userNames,
       videos: [],
     };
+  }
+
+  async componentDidMount() {
+    const { selectedUserNames } = this.state;
+
+    let ret = await getClips(selectedUserNames);
+    if (ret.error != null) {
+      console.error(ret.error);
+    } else {
+      const { clips } = ret.resp;
+
+      this.setState({
+        videos: clips,
+      });
+    }
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -96,25 +110,15 @@ class Clips extends React.Component {
       return true;
     }
 
-    const {
-      userNames: currUserNames,
-      selectedUserNames: currSelectedUserNames,
-      videos: currClips,
-    } = this.state;
-    const {
-      userNames: nextUserNames,
-      selectedUserNames: nextSelectedUserNames,
-      videos: nextClips,
-    } = nextState;
-
-    if (currUserNames.length !== nextUserNames.length) {
-      return true;
-    }
+    const { selectedUserNames: currSelectedUserNames, videos: currClips } =
+      this.state;
+    const { selectedUserNames: nextSelectedUserNames, videos: nextClips } =
+      nextState;
 
     if (currSelectedUserNames.length !== nextSelectedUserNames.length) {
       return true;
     }
-    if (currClips.length !== nextClips.length) {
+    if (currClips != null && currClips.length !== nextClips.length) {
       return true;
     }
 
@@ -148,7 +152,6 @@ class Clips extends React.Component {
     const { userNames: newUserNames } = this.props;
     if (newUserNames.length !== oldUserNames.length) {
       this.setState({
-        userNames: newUserNames,
         selectedUserNames: newUserNames,
       });
     }
@@ -174,8 +177,8 @@ class Clips extends React.Component {
   };
 
   render() {
-    const { onClipClick } = this.props;
-    const { userNames, videos, selectedUserNames } = this.state;
+    const { userNames, onClipClick } = this.props;
+    const { videos, selectedUserNames } = this.state;
 
     return (
       <React.Fragment>
