@@ -41,4 +41,5 @@ a.link {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-bottom: 0px !important;
 }

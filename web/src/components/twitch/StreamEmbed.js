@@ -1,11 +1,9 @@
-import ReactTwitchEmbedVideo from "react-twitch-embed-video";
-
-import "components/twitchEmbed/TwitchEmbed.css";
+import "components/twitch/StreamEmbed.css";
 
 // https://dev.twitch.tv/docs/embed/everything
 // https://github.com/talk2MeGooseman/react-twitch-embed-video
 //https://philna.sh/blog/2020/03/23/responsive-twitch-embed/
-function TwitchEmbed(props) {
+function StreamEmbed(props) {
   const { channel } = props;
 
   const domainName = window.location.hostname;
@@ -44,4 +42,4 @@ function TwitchEmbed(props) {
   );
 }
 
-export default TwitchEmbed;
+export default StreamEmbed;

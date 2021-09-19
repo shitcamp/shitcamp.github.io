@@ -95,3 +95,181 @@ export async function getVods(userNames) {
     error: null,
   };
 }
+
+export async function getClips(userNames) {
+  let clips = [
+    {
+      id: "UgliestFrailGarageNinjaGrumpy-2Vbp2Vo9tOhlPCUT",
+      url: "https://clips.twitch.tv/UgliestFrailGarageNinjaGrumpy-2Vbp2Vo9tOhlPCUT",
+      embed_url:
+        "https://clips.twitch.tv/embed?clip=UgliestFrailGarageNinjaGrumpy-2Vbp2Vo9tOhlPCUT",
+      broadcaster_id: "40934651",
+      broadcaster_name: "ludwig",
+      title: "Ludwig on Mizkif and Maya",
+      view_count: 75088,
+      created_at: "2021-09-17T00:22:16Z",
+      thumbnail_url:
+        "https://clips-media-assets2.twitch.tv/AT-cm%7CJ3q8vdlW6dlaPbToZTwlEw-preview-480x272.jpg",
+      duration: "30s",
+    },
+    {
+      id: "DarlingBlushingOkapiPrimeMe-gMOq8s7l-4CjXLmr",
+      url: "https://clips.twitch.tv/DarlingBlushingOkapiPrimeMe-gMOq8s7l-4CjXLmr",
+      embed_url:
+        "https://clips.twitch.tv/embed?clip=DarlingBlushingOkapiPrimeMe-gMOq8s7l-4CjXLmr",
+      broadcaster_id: "40934651",
+      broadcaster_name: "ludwig",
+      title: "Same Laugh ",
+      view_count: 46917,
+      created_at: "2021-09-15T18:06:21Z",
+      thumbnail_url:
+        "https://clips-media-assets2.twitch.tv/AT-cm%7C1324612404-preview-480x272.jpg",
+      duration: "11s",
+    },
+  ];
+
+  return {
+    resp: clips,
+    error: null,
+  };
+}
+
+export async function getSchedule() {
+  let schedule = [
+    {
+      date: "2021-09-26",
+      events: [
+        {
+          title: "Opening Ceremony",
+          start_time: "19:00:00.00-07:00",
+          user_name: "QTCinderella",
+          featured_streamers: [
+            "QTCinderella",
+            "Adeptthebest",
+            "AustinShow",
+            "Cyr",
+            "EsfandTV",
+            "HasanAbi",
+            "Jschlatt ",
+            "JustaMinx",
+            "Kaceytron",
+            "Ludwig",
+            "Malena",
+            "Nmplol",
+            "Myth",
+            "Sodapoppin",
+            "WillNeff",
+            "XQCOW",
+          ],
+        },
+      ],
+    },
+    {
+      date: "2021-09-27",
+      events: [
+        {
+          title: "Pancake breakfast",
+          start_time: "08:00:00.00-07:00",
+          user_name: "Nmplol",
+          featured_streamers: ["Nmplol"],
+          vod_link: "",
+        },
+        {
+          title: "Chopped",
+          start_time: "12:00:00.00-07:00",
+          user_name: "QTCinderella",
+          featured_streamers: ["QTCinderella"],
+          vod_link: "",
+        },
+        {
+          title: "Mogul Money",
+          start_time: "12:00:00.00-07:00",
+          user_name: "Ludwig",
+          featured_streamers: ["Ludwig"],
+          vod_link: "",
+        },
+        {
+          title: "IRL stream",
+          start_time: "12:00:00.00-07:00",
+          user_name: "Ludwig",
+          featured_streamers: ["Ludwig"],
+        },
+        {
+          title: "Ghost stories and Smores",
+          start_time: "19:00:00.00-07:00",
+          user_name: "WillNeff",
+          featured_streamers: ["WillNeff"],
+        },
+      ],
+    },
+    {
+      date: "2021-09-28",
+      events: [
+        {
+          title: "French toast breakfast",
+          start_time: "08:00:00.00-07:00",
+          user_name: "Nmplol",
+          featured_streamers: ["Nmplol"],
+        },
+        {
+          title: "Without a Recipe contest",
+          start_time: "12:00:00.00-07:00",
+          user_name: "QTCinderella",
+          featured_streamers: ["QTCinderella"],
+        },
+        {
+          title: "IRL Stream",
+          start_time: "12:00:00.00-07:00",
+          user_name: "HasanAbi",
+          featured_streamers: ["HasanAbi"],
+        },
+        {
+          title: "Tie Dye Shirts",
+          start_time: "15:30:00.00-07:00",
+          user_name: "",
+          featured_streamers: [""],
+        },
+        {
+          title: "Taco Dinner",
+          start_time: "17:30:00.00-07:00",
+          user_name: "",
+          featured_streamers: [""],
+        },
+        {
+          title: "PJ Party",
+          start_time: "20:00:00.00-07:00",
+          user_name: "Sodapoppin",
+          featured_streamers: ["Sodapoppin"],
+        },
+      ],
+    },
+    {
+      date: "2021-09-29",
+      events: [
+        {
+          title: "Grand Slam breakfast",
+          start_time: "08:00:00.00-07:00",
+          user_name: "Nmplol",
+          featured_streamers: ["Nmplol"],
+        },
+        {
+          title: "Secret event",
+          start_time: "11:30:00.00-07:00",
+          user_name: "QTCinderella",
+          featured_streamers: [],
+        },
+        {
+          title: "Closing Ceremony",
+          start_time: "18:00:00.00-07:00",
+          user_name: "QTCinderella",
+          featured_streamers: ["QTCinderella"],
+        },
+      ],
+    },
+  ];
+
+  return {
+    resp: schedule,
+    err: null,
+  };
+}

@@ -135,7 +135,11 @@ class Vods extends React.Component {
             className="dropdown"
           />
         )}
-        <Videos videos={pastStreams} emptyErrMsg="No past live streams found" />
+        <Videos
+          videos={pastStreams}
+          emptyErrMsg="No past live streams found"
+          onVideoClick={() => {}}
+        />
       </React.Fragment>
     );
   }

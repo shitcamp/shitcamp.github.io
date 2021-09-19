@@ -2,7 +2,7 @@ import React from "react";
 
 import { Accordion, Container } from "react-bootstrap";
 
-import TwitchEmbed from "components/twitchEmbed/TwitchEmbed";
+import StreamEmbed from "components/twitch/StreamEmbed";
 import Streams from "components/videos/Streams";
 import Vods from "components/videos/Vods";
 
@@ -69,7 +69,7 @@ class Home extends React.PureComponent {
     return (
       <React.Fragment>
         {selectedUserStream !== "" && (
-          <TwitchEmbed channel={selectedUserStream} id={"homepage-stream"} />
+          <StreamEmbed channel={selectedUserStream} id={"homepage-stream"} />
         )}
         <Container className="home">
           <AccordianWrapper title="Live Now">
