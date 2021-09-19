@@ -92,9 +92,8 @@ class App extends React.PureComponent {
               path={process.env.PUBLIC_URL + "/clips"}
               render={() => <ClipsPage userNames={userNames} />}
             />
-            {/* TODO: pass props */}
-            <Route path="/" component={Home} />
-            <Route path="" component={Home} />
+            <Route path="/" render={() => <Home userNames={userNames} />} />
+            <Route path="" render={() => <Home userNames={userNames} />} />
           </Switch>
         </div>
         <div>

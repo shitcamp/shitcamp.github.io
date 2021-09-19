@@ -6,3 +6,23 @@
 .shitcamp {
   background-color: rgb(41, 36, 43) !important;
 }
+
+.data-alert {
+  margin-top: 10px;
+}
+
+.countdown-container {
+  text-align: center;
+}
+
+.countdown-val {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 450px) {
+  .countdown-val {
+    font-size: 40px;
+    font-weight: 600;
+  }
+}

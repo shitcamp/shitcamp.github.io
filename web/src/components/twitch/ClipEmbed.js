@@ -18,8 +18,8 @@ function ClipEmbed(props) {
   const videoSrc = url.toString();
 
   return (
-    <div className="twitch">
-      <div className="twitch-video">
+    <div className="twitch-clip">
+      <div className="twitch-clip-embed">
         <iframe
           src={videoSrc}
           frameBorder="0"

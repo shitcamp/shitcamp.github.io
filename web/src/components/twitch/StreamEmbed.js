@@ -25,8 +25,8 @@ function StreamEmbed(props) {
   const chatSrc = url.toString();
 
   return (
-    <div className="twitch">
-      <div className="twitch-video">
+    <div className="twitch-video">
+      <div className="twitch-video-embed">
         <iframe
           src={videoSrc}
           frameBorder="0"
@@ -35,7 +35,7 @@ function StreamEmbed(props) {
         ></iframe>
       </div>
 
-      <div className="twitch-chat">
+      <div className="twitch-video-chat">
         <iframe frameBorder="0" scrolling="no" src={chatSrc}></iframe>
       </div>
     </div>
