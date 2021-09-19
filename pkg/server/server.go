@@ -26,7 +26,7 @@ func (s *server) Start() error {
 	cache.Init(cfg.Cache.DefaultExpiryTime, cfg.Cache.DefaultCleanupInterval)
 
 	s.Server.Addr = cfg.ServerAddress
-	s.Server.Handler = newRouter()
+	s.Server.Handler = newRouter(cfg.Auth)
 
 	log.WithFields(log.Fields{"address": s.Server.Addr}).Info("starting_server")
 

@@ -3,8 +3,11 @@ package handlers
 import (
 	"net/http"
 
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
+
 	"github.com/gin-gonic/gin"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/common"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/twitch"
 )
 
 func respSuccess(c *gin.Context, data interface{}) {
@@ -15,14 +18,26 @@ func respError(c *gin.Context, httpCode int, err error) {
 	c.JSON(httpCode, common.Response{Error: err.Error()})
 }
 
-type GetReferralCodeResp struct {
-	ReferralCode string `json:"referralCode"`
+type GetStreamerNamesResp struct {
+	Users []string `json:"users"`
 }
 
-type CreateCheckoutSessionResp struct {
-	SessionID string `json:"sessionId"`
+type GetStreamersResp struct {
+	Users []*shitcamp.User `json:"users"`
 }
 
-type CreateCustomerPortalResp struct {
-	URL string `json:"url"`
+type GetScheduleResp struct {
+	Dates []*shitcamp.DateSchedule `json:"dates"`
+}
+
+type GetLiveStreamsResp struct {
+	Streams []*twitch.LiveStream `json:"streams"`
+}
+
+type GetVodsResp struct {
+	Vods []*twitch.Vod `json:"vods"`
+}
+
+type GetClipsResp struct {
+	Clips []*twitch.Clip `json:"clips"`
 }

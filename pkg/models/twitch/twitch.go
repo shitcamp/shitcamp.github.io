@@ -7,7 +7,6 @@ import (
 
 	"github.com/shitcamp-unofficial/shitcamp/pkg/cache"
 
-	"github.com/shitcamp-unofficial/shitcamp/pkg/config"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/utils"
 )
 
@@ -22,19 +21,6 @@ const (
 	// can change relatively frequently
 	clipsCacheExpiry = 5 * time.Minute
 )
-
-type Setup struct {
-	PublishableAPIKey string `json:"publishableKey"`
-}
-
-func GetSetup() *Setup {
-	cfg := config.GetConfig().Stripe
-
-	s := &Setup{
-		PublishableAPIKey: cfg.PublishableKey,
-	}
-	return s
-}
 
 func GetUsers() (*Setup, error) {
 	params := url.Values{}
@@ -53,11 +39,10 @@ func GetUsers() (*Setup, error) {
 	}
 
 	cache.Set(queryURL, resp, usersCacheExpiry)
-
 	return resp, nil
 }
 
-func GetStreams() (*Setup, error) {
+func GetStreams() ([]*LiveStream, error) {
 	params := url.Values{}
 	params.Add("user_id", "247808909")
 	params.Add("user_id", "207813352")
@@ -66,7 +51,7 @@ func GetStreams() (*Setup, error) {
 
 	queryURL := "/streams" + params.Encode()
 	if v := cache.Get(queryURL); v != nil {
-		return v, nil
+		return v.([]*LiveStream), nil
 	}
 
 	resp := make(map[string]interface{})
@@ -76,11 +61,10 @@ func GetStreams() (*Setup, error) {
 	}
 
 	cache.SetDefault(queryURL, resp)
-
 	return resp, nil
 }
 
-func GetVideos() (*Setup, error) {
+func GetVods() ([]*Vod, error) {
 	params := url.Values{}
 	params.Add("user_id", "40934651")
 	params.Add("sort", "time")
@@ -88,7 +72,7 @@ func GetVideos() (*Setup, error) {
 
 	queryURL := "/videos" + params.Encode()
 	if v := cache.Get(queryURL); v != nil {
-		return v, nil
+		return v.([]*Vod), nil
 	}
 
 	resp := make(map[string]interface{})
@@ -98,7 +82,6 @@ func GetVideos() (*Setup, error) {
 	}
 
 	cache.Set(queryURL, resp, videosCacheExpiry)
-
 	return resp, nil
 }
 
@@ -119,11 +102,10 @@ func GetChannels() (*Setup, error) {
 	}
 
 	cache.Set(queryURL, resp, channelsCacheExpiry)
-
 	return resp, nil
 }
 
-func GetClips() (*Setup, error) {
+func GetClips() ([]*Clip, error) {
 	params := url.Values{}
 	params.Add("broadcaster_id", "40934651")
 	params.Add("broadcaster_id", "247808909")
@@ -132,7 +114,7 @@ func GetClips() (*Setup, error) {
 
 	queryURL := "/clips" + params.Encode()
 	if v := cache.Get(queryURL); v != nil {
-		return v, nil
+		return v.([]*Clip), nil
 	}
 
 	resp := make(map[string]interface{})
@@ -142,6 +124,5 @@ func GetClips() (*Setup, error) {
 	}
 
 	cache.Set(queryURL, resp, clipsCacheExpiry)
-
 	return resp, nil
 }

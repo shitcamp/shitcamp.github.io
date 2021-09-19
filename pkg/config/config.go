@@ -1,10 +1,13 @@
 package config
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strconv"
 	"time"
+
+	"github.com/gin-gonic/gin"
 
 	logger "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -24,6 +27,7 @@ type Config struct {
 	ServerAddress string       `mapstructure:"address"`
 	Twitch        TwitchConfig `mapstructure:"twitch"`
 	Cache         CacheConfig  `mapstructure:"cache"`
+	Auth          gin.Accounts `mapstructure:"auth"`
 	Debug         bool         `mapstructure:"debug"`
 }
 
@@ -31,6 +35,9 @@ var cfg = Config{
 	Cache: CacheConfig{
 		DefaultExpiryTime:      2 * time.Minute,
 		DefaultCleanupInterval: 5 * time.Minute,
+	},
+	Auth: gin.Accounts{
+		"shitcamp_user": "some_random_password",
 	},
 	Debug: false,
 }
@@ -44,6 +51,8 @@ const (
 
 	EnvCacheDefaultExpiryTime      = "CACHE_DEFAULT_EXPIRY_TIME"
 	EnvCacheDefaultCleanupInterval = "CACHE_DEFAULT_CLEANUP_INTERVAL"
+
+	EnvAuth = "AUTH"
 
 	EnvDebug = "DEBUG"
 )
@@ -90,13 +99,27 @@ func loadConfigsFromEnv() {
 	}
 
 	if expiryTime := os.Getenv(EnvCacheDefaultExpiryTime); expiryTime != "" {
-		if d, err := time.ParseDuration(expiryTime); err == nil {
+		if d, err := time.ParseDuration(expiryTime); err != nil {
+			logger.WithField("expiryTime", expiryTime).WithError(err).Info("config_expiryTime_error")
+		} else {
 			cfg.Cache.DefaultExpiryTime = d
 		}
 	}
 	if cleanupInterval := os.Getenv(EnvCacheDefaultCleanupInterval); cleanupInterval != "" {
-		if d, err := time.ParseDuration(cleanupInterval); err == nil {
+		if d, err := time.ParseDuration(cleanupInterval); err != nil {
+			logger.WithField("cleanupInterval", cleanupInterval).WithError(err).Info("config_cleanupInterval_error")
+		} else {
 			cfg.Cache.DefaultCleanupInterval = d
+		}
+	}
+
+	if authStr := os.Getenv(EnvAuth); authStr != "" {
+		var auth gin.Accounts
+		err := json.Unmarshal([]byte(authStr), &auth)
+		if err != nil {
+			logger.WithField("auth", authStr).WithError(err).Info("config_auth_error")
+		} else {
+			cfg.Auth = auth
 		}
 	}
 

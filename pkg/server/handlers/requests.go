@@ -1,15 +1,24 @@
 package handlers
 
-type CreateSubscriberReq struct {
-	UserID     uint64 `json:"userId"`
-	Source     string `json:"source,omitempty"`
-	IsTestUser bool   `json:"isTest,omitempty"`
+import "github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
+
+type SetScheduleReq struct {
+	Dates []*shitcamp.DateSchedule `json:"dates"`
 }
 
-type GetSubscriptionInfoReq struct {
-	UserID uint64 `form:"userId"`
+type SetFeaturedStreamersForVodReq struct {
+	VideoID           string   `json:"id"`
+	FeaturedStreamers []string `json:"featured_streamers"`
 }
 
-type GetReferralCodeReq struct {
-	UserID uint64 `form:"userId"`
+type GetLiveStreamsReq struct {
+	Users []string `form:"user"`
+}
+
+type GetVodsReq struct {
+	Users []string `form:"user"`
+}
+
+type GetClipsReq struct {
+	Users []string `form:"user"`
 }
