@@ -12,7 +12,9 @@ export async function getUsers() {
   ];
 
   return {
-    resp: users,
+    resp: {
+      users: users,
+    },
     err: null,
   };
 }
@@ -46,7 +48,9 @@ export async function getLiveStreams() {
   });
 
   return {
-    resp: streams,
+    resp: {
+      streams: streams,
+    },
     err: null,
   };
 }
@@ -91,7 +95,9 @@ export async function getVods(userNames) {
   ];
 
   return {
-    resp: vods,
+    resp: {
+      vods: vods,
+    },
     error: null,
   };
 }
@@ -101,9 +107,6 @@ export async function getClips(userNames) {
     {
       id: "UgliestFrailGarageNinjaGrumpy-2Vbp2Vo9tOhlPCUT",
       url: "https://clips.twitch.tv/UgliestFrailGarageNinjaGrumpy-2Vbp2Vo9tOhlPCUT",
-      embed_url:
-        "https://clips.twitch.tv/embed?clip=UgliestFrailGarageNinjaGrumpy-2Vbp2Vo9tOhlPCUT",
-      broadcaster_id: "40934651",
       broadcaster_name: "ludwig",
       title: "Ludwig on Mizkif and Maya",
       view_count: 75088,
@@ -115,9 +118,6 @@ export async function getClips(userNames) {
     {
       id: "DarlingBlushingOkapiPrimeMe-gMOq8s7l-4CjXLmr",
       url: "https://clips.twitch.tv/DarlingBlushingOkapiPrimeMe-gMOq8s7l-4CjXLmr",
-      embed_url:
-        "https://clips.twitch.tv/embed?clip=DarlingBlushingOkapiPrimeMe-gMOq8s7l-4CjXLmr",
-      broadcaster_id: "40934651",
       broadcaster_name: "ludwig",
       title: "Same Laugh ",
       view_count: 46917,
@@ -129,7 +129,9 @@ export async function getClips(userNames) {
   ];
 
   return {
-    resp: clips,
+    resp: {
+      clips: clips,
+    },
     error: null,
   };
 }
@@ -179,7 +181,17 @@ export async function getSchedule() {
           start_time: "12:00:00.00-07:00",
           user_name: "QTCinderella",
           featured_streamers: ["QTCinderella"],
-          vod_link: "",
+          video_id: "43740004317",
+          video: {
+            id: "43740004317",
+            user_name: "tonytigre",
+            title: "drawing doodles for new followers! | !insta !doodle",
+            created_at: "2021-09-18T08:17:04Z",
+            url: `https://www.twitch.tv/tonytigre`,
+            thumbnail_url:
+              "https://static-cdn.jtvnw.net/previews-ttv/live_user_tonytigre-{width}x{height}.jpg",
+            view_count: 102,
+          },
         },
         {
           title: "Mogul Money",
@@ -269,7 +281,9 @@ export async function getSchedule() {
   ];
 
   return {
-    resp: schedule,
+    resp: {
+      dates: schedule,
+    },
     err: null,
   };
 }

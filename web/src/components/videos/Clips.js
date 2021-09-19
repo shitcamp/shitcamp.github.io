@@ -161,7 +161,7 @@ class Clips extends React.Component {
       console.error(ret.error);
     } else {
       this.setState({
-        videos: ret.resp,
+        videos: ret.resp.clips,
       });
     }
   }

@@ -98,7 +98,7 @@ export function getRelativeTime(t) {
 
   const diffMonths = (diffMs / (1000 * 60 * 60 * 24 * 30)).toFixed(0);
   if (diffMonths >= 1) {
-    if (diffMonths === 1) {
+    if (diffMonths == 1) {
       return `${diffMonths} month ago`;
     }
     return `${diffMonths} months ago`;
@@ -106,7 +106,7 @@ export function getRelativeTime(t) {
 
   const diffDays = (diffMs / (1000 * 60 * 60 * 24)).toFixed(0);
   if (diffDays >= 1) {
-    if (diffDays === 1) {
+    if (diffDays == 1) {
       return `Yesterday`;
     }
     return `${diffDays} days ago`;
@@ -114,14 +114,14 @@ export function getRelativeTime(t) {
 
   const diffHours = (diffMs / (1000 * 60 * 60)).toFixed(0);
   if (diffHours >= 1) {
-    if (diffHours === 1) {
+    if (diffHours == 1) {
       return `${diffHours} hour ago`;
     }
     return `${diffHours} hours ago`;
   }
 
   const diffMins = (diffMs / (1000 * 60)).toFixed(0);
-  if (diffMins === 1) {
+  if (diffMins == 1) {
     return `${diffMins} minute ago`;
   }
   return `${diffMins} minutes ago`;
@@ -150,7 +150,7 @@ export async function get(url, params) {
 
     const jsonResponse = await response.json();
     // console.log(jsonResponse);
-    return { resp: jsonResponse, error: null };
+    return { resp: jsonResponse.data, error: null };
   } catch (err) {
     var e = new Error(`API error: ${err}`);
     return { resp: null, error: e };

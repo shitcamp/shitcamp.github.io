@@ -46,7 +46,7 @@ class Home extends React.PureComponent {
     if (ret.error != null) {
       console.error(ret.error);
     } else {
-      let streams = ret.resp;
+      const { streams } = ret.resp;
 
       this.setState({
         liveStreams: streams,

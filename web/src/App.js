@@ -35,7 +35,7 @@ class App extends React.PureComponent {
       console.error(ret.error);
     } else {
       this.setState({
-        userNames: ret.resp,
+        userNames: ret.resp.users,
       });
     }
   }
@@ -74,7 +74,11 @@ class App extends React.PureComponent {
                     rel="noreferrer"
                   >
                     Get Merch{" "}
-                    <img src={peepoShy} alt="" className="peepo-shy-gif" />
+                    <img
+                      src={peepoShy}
+                      alt="peepoShy"
+                      className="peepo-shy-gif"
+                    />
                   </Nav.Link>
                 </Nav>
               </Navbar.Collapse>

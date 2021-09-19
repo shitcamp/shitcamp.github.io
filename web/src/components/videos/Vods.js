@@ -28,7 +28,7 @@ class Vods extends React.Component {
       console.error(ret.error);
     } else {
       this.setState({
-        pastStreams: ret.resp,
+        pastStreams: ret.resp.vods,
       });
     }
   }
@@ -106,7 +106,7 @@ class Vods extends React.Component {
       console.error(ret.error);
     } else {
       this.setState({
-        pastStreams: ret.resp,
+        pastStreams: ret.resp.vods,
       });
     }
   }
