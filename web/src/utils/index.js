@@ -92,35 +92,38 @@ export function getDisplayedViewCount(v) {
 
 // 2021-09-02T19:56:12Z -> 2 days ago
 export function getRelativeTime(t) {
-  var date1 = Date.parse(t);
-  var date2 = Date.now();
-  var diffMs = Math.abs(date2 - date1);
+  let date1 = Date.parse(t);
+  let date2 = Date.now();
+  let diffMs = Math.abs(date2 - date1);
 
-  const diffMonths = (diffMs / (1000 * 60 * 60 * 24 * 30)).toFixed(0);
+  let diffMonths = diffMs / (1000 * 60 * 60 * 24 * 30);
   if (diffMonths >= 1) {
+    diffMonths = Math.round(diffMonths);
     if (diffMonths == 1) {
       return `${diffMonths} month ago`;
     }
     return `${diffMonths} months ago`;
   }
 
-  const diffDays = (diffMs / (1000 * 60 * 60 * 24)).toFixed(0);
+  let diffDays = diffMs / (1000 * 60 * 60 * 24);
   if (diffDays >= 1) {
+    diffDays = Math.round(diffDays);
     if (diffDays == 1) {
       return `Yesterday`;
     }
     return `${diffDays} days ago`;
   }
 
-  const diffHours = (diffMs / (1000 * 60 * 60)).toFixed(0);
+  let diffHours = diffMs / (1000 * 60 * 60);
   if (diffHours >= 1) {
+    diffHours = Math.round(diffHours);
     if (diffHours == 1) {
       return `${diffHours} hour ago`;
     }
     return `${diffHours} hours ago`;
   }
 
-  const diffMins = (diffMs / (1000 * 60)).toFixed(0);
+  let diffMins = Math.round(diffMs / (1000 * 60));
   if (diffMins == 1) {
     return `${diffMins} minute ago`;
   }
@@ -129,7 +132,7 @@ export function getRelativeTime(t) {
 
 // `params` should be a string or an array of pairs. eg. [['k1', 'v1'], ['k2', 1], ['k2', 2]]
 export async function get(url, params) {
-  url = new URL(url);
+  url = new URL(process.env.REACT_APP_SERVER_DOMAIN + url);
 
   if (params && params.length > 0) {
     if (typeof params === "string") {
@@ -139,8 +142,10 @@ export async function get(url, params) {
     }
   }
 
+  const headers = { Authorization: "Basic cm9vdDpyb290" };
+
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { headers });
     if (!response.ok || response.status < 200 || response.status > 299) {
       var err = new Error(
         `API status code ${response.status}: ${response.statusText}`
@@ -152,7 +157,7 @@ export async function get(url, params) {
     // console.log(jsonResponse);
     return { resp: jsonResponse.data, error: null };
   } catch (err) {
-    var e = new Error(`API error: ${err}`);
+    var e = new Error(`Shitcamp API error: ${err}`);
     return { resp: null, error: e };
   }
 }

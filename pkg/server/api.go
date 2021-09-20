@@ -1,6 +1,11 @@
 package server
 
 import (
+	"net/http"
+	"strings"
+	"time"
+
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/server/handlers"
 )
@@ -13,7 +18,20 @@ const (
 func newRouter(auth gin.Accounts) *gin.Engine {
 	router := gin.Default()
 
-	router.Use(gin.BasicAuth(auth))
+	router.Use(
+		cors.New(cors.Config{
+			AllowMethods:     []string{http.MethodGet, http.MethodPost, http.MethodOptions},
+			AllowHeaders:     []string{"Authorization"},
+			AllowCredentials: true,
+			AllowOriginFunc: func(origin string) bool {
+				if origin == "https://shitcamp-unofficial.github.io" {
+					return true
+				}
+				return strings.HasPrefix(origin, "http://localhost")
+			},
+			MaxAge: 12 * time.Hour,
+		}),
+		gin.BasicAuth(auth))
 
 	api := router.Group("/api")
 

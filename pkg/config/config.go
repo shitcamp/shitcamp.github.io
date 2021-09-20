@@ -18,27 +18,44 @@ type TwitchConfig struct {
 	AccessToken string `mapstructure:"access_token"` // secret app access token to authorize Twitch API requests
 }
 
+type ShitcampConfig struct {
+	OldestUploadTime string `mapstructure:"oldest_upload_time"`
+}
+
+func (s *ShitcampConfig) GetOldestUploadTime() time.Time {
+	t, err := time.Parse(time.RFC3339, s.OldestUploadTime)
+	if err != nil {
+		logger.WithField("time", s.OldestUploadTime).Warn("parse_GetOldestUploadTime_error")
+		t, _ = time.Parse(time.RFC3339, shitcampStartTime)
+		return t
+	}
+
+	return t
+}
+
 type CacheConfig struct {
 	DefaultExpiryTime      time.Duration `mapstructure:"default_expiry_time"`
 	DefaultCleanupInterval time.Duration `mapstructure:"default_cleanup_interval"`
 }
 
 type Config struct {
-	ServerAddress string       `mapstructure:"address"`
-	Twitch        TwitchConfig `mapstructure:"twitch"`
-	Cache         CacheConfig  `mapstructure:"cache"`
-	Auth          gin.Accounts `mapstructure:"auth"`
-	Debug         bool         `mapstructure:"debug"`
+	ServerAddress string         `mapstructure:"address"`
+	Twitch        TwitchConfig   `mapstructure:"twitch"`
+	Shitcamp      ShitcampConfig `mapstructure:"shitcamp"`
+	Cache         CacheConfig    `mapstructure:"cache"`
+	Auth          gin.Accounts   `mapstructure:"auth"`
+	Debug         bool           `mapstructure:"debug"`
 }
 
+const shitcampStartTime = "2021-09-26T19:00:00.00-06:00"
+
 var cfg = Config{
+	Shitcamp: ShitcampConfig{OldestUploadTime: shitcampStartTime},
 	Cache: CacheConfig{
 		DefaultExpiryTime:      2 * time.Minute,
 		DefaultCleanupInterval: 5 * time.Minute,
 	},
-	Auth: gin.Accounts{
-		//"shitcamp_user": "some_random_password",
-	},
+	Auth:  gin.Accounts{},
 	Debug: false,
 }
 
@@ -48,6 +65,8 @@ const (
 
 	EnvTwitchClientID    = "TWITCH_CLIENT_ID"
 	EnvTwitchAccessToken = "TWITCH_ACCESS_TOKEN"
+
+	EnvShitcampOldestUploadTime = "SHITCAMP_OLDEST_UPLOAD_TIME"
 
 	EnvCacheDefaultExpiryTime      = "CACHE_DEFAULT_EXPIRY_TIME"
 	EnvCacheDefaultCleanupInterval = "CACHE_DEFAULT_CLEANUP_INTERVAL"
@@ -96,6 +115,10 @@ func loadConfigsFromEnv() {
 	}
 	if twitchAccessToken := os.Getenv(EnvTwitchAccessToken); twitchAccessToken != "" {
 		cfg.Twitch.AccessToken = twitchAccessToken
+	}
+
+	if oldestUploadTime := os.Getenv(EnvShitcampOldestUploadTime); oldestUploadTime != "" {
+		cfg.Shitcamp.OldestUploadTime = oldestUploadTime
 	}
 
 	if expiryTime := os.Getenv(EnvCacheDefaultExpiryTime); expiryTime != "" {

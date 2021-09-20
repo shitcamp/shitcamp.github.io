@@ -55,13 +55,13 @@ func SetSchedule(s []*DateSchedule) error {
 	schedule = s
 
 	scheduleStr, err := json.Marshal(schedule)
-	l := logger.WithField("schedule", scheduleStr)
+	l := logger.WithField("schedule", string(scheduleStr))
 	if err != nil {
 		l.WithError(err).Error("SetSchedule_error")
 		return err
 	}
 
-	l.Error("SetSchedule_success")
+	l.Info("SetSchedule_success")
 
 	return nil
 }
@@ -70,13 +70,13 @@ func SetFeaturedUsersForVod(vodID string, userNames []string) error {
 	vodIDFeaturedMap[vodID] = userNames
 
 	mapStr, err := json.Marshal(vodIDFeaturedMap)
-	l := logger.WithField("vodIDFeaturedMap", mapStr)
+	l := logger.WithField("vodIDFeaturedMap", string(mapStr))
 	if err != nil {
 		l.WithError(err).Error("SetFeaturedStreamersForVod_error")
 		return err
 	}
 
-	l.WithField("vodID", vodID).Error("SetFeaturedStreamersForVod_success")
+	l.WithField("vodID", vodID).Info("SetFeaturedStreamersForVod_success")
 
 	return nil
 }

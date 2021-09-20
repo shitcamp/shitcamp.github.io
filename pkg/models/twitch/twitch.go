@@ -8,10 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
-
 	"github.com/shitcamp-unofficial/shitcamp/pkg/cache"
-
+	"github.com/shitcamp-unofficial/shitcamp/pkg/config"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/utils"
 )
 
@@ -83,6 +82,8 @@ type twitchVideo struct {
 	MutedSegments interface{} `json:"muted_segments"`
 }
 
+const twitchMaxClips = 100
+
 type twitchClip struct {
 	ID              string    `json:"id"`
 	URL             string    `json:"url"`
@@ -146,8 +147,10 @@ func GetUserIDs(userNames []string) (userIDMap map[string]string, err error) {
 }
 
 func GetStreams(userNames []string) ([]*LiveStream, error) {
+	liveStreams := make([]*LiveStream, 0)
+
 	if len(userNames) == 0 {
-		return nil, fmt.Errorf("no user names specified")
+		return liveStreams, nil
 	}
 
 	params := url.Values{}
@@ -171,7 +174,6 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 		return nil, err
 	}
 
-	liveStreams := make([]*LiveStream, 0)
 	for _, s := range streams {
 		liveStreams = append(liveStreams, &LiveStream{Video{
 			ID:                s.ID,
@@ -211,6 +213,10 @@ func getVodsForUserID(userID string) ([]*Vod, error) {
 
 	var vods []*Vod
 	for _, v := range videos {
+		if v.CreatedAt.Before(config.GetConfig().Shitcamp.GetOldestUploadTime()) {
+			break
+		}
+
 		vods = append(
 			vods, &Vod{
 				Video: Video{
@@ -233,8 +239,10 @@ func getVodsForUserID(userID string) ([]*Vod, error) {
 }
 
 func GetVods(userNames []string) ([]*Vod, error) {
+	vods := make([]*Vod, 0)
+
 	if len(userNames) == 0 {
-		return nil, fmt.Errorf("no user names specified")
+		return vods, nil
 	}
 
 	cacheKey := "vods/" + strings.Join(userNames, "&")
@@ -247,7 +255,6 @@ func GetVods(userNames []string) ([]*Vod, error) {
 		return nil, err
 	}
 
-	vods := make([]*Vod, 0)
 	for _, userID := range userIDMap {
 		userVods, err := getVodsForUserID(userID)
 		if err != nil {
@@ -268,15 +275,18 @@ func GetVods(userNames []string) ([]*Vod, error) {
 	return vods, nil
 }
 
-const shitcampStartTime = "2021-09-18T19:00:00.00-06:00" // TODO: change
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
 
-func getClipsForBroadcaster(broadcasterID string) ([]*Clip, error) {
-	const maxNumClips = 30
-
+func getClipsForBroadcaster(broadcasterID string, maxNumClips int) ([]*Clip, error) {
 	params := url.Values{}
 	params.Add("broadcaster_id", broadcasterID)
-	params.Add("started_at", shitcampStartTime) // time.Now().Format(time.RFC3339))
-	params.Add("first", fmt.Sprintf("%d", maxNumClips))
+	params.Add("started_at", config.GetConfig().Shitcamp.GetOldestUploadTime().Format(time.RFC3339))
+	params.Add("first", fmt.Sprintf("%d", min(maxNumClips, twitchMaxClips)))
 
 	queryURL := "/clips" + "?" + params.Encode()
 
@@ -311,8 +321,10 @@ func getClipsForBroadcaster(broadcasterID string) ([]*Clip, error) {
 }
 
 func GetClips(broadcasterNames []string) ([]*Clip, error) {
+	clips := make([]*Clip, 0)
+
 	if len(broadcasterNames) == 0 {
-		return nil, fmt.Errorf("no user names specified")
+		return clips, nil
 	}
 
 	cacheKey := "clips/" + strings.Join(broadcasterNames, "&")
@@ -325,9 +337,10 @@ func GetClips(broadcasterNames []string) ([]*Clip, error) {
 		return nil, err
 	}
 
-	clips := make([]*Clip, 0)
+	var maxNumClips = (twitchMaxClips / len(broadcasterNames)) + 10
+
 	for _, userID := range userIDMap {
-		userClips, err := getClipsForBroadcaster(userID)
+		userClips, err := getClipsForBroadcaster(userID, maxNumClips)
 		if err != nil {
 			return nil, err
 		}
@@ -341,6 +354,10 @@ func GetClips(broadcasterNames []string) ([]*Clip, error) {
 
 		return c1.ViewCount >= c2.ViewCount
 	})
+
+	if len(clips) > twitchMaxClips {
+		clips = clips[:twitchMaxClips]
+	}
 
 	cache.Set(cacheKey, clips, videosCacheExpiry)
 	return clips, nil

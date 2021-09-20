@@ -30,6 +30,8 @@ function VideoCard(props) {
 
     thumbnailUrl = thumbnailUrl.replace("%{height}", THUMBNAIL_SIZE.height);
     thumbnailUrl = thumbnailUrl.replace("{height}", THUMBNAIL_SIZE.height);
+  } else {
+    thumbnailUrl = `https://static-cdn.jtvnw.net/previews-ttv/live_user_${user_name}-${THUMBNAIL_SIZE.width}x${THUMBNAIL_SIZE.height}.jpg`;
   }
 
   return (

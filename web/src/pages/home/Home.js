@@ -32,17 +32,16 @@ class Home extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    const { userNames } = this.props;
-
     this.state = {
-      userNames: userNames,
       selectedUserStream: "",
       liveStreams: [],
     };
   }
 
   async componentDidMount() {
-    let ret = await getLiveStreams();
+    const { userNames } = this.props;
+
+    let ret = await getLiveStreams(userNames);
     if (ret.error != null) {
       console.error(ret.error);
     } else {
@@ -63,7 +62,8 @@ class Home extends React.PureComponent {
   };
 
   render() {
-    const { selectedUserStream, liveStreams, userNames } = this.state;
+    const { userNames } = this.props;
+    const { selectedUserStream, liveStreams } = this.state;
 
     return (
       <React.Fragment>
@@ -111,7 +111,7 @@ class Home extends React.PureComponent {
             {/* next 3 streams? */}
           </AccordianWrapper>
 
-          <AccordianWrapper title="Past streams">
+          <AccordianWrapper title="Latest streams">
             <Vods userNames={userNames} />
           </AccordianWrapper>
         </Container>
