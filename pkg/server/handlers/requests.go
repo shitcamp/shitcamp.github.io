@@ -6,9 +6,9 @@ type SetScheduleReq struct {
 	Dates []*shitcamp.DateSchedule `json:"dates"`
 }
 
-type SetFeaturedStreamersForVodReq struct {
-	VideoID           string   `json:"id"`
-	FeaturedStreamers []string `json:"featured_streamers"`
+type SetFeaturedUsersForVodReq struct {
+	VideoID       string   `json:"id"`
+	FeaturedUsers []string `json:"featured_users"`
 }
 
 type GetLiveStreamsReq struct {

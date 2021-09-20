@@ -17,7 +17,7 @@ func GetLiveStreams(c *gin.Context) {
 		return
 	}
 
-	streams, err := twitch.GetStreams()
+	streams, err := twitch.GetStreams(req.Users)
 	if err != nil {
 		logger.WithField("req", req).WithError(err).Error("GetLiveStreams_error")
 		respError(c, http.StatusInternalServerError, err)
@@ -35,7 +35,7 @@ func GetVods(c *gin.Context) {
 		return
 	}
 
-	vods, err := twitch.GetVods()
+	vods, err := twitch.GetVods(req.Users)
 	if err != nil {
 		logger.WithField("req", req).WithError(err).Error("GetVods_error")
 		respError(c, http.StatusInternalServerError, err)
@@ -53,7 +53,7 @@ func GetClips(c *gin.Context) {
 		return
 	}
 
-	clips, err := twitch.GetClips()
+	clips, err := twitch.GetClips(req.Users)
 	if err != nil {
 		logger.WithField("req", req).WithError(err).Error("GetClips_error")
 		respError(c, http.StatusInternalServerError, err)

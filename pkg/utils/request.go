@@ -64,13 +64,13 @@ func Request(reqURL, method string, queryParams url.Values, body interface{}, re
 		return fmt.Errorf("request_creation_error: %v", err)
 	}
 
-	//q := req.URL.Query()
-	//for k, values := range queryParams {
-	//	for _, v := range values {
-	//		q.Add(k, v)
-	//	}
-	//}
-	req.URL.RawQuery = queryParams.Encode()
+	q := req.URL.Query()
+	for k, values := range queryParams {
+		for _, v := range values {
+			q.Add(k, v)
+		}
+	}
+	req.URL.RawQuery = q.Encode()
 
 	req.Header.Set("Content-Type", "application/json")
 

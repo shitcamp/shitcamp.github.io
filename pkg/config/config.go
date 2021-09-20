@@ -37,7 +37,7 @@ var cfg = Config{
 		DefaultCleanupInterval: 5 * time.Minute,
 	},
 	Auth: gin.Accounts{
-		"shitcamp_user": "some_random_password",
+		//"shitcamp_user": "some_random_password",
 	},
 	Debug: false,
 }

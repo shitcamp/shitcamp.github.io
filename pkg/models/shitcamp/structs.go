@@ -1,7 +1,7 @@
 package shitcamp
 
 import (
-	"github.com/shitcamp-unofficial/shitcamp/pkg/models/twitch"
+	"time"
 )
 
 type User struct {
@@ -10,13 +10,24 @@ type User struct {
 	ProfileImageURL string `json:"profile_image_url"`
 }
 
+type Video struct {
+	ID                string    `json:"id"`
+	UserName          string    `json:"user_name"`
+	Title             string    `json:"title"`
+	CreatedAt         time.Time `json:"created_at"`
+	URL               string    `json:"url"`
+	ThumbnailURL      string    `json:"thumbnail_url"`
+	ViewCount         int       `json:"view_count"`
+	FeaturedStreamers []string  `json:"featured_users"`
+}
+
 type Event struct {
-	Title             string       `json:"title"`
-	StartTime         string       `json:"start_time"` // TODO: try time.Time?
-	UserName          string       `json:"user_name"`
-	FeaturedStreamers []string     `json:"featured_streamers"`
-	VideoID           string       `json:"video_id"`
-	Video             twitch.Video `json:"video"`
+	Title         string    `json:"title"`
+	StartTime     time.Time `json:"start_time"`
+	UserName      string    `json:"user_name"`
+	FeaturedUsers []string  `json:"featured_users"`
+	VideoID       string    `json:"video_id"`
+	Video         Video     `json:"video"`
 }
 
 type DateSchedule struct {
@@ -31,8 +42,9 @@ type DateSchedule struct {
 //			title: "Pancake breakfast",
 //			start_time: "08:00:00.00-07:00",
 //			user_name: "Nmplol",
-//			featured_streamers: ["Nmplol"],
+//			featured_users: ["Nmplol"],
 //			video_id: "",
+//          video: {}
 //		}
 //	],
 //},

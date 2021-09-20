@@ -38,7 +38,7 @@ func SetSchedule(c *gin.Context) {
 		return
 	}
 
-	err := shitcamp.SetSchedule()
+	err := shitcamp.SetSchedule(req.Dates)
 	if err != nil {
 		logger.WithField("req", req).WithError(err).Error("SetSchedule_error")
 		respError(c, http.StatusInternalServerError, err)
@@ -48,16 +48,16 @@ func SetSchedule(c *gin.Context) {
 	respSuccess(c, nil)
 }
 
-func SetFeaturedStreamersForVod(c *gin.Context) {
-	req := new(SetFeaturedStreamersForVodReq)
+func SetFeaturedUsersForVod(c *gin.Context) {
+	req := new(SetFeaturedUsersForVodReq)
 	if err := c.ShouldBindJSON(req); err != nil {
 		respError(c, http.StatusBadRequest, err)
 		return
 	}
 
-	err := shitcamp.SetFeaturedStreamersForVod()
+	err := shitcamp.SetFeaturedUsersForVod(req.VideoID, req.FeaturedUsers)
 	if err != nil {
-		logger.WithField("req", req).WithError(err).Error("SetFeaturedStreamersForVod_error")
+		logger.WithField("req", req).WithError(err).Error("SetFeaturedUsersForVod_error")
 		respError(c, http.StatusInternalServerError, err)
 		return
 	}

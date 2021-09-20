@@ -1,13 +1,16 @@
 package twitch
 
+import "time"
+
 type Video struct {
-	ID           string `json:"id"`
-	UserName     string `json:"user_name"`
-	Title        string `json:"title"`
-	CreatedAt    string `json:"created_at"` // TODO: try time.Time?
-	URL          string `json:"url"`
-	ThumbnailURL string `json:"thumbnail_url"`
-	ViewCount    int    `json:"view_count"`
+	ID                string    `json:"id"`
+	UserName          string    `json:"user_name"`
+	Title             string    `json:"title"`
+	CreatedAt         time.Time `json:"created_at"`
+	URL               string    `json:"url"`
+	ThumbnailURL      string    `json:"thumbnail_url"`
+	ViewCount         int       `json:"view_count"`
+	FeaturedStreamers []string  `json:"featured_users"`
 }
 
 type LiveStream struct {
@@ -24,9 +27,7 @@ type LiveStream struct {
 
 type Vod struct {
 	Video
-	Duration          string   `json:"duration"`
-	FeaturedStreamers []string `json:"featured_users"`
-
+	Duration string `json:"duration"`
 	//id: "1151405309",
 	//user_name: "ludwig",
 	//title:
@@ -41,14 +42,14 @@ type Vod struct {
 }
 
 type Clip struct {
-	ID              string `json:"id"`
-	BroadcasterName string `json:"broadcaster_name"`
-	Title           string `json:"title"`
-	CreatedAt       string `json:"created_at"` // TODO: try time.Time?
-	URL             string `json:"url"`
-	ThumbnailURL    string `json:"thumbnail_url"`
-	ViewCount       int    `json:"view_count"`
-	Duration        string `json:"duration"`
+	ID              string    `json:"id"`
+	BroadcasterName string    `json:"broadcaster_name"`
+	Title           string    `json:"title"`
+	CreatedAt       time.Time `json:"created_at"`
+	URL             string    `json:"url"`
+	ThumbnailURL    string    `json:"thumbnail_url"`
+	ViewCount       int       `json:"view_count"`
+	Duration        string    `json:"duration"`
 
 	//id: "UgliestFrailGarageNinjaGrumpy-2Vbp2Vo9tOhlPCUT",
 	//broadcaster_name: "ludwig",
