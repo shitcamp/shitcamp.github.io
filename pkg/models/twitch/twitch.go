@@ -193,6 +193,11 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 }
 
 func GetVodsByIDs(videoIDs []string) (map[string]*Vod, error) {
+	vodMap := make(map[string]*Vod)
+	if len(videoIDs) == 0 {
+		return vodMap, nil
+	}
+
 	params := url.Values{}
 	params.Add("sort", "time")
 
@@ -209,7 +214,6 @@ func GetVodsByIDs(videoIDs []string) (map[string]*Vod, error) {
 		return nil, err
 	}
 
-	vodMap := make(map[string]*Vod)
 	for _, v := range videos {
 		vodMap[v.ID] = &Vod{
 			Video: Video{

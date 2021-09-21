@@ -7,8 +7,8 @@ import (
 	"time"
 
 	"github.com/shitcamp-unofficial/shitcamp/pkg/cache"
-
 	"github.com/shitcamp-unofficial/shitcamp/pkg/config"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -24,6 +24,7 @@ func (s *server) Start() error {
 	cfg := config.GetConfig()
 
 	cache.Init(cfg.Cache.DefaultExpiryTime, cfg.Cache.DefaultCleanupInterval)
+	schedule.InitScheduleData()
 
 	s.Server.Addr = cfg.ServerAddress
 	s.Server.Handler = newRouter(cfg.Auth)
