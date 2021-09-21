@@ -46,7 +46,7 @@ function ClipCard(props) {
           {utils.getDisplayedViewCount(view_count)}
         </small>
         <small className="indicator createdAt">
-          {utils.getRelativeTime(created_at)}
+          {utils.getRelativeTimeBeforeNow(created_at)}
         </small>
       </div>
       {/* <Image src={thumbnailUrl} thumbnail /> */}

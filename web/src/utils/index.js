@@ -91,10 +91,10 @@ export function getDisplayedViewCount(v) {
 }
 
 // 2021-09-02T19:56:12Z -> 2 days ago
-export function getRelativeTime(t) {
+export function getRelativeTimeBeforeNow(t) {
   let date1 = Date.parse(t);
   let date2 = Date.now();
-  let diffMs = Math.abs(date2 - date1);
+  let diffMs = date2 - date1;
 
   let diffMonths = diffMs / (1000 * 60 * 60 * 24 * 30);
   if (diffMonths >= 1) {
@@ -128,6 +128,50 @@ export function getRelativeTime(t) {
     return `${diffMins} minute ago`;
   }
   return `${diffMins} minutes ago`;
+}
+
+// 2021-09-02T19:56:12Z -> 2 days
+export function getRelativeTimeFromNow(t) {
+  let date1 = Date.now();
+  let date2 = Date.parse(t);
+  let diffMs = date2 - date1;
+
+  if (diffMs < 0) {
+    return "0 mins";
+  }
+
+  let diffMonths = diffMs / (1000 * 60 * 60 * 24 * 30);
+  if (diffMonths >= 1) {
+    diffMonths = Math.round(diffMonths);
+    if (diffMonths == 1) {
+      return `${diffMonths} month`;
+    }
+    return `${diffMonths} months`;
+  }
+
+  let diffDays = diffMs / (1000 * 60 * 60 * 24);
+  if (diffDays >= 1) {
+    diffDays = Math.round(diffDays);
+    if (diffDays == 1) {
+      return `Tomorrow`;
+    }
+    return `${diffDays} days`;
+  }
+
+  let diffHours = diffMs / (1000 * 60 * 60);
+  if (diffHours >= 1) {
+    diffHours = Math.round(diffHours);
+    if (diffHours == 1) {
+      return `${diffHours} hour`;
+    }
+    return `${diffHours} hours`;
+  }
+
+  let diffMins = Math.round(diffMs / (1000 * 60));
+  if (diffMins == 1) {
+    return `${diffMins} minute`;
+  }
+  return `${diffMins} minutes`;
 }
 
 // `params` should be a string or an array of pairs. eg. [['k1', 'v1'], ['k2', 1], ['k2', 2]]

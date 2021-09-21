@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Accordion, Alert, Container } from "react-bootstrap";
+import { Alert, Container } from "react-bootstrap";
 import Countdown from "react-countdown";
 
+import AccordianWrapper from "components/accordian/AccordianWrapper";
 import StreamEmbed from "components/twitch/StreamEmbed";
 import Streams from "components/videos/Streams";
 import Vods from "components/videos/Vods";
@@ -10,21 +11,6 @@ import Vods from "components/videos/Vods";
 import { getLiveStreams } from "apis";
 
 import "pages/home/Home.css";
-
-function AccordianWrapper(props) {
-  const { title, children } = props;
-
-  return (
-    <Accordion defaultActiveKey="0">
-      <Accordion.Item eventKey="0">
-        <Accordion.Header>
-          <h5>{title}</h5>
-        </Accordion.Header>
-        <Accordion.Body>{children}</Accordion.Body>
-      </Accordion.Item>
-    </Accordion>
-  );
-}
 
 const SHITCAMP_START_TIME = "2021-09-26T19:00:00.00-07:00";
 
@@ -109,6 +95,7 @@ class Home extends React.PureComponent {
 
           <AccordianWrapper title="Upcoming streams">
             {/* next 3 streams? */}
+            <h5>No upcoming streams</h5>
           </AccordianWrapper>
 
           <AccordianWrapper title="Latest streams">

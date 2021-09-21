@@ -47,7 +47,7 @@ function VideoCard(props) {
           {utils.getDisplayedViewCount(view_count)}
         </small>
         <small className="indicator createdAt">
-          {utils.getRelativeTime(created_at)}
+          {utils.getRelativeTimeBeforeNow(created_at)}
         </small>
       </div>
       {/* <Image src={thumbnailUrl} thumbnail /> */}
@@ -55,7 +55,7 @@ function VideoCard(props) {
       <Card.Body>
         <Card.Title className="card-title truncate">
           <a href={url} target="_blank" rel="noreferrer" className="link">
-            <h6>{title}</h6>
+            <h6 title={title}>{title}</h6>
           </a>
         </Card.Title>
 

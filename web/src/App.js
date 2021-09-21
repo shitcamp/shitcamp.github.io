@@ -80,6 +80,7 @@ class App extends React.PureComponent {
 
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
+                  <Nav.Link href={getRelUrl("/")}>Home</Nav.Link>
                   <Nav.Link href={getRelUrl("/schedule")}>Schedule</Nav.Link>
                   <Nav.Link href={getRelUrl("/about")}>About</Nav.Link>
                   <Nav.Link href={getRelUrl("/clips")}>Top Clips</Nav.Link>
