@@ -29,7 +29,7 @@ const (
 	// can change relatively frequently
 	clipsCacheExpiry = 5 * time.Minute
 
-	maxAddedRandomExpirySeconds = 3 * 60
+	maxAddedRandomExpirySeconds = 120
 )
 
 func getCacheExpiryWithRandomAddedTime(expiry time.Duration) time.Duration {
