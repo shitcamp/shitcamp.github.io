@@ -4,14 +4,18 @@ import "components/twitch/StreamEmbed.css";
 // https://github.com/talk2MeGooseman/react-twitch-embed-video
 //https://philna.sh/blog/2020/03/23/responsive-twitch-embed/
 function StreamEmbed(props) {
-  const { channel } = props;
+  const { channel, videoID } = props;
 
   const domainName = window.location.hostname;
 
   let url = new URL("https://player.twitch.tv");
   let qParams = new URLSearchParams();
+  if (channel != null) {
+    qParams.append("channel", channel);
+  } else if (videoID != null) {
+    qParams.append("video", `v${videoID}`);
+  }
   qParams.append("autoplay", true);
-  qParams.append("channel", channel);
   qParams.append("parent", domainName);
   qParams.append("muted", false);
   url.search = qParams.toString();

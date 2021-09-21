@@ -7,8 +7,9 @@ import AccordianWrapper from "components/accordian/AccordianWrapper";
 import StreamEmbed from "components/twitch/StreamEmbed";
 import Streams from "components/videos/Streams";
 import Vods from "components/videos/Vods";
+import Events from "components/event/Events";
 
-import { getLiveStreams } from "apis";
+import { getLiveStreams, getSchedule } from "apis";
 
 import "pages/home/Home.css";
 
@@ -21,6 +22,7 @@ class Home extends React.PureComponent {
     this.state = {
       selectedUserStream: "",
       liveStreams: [],
+      scheduleEvents: [],
     };
   }
 
@@ -38,7 +40,34 @@ class Home extends React.PureComponent {
         selectedUserStream: streams.length === 0 ? "" : streams[0].user_name,
       });
     }
+
+    ret = await getSchedule();
+    if (ret.error != null) {
+      console.error(ret.error);
+    } else {
+      const { dates } = ret.resp;
+
+      let events = [];
+      for (const dateSchedule of dates) {
+        for (const e of dateSchedule.events) {
+          if (Date.parse(e.start_time) > Date.now()) {
+            events.push(e);
+          }
+        }
+      }
+
+      this.setState({
+        scheduleEvents: events,
+      });
+    }
   }
+
+  handleStreamClick = (e, stream) => {
+    e.preventDefault();
+    this.setState({
+      selectedUserStream: stream.user_name,
+    });
+  };
 
   handleStreamClick = (e, stream) => {
     e.preventDefault();
@@ -49,7 +78,7 @@ class Home extends React.PureComponent {
 
   render() {
     const { userNames } = this.props;
-    const { selectedUserStream, liveStreams } = this.state;
+    const { selectedUserStream, liveStreams, scheduleEvents } = this.state;
 
     return (
       <React.Fragment>
@@ -93,9 +122,16 @@ class Home extends React.PureComponent {
             />
           </AccordianWrapper>
 
-          <AccordianWrapper title="Upcoming streams">
-            {/* next 3 streams? */}
-            <h5>No upcoming streams</h5>
+          <AccordianWrapper title="Upcoming events">
+            {Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
+              <Events
+                events={scheduleEvents}
+                onVideoClick={() => {}}
+                displayStartDate={true}
+              />
+            ) : (
+              <h5>No upcoming events</h5>
+            )}
           </AccordianWrapper>
 
           <AccordianWrapper title="Latest streams">

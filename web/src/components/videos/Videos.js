@@ -61,7 +61,7 @@ function VideoCard(props) {
 
         {Array.isArray(featured_users) && featured_users.length > 0 ? (
           <Card.Text className="truncate">
-            Featuring:{" "}
+            <span className="subtitle">Featuring</span>:{" "}
             {featured_users.map((user, i, users) => (
               <React.Fragment key={user}>
                 <a

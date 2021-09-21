@@ -3,13 +3,13 @@ a.link {
   text-decoration: none;
 }
 
+.subtitle {
+  font-weight: 500;
+}
+
 .thumbnail {
   display: inline-block;
   position: relative;
-}
-
-.subtitle {
-  font-weight: 500;
 }
 
 .indicator {
@@ -35,16 +35,8 @@ a.link {
   bottom: 0;
 }
 
-.createdAt {
+.created-at {
   position: absolute;
   right: 0;
   bottom: 0;
-}
-
-.truncate {
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* number of lines to truncate after */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
