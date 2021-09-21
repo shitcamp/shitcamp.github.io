@@ -9,6 +9,13 @@ import { getSchedule } from "apis";
 
 import "pages/schedule/Schedule.css";
 
+function pad(n) {
+  if (n <= 9) {
+    return "0" + n;
+  }
+  return n;
+}
+
 class Schedule extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -26,8 +33,33 @@ class Schedule extends React.PureComponent {
     } else {
       const { dates } = ret.resp;
 
+      let scheduleDates = [];
+      for (const dateSchedule of dates) {
+        for (const e of dateSchedule.events) {
+          const d = new Date(e.start_time);
+
+          const date =
+            d.getFullYear() +
+            "-" +
+            pad(d.getMonth() + 1) +
+            "-" +
+            pad(d.getDate());
+          if (
+            scheduleDates.length == 0 ||
+            scheduleDates[scheduleDates.length - 1].date !== date
+          ) {
+            scheduleDates.push({ date: date, events: [] });
+          }
+
+          scheduleDates[scheduleDates.length - 1].events.push(e);
+        }
+      }
+
+      console.log(dates);
+      console.log(scheduleDates);
+
       this.setState({
-        scheduleDates: dates,
+        scheduleDates: scheduleDates,
       });
     }
   }
