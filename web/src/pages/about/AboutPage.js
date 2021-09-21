@@ -5,7 +5,20 @@ import "pages/about/AboutPage.css";
 import peepoGiggles from "assets/peepoGiggles.gif";
 import smile from "assets/smile.png";
 
-function AboutPage() {
+function AboutPage(props) {
+  const { userNames: featuredStreamers } = props;
+
+  const specialGuests = [
+    {
+      userName: "PhinTTV",
+      description: "will be the cameraman",
+    },
+    {
+      userName: "ConnorEatsPants",
+      description: "will feature in some events",
+    },
+  ];
+
   return (
     <Container className="about-page">
       <h3>About</h3>
@@ -58,130 +71,35 @@ function AboutPage() {
       <h5>Who will be at Shitcamp?</h5>
       <p>This is the official list of the streamers attending Shitcamp:</p>
       <ul>
-        <li>
-          <a
-            href="https://twitch.tv/AdeptTheBest"
-            target="_blank"
-            rel="noreferrer"
-          >
-            AdeptTheBest
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitch.tv/AustinShow"
-            target="_blank"
-            rel="noreferrer"
-          >
-            AustinShow
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/Cyr" target="_blank" rel="noreferrer">
-            Cyr
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/EsfandTV" target="_blank" rel="noreferrer">
-            EsfandTV
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/HasanAbi" target="_blank" rel="noreferrer">
-            HasanAbi
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitch.tv/JustaMinx"
-            target="_blank"
-            rel="noreferrer"
-          >
-            JustaMinx
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/Jschlatt" target="_blank" rel="noreferrer">
-            Jschlatt
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitch.tv/Kaceytron"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Kaceytron
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/Ludwig" target="_blank" rel="noreferrer">
-            Ludwig
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/Malena" target="_blank" rel="noreferrer">
-            Malena
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/Myth" target="_blank" rel="noreferrer">
-            Myth
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/Nmplol" target="_blank" rel="noreferrer">
-            Nmplol
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitch.tv/QTCinderella"
-            target="_blank"
-            rel="noreferrer"
-          >
-            QTCinderella
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitch.tv/Sodapoppin"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Sodapoppin
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/WillNeff" target="_blank" rel="noreferrer">
-            WillNeff
-          </a>
-        </li>
-        <li>
-          <a href="https://twitch.tv/xQcOW" target="_blank" rel="noreferrer">
-            xQcOW
-          </a>
-        </li>
+        {featuredStreamers.map((userName) => (
+          <li key={userName}>
+            <a
+              href={`https://twitch.tv/${userName}`}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+            >
+              {userName}
+            </a>
+          </li>
+        ))}
       </ul>
 
       <p>Special guests include:</p>
       <ul>
-        <li>
-          <a href="https://twitch.tv/PhinTTV" target="_blank" rel="noreferrer">
-            PhinTTV
-          </a>{" "}
-          (will be the cameraman)
-        </li>
-        <li>
-          <a
-            href="https://twitch.tv/ConnorEatsPants"
-            target="_blank"
-            rel="noreferrer"
-          >
-            ConnorEatsPants
-          </a>{" "}
-          (will feature in some events)
-        </li>
+        {specialGuests.map((g) => (
+          <li key={g.userName}>
+            <a
+              href={`https://twitch.tv/${g.userName}`}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+            >
+              {g.userName}
+            </a>{" "}
+            ({g.description})
+          </li>
+        ))}
       </ul>
 
       <h5>What are the teams for the events?</h5>

@@ -111,7 +111,7 @@ class App extends React.PureComponent {
             />
             <Route
               path={process.env.PUBLIC_URL + "/about"}
-              component={AboutPage}
+              render={() => <AboutPage userNames={userNames} />}
             />
             <Route
               path={process.env.PUBLIC_URL + "/clips"}
