@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 import * as utils from "utils";
 
@@ -11,7 +11,7 @@ const THUMBNAIL_SIZE = {
 };
 
 function EventCard(props) {
-  const { event, onVideoClick, displayStartDate } = props;
+  const { event, displayStartDate } = props;
   const {
     title: event_title,
     start_time,

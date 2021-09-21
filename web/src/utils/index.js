@@ -99,7 +99,7 @@ export function getRelativeTimeBeforeNow(t) {
   let diffMonths = diffMs / (1000 * 60 * 60 * 24 * 30);
   if (diffMonths >= 1) {
     diffMonths = Math.round(diffMonths);
-    if (diffMonths == 1) {
+    if (diffMonths === 1) {
       return `${diffMonths} month ago`;
     }
     return `${diffMonths} months ago`;
@@ -108,7 +108,7 @@ export function getRelativeTimeBeforeNow(t) {
   let diffDays = diffMs / (1000 * 60 * 60 * 24);
   if (diffDays >= 1) {
     diffDays = Math.round(diffDays);
-    if (diffDays == 1) {
+    if (diffDays === 1) {
       return `Yesterday`;
     }
     return `${diffDays} days ago`;
@@ -117,14 +117,14 @@ export function getRelativeTimeBeforeNow(t) {
   let diffHours = diffMs / (1000 * 60 * 60);
   if (diffHours >= 1) {
     diffHours = Math.round(diffHours);
-    if (diffHours == 1) {
+    if (diffHours === 1) {
       return `${diffHours} hour ago`;
     }
     return `${diffHours} hours ago`;
   }
 
   let diffMins = Math.round(diffMs / (1000 * 60));
-  if (diffMins == 1) {
+  if (diffMins === 1) {
     return `${diffMins} minute ago`;
   }
   return `${diffMins} minutes ago`;
@@ -143,7 +143,7 @@ export function getRelativeTimeFromNow(t) {
   let diffMonths = diffMs / (1000 * 60 * 60 * 24 * 30);
   if (diffMonths >= 1) {
     diffMonths = Math.round(diffMonths);
-    if (diffMonths == 1) {
+    if (diffMonths === 1) {
       return `${diffMonths} month`;
     }
     return `${diffMonths} months`;
@@ -152,7 +152,7 @@ export function getRelativeTimeFromNow(t) {
   let diffDays = diffMs / (1000 * 60 * 60 * 24);
   if (diffDays >= 1) {
     diffDays = Math.round(diffDays);
-    if (diffDays == 1) {
+    if (diffDays === 1) {
       return `Tomorrow`;
     }
     return `${diffDays} days`;
@@ -161,14 +161,14 @@ export function getRelativeTimeFromNow(t) {
   let diffHours = diffMs / (1000 * 60 * 60);
   if (diffHours >= 1) {
     diffHours = Math.round(diffHours);
-    if (diffHours == 1) {
+    if (diffHours === 1) {
       return `${diffHours} hour`;
     }
     return `${diffHours} hours`;
   }
 
   let diffMins = Math.round(diffMs / (1000 * 60));
-  if (diffMins == 1) {
+  if (diffMins === 1) {
     return `${diffMins} minute`;
   }
   return `${diffMins} minutes`;
