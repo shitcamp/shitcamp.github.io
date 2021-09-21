@@ -186,7 +186,9 @@ export async function get(url, params) {
     }
   }
 
-  const headers = { Authorization: "Basic cm9vdDpyb290" };
+  const headers = {
+    Authorization: "Basic c2hpdGNhbXAtdXNlcjpzb21lLXBhc3N3b3Jk",
+  };
 
   try {
     const response = await fetch(url, { headers });

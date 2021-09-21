@@ -83,7 +83,7 @@ type twitchVideo struct {
 	MutedSegments interface{} `json:"muted_segments"`
 }
 
-const twitchMaxClips = 100
+const twitchMaxClips = 99
 
 type twitchClip struct {
 	ID              string    `json:"id"`
