@@ -39,8 +39,6 @@ class App extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    console.log("v4");
-
     this.state = {
       userNames: SHITCAMP_STREAMERS,
     };
