@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"math/rand"
 	"os"
 	"os/signal"
 	"syscall"
@@ -16,6 +17,8 @@ import (
 )
 
 func main() {
+	rand.Seed(time.Now().UnixNano())
+
 	var configFile, logFile string
 	flag.StringVar(&configFile, "config", "", "config file")
 	flag.StringVar(&logFile, "log", "", "log file to save to")
@@ -34,6 +37,8 @@ func main() {
 	}
 
 	log.SetDebug(config.GetConfig().Debug)
+
+	logger.WithField("git_commit", os.Getenv("GIT_COMMIT_HASH")).Info("app_version")
 
 	s := server.New()
 

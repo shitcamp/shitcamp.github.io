@@ -99,13 +99,13 @@ func Request(reqURL, method string, queryParams url.Values, body interface{}, re
 
 	// print debug
 	if config.GetConfig().Debug {
-		fmt.Println(method, req.URL.String(), resp.StatusCode)
+		fmt.Println("App API Request:", method, req.URL.String(), resp.StatusCode)
 
-		fmt.Println("Request:")
-		printJSON(body)
-
-		fmt.Println("Response:")
-		printJSON(string(respBody))
+		//fmt.Println("Request:")
+		//printJSON(body)
+		//
+		//fmt.Println("Response:")
+		//printJSON(string(respBody))
 
 		fmt.Println()
 	}

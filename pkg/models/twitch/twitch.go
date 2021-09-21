@@ -2,11 +2,15 @@ package twitch
 
 import (
 	"fmt"
+	"math/rand"
 	"net/http"
 	"net/url"
 	"sort"
 	"strings"
+	"sync"
 	"time"
+
+	logger "github.com/sirupsen/logrus"
 
 	"github.com/shitcamp-unofficial/shitcamp/pkg/cache"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/config"
@@ -16,7 +20,7 @@ import (
 
 const (
 	// never changes
-	usersCacheExpiry = 2 * time.Hour
+	usersCacheExpiry = 6 * time.Hour
 
 	// available videos only change when there is a new stream.
 	// note that the video data (eg. view_count) can change more frequently though
@@ -24,7 +28,15 @@ const (
 
 	// can change relatively frequently
 	clipsCacheExpiry = 5 * time.Minute
+
+	maxAddedRandomExpirySeconds = 3 * 60
 )
+
+func getCacheExpiryWithRandomAddedTime(expiry time.Duration) time.Duration {
+	randExpiry := rand.Intn(maxAddedRandomExpirySeconds + 1)
+
+	return expiry + (time.Duration(randExpiry) * time.Second)
+}
 
 type twitchResp struct {
 	Data       interface{} `json:"data"`
@@ -116,14 +128,15 @@ func GetUserIDs(userNames []string) (userIDMap map[string]string, err error) {
 		allUserIDsMap = v.(map[string]string)
 	}
 
-	params := url.Values{}
+	nonCachedUsers := url.Values{}
 	for _, name := range userNames {
 		if _, ok := allUserIDsMap[name]; !ok {
-			params.Add("login", name)
+			nonCachedUsers.Add("login", name)
 		}
 	}
-	queryString := params.Encode()
+	queryString := nonCachedUsers.Encode()
 	if queryString != "" {
+		// fetch data of the users that are not in cache
 		queryURL := usersURL + "?" + queryString
 
 		var users []*twitchUser
@@ -136,7 +149,7 @@ func GetUserIDs(userNames []string) (userIDMap map[string]string, err error) {
 		for _, user := range users {
 			allUserIDsMap[strings.ToLower(user.DisplayName)] = user.ID
 		}
-		cache.Set(cacheKey, allUserIDsMap, usersCacheExpiry)
+		cache.Set(cacheKey, allUserIDsMap, getCacheExpiryWithRandomAddedTime(usersCacheExpiry))
 	}
 
 	userIDMap = make(map[string]string)
@@ -276,7 +289,7 @@ func getVodsForUserID(userID string) ([]*Vod, error) {
 		)
 	}
 
-	cache.Set(cacheKey, vods, videosCacheExpiry)
+	cache.Set(cacheKey, vods, getCacheExpiryWithRandomAddedTime(videosCacheExpiry))
 	return vods, nil
 }
 
@@ -297,13 +310,33 @@ func GetVods(userNames []string) ([]*Vod, error) {
 		return nil, err
 	}
 
-	for _, userID := range userIDMap {
-		userVods, err := getVodsForUserID(userID)
-		if err != nil {
-			return nil, err
-		}
+	var wg sync.WaitGroup
+	var mu sync.Mutex
 
-		vods = append(vods, userVods...)
+	for userName, userID := range userIDMap {
+		wg.Add(1)
+
+		go func(userName, userID string) {
+			defer wg.Done()
+
+			userVods, err := getVodsForUserID(userID)
+			if err != nil {
+				logger.WithError(err).WithFields(logger.Fields{
+					"userID":   userID,
+					"userName": userName,
+				}).Error("getVodsForUserID_error")
+				return
+			}
+
+			mu.Lock()
+			vods = append(vods, userVods...)
+			mu.Unlock()
+		}(userName, userID)
+	}
+	wg.Wait()
+
+	if len(vods) == 0 {
+		return nil, fmt.Errorf("failed to get vods")
 	}
 
 	sort.SliceStable(vods, func(i, j int) bool {
@@ -358,7 +391,7 @@ func getClipsForBroadcaster(broadcasterID string, maxNumClips int) ([]*Clip, err
 		})
 	}
 
-	cache.Set(cacheKey, clips, clipsCacheExpiry)
+	cache.Set(cacheKey, clips, getCacheExpiryWithRandomAddedTime(clipsCacheExpiry))
 	return clips, nil
 }
 
@@ -381,13 +414,33 @@ func GetClips(broadcasterNames []string) ([]*Clip, error) {
 
 	var maxNumClips = (twitchMaxClips / len(broadcasterNames)) + 10
 
-	for _, userID := range userIDMap {
-		userClips, err := getClipsForBroadcaster(userID, maxNumClips)
-		if err != nil {
-			return nil, err
-		}
+	var wg sync.WaitGroup
+	var mu sync.Mutex
 
-		clips = append(clips, userClips...)
+	for userName, userID := range userIDMap {
+		wg.Add(1)
+
+		go func(userName, userID string) {
+			defer wg.Done()
+
+			userClips, err := getClipsForBroadcaster(userID, maxNumClips)
+			if err != nil {
+				logger.WithError(err).WithFields(logger.Fields{
+					"userID":   userID,
+					"userName": userName,
+				}).Error("getClipsForBroadcaster_error")
+				return
+			}
+
+			mu.Lock()
+			clips = append(clips, userClips...)
+			mu.Unlock()
+		}(userName, userID)
+	}
+	wg.Wait()
+
+	if len(clips) == 0 {
+		return nil, fmt.Errorf("failed to get clips")
 	}
 
 	sort.SliceStable(clips, func(i, j int) bool {
@@ -401,7 +454,7 @@ func GetClips(broadcasterNames []string) ([]*Clip, error) {
 		clips = clips[:twitchMaxClips]
 	}
 
-	cache.Set(cacheKey, clips, videosCacheExpiry)
+	cache.Set(cacheKey, clips, clipsCacheExpiry)
 	return clips, nil
 }
 
