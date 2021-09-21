@@ -3,6 +3,8 @@ package handlers
 import (
 	"net/http"
 
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
+
 	logger "github.com/sirupsen/logrus"
 
 	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
@@ -25,7 +27,12 @@ func GetStreamers(c *gin.Context) {
 }
 
 func GetSchedule(c *gin.Context) {
-	dates := shitcamp.GetSchedule()
+	dates, err := schedule.GetSchedule()
+	if err != nil {
+		logger.WithError(err).Error("GetSchedule_error")
+		respError(c, http.StatusInternalServerError, err)
+		return
+	}
 
 	resp := &GetScheduleResp{Dates: dates}
 	respSuccess(c, resp)
@@ -38,7 +45,7 @@ func SetSchedule(c *gin.Context) {
 		return
 	}
 
-	err := shitcamp.SetSchedule(req.Dates)
+	err := schedule.SetSchedule(req.Dates)
 	if err != nil {
 		logger.WithField("req", req).WithError(err).Error("SetSchedule_error")
 		respError(c, http.StatusInternalServerError, err)

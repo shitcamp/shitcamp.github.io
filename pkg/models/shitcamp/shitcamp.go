@@ -36,34 +36,13 @@ func GetStreamers() []*User {
 	return streamers
 }
 
-func GetSchedule() []*DateSchedule {
-	return schedule
-}
-
-func SetSchedule(s []*DateSchedule) error {
-	for _, dateS := range s {
-		for _, e := range dateS.Events {
-			featuredStreamers := GetFeaturedStreamersForVod(e.VideoID)
-			if len(featuredStreamers) == 0 {
-				featuredStreamers = make([]string, 0)
-			}
-
-			e.FeaturedUsers = featuredStreamers
-		}
+func GetFeaturedStreamersForVod(vodID string) []string {
+	featuredStreamers, ok := vodIDFeaturedMap[vodID]
+	if !ok {
+		return []string{}
 	}
 
-	schedule = s
-
-	scheduleStr, err := json.Marshal(schedule)
-	l := logger.WithField("schedule", string(scheduleStr))
-	if err != nil {
-		l.WithError(err).Error("SetSchedule_error")
-		return err
-	}
-
-	l.Info("SetSchedule_success")
-
-	return nil
+	return featuredStreamers
 }
 
 func SetFeaturedUsersForVod(vodID string, userNames []string) error {
@@ -75,17 +54,7 @@ func SetFeaturedUsersForVod(vodID string, userNames []string) error {
 		l.WithError(err).Error("SetFeaturedStreamersForVod_error")
 		return err
 	}
-
 	l.WithField("vodID", vodID).Info("SetFeaturedStreamersForVod_success")
 
 	return nil
-}
-
-func GetFeaturedStreamersForVod(vodID string) []string {
-	featuredStreamers, ok := vodIDFeaturedMap[vodID]
-	if !ok {
-		return []string{}
-	}
-
-	return featuredStreamers
 }

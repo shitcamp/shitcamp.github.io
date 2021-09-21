@@ -18,7 +18,8 @@ const (
 	// never changes
 	usersCacheExpiry = 2 * time.Hour
 
-	// only changes at end of stream
+	// available videos only change when there is a new stream.
+	// note that the video data (eg. view_count) can change more frequently though
 	videosCacheExpiry = 10 * time.Minute
 
 	// can change relatively frequently
@@ -189,6 +190,43 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 
 	cache.SetDefault(cacheKey, liveStreams)
 	return liveStreams, nil
+}
+
+func GetVodsByIDs(videoIDs []string) (map[string]*Vod, error) {
+	params := url.Values{}
+	params.Add("sort", "time")
+
+	for _, id := range videoIDs {
+		params.Add("id", id)
+	}
+
+	queryURL := "/videos" + "?" + params.Encode()
+
+	var videos []*twitchVideo
+	resp := &twitchResp{Data: &videos}
+	err := utils.TwitchRequest(queryURL, http.MethodGet, &resp)
+	if err != nil {
+		return nil, err
+	}
+
+	vodMap := make(map[string]*Vod)
+	for _, v := range videos {
+		vodMap[v.ID] = &Vod{
+			Video: Video{
+				ID:                v.ID,
+				UserName:          v.UserName,
+				Title:             v.Title,
+				CreatedAt:         v.CreatedAt,
+				URL:               v.URL,
+				ThumbnailURL:      v.ThumbnailURL,
+				ViewCount:         v.ViewCount,
+				FeaturedStreamers: shitcamp.GetFeaturedStreamersForVod(v.ID),
+			},
+			Duration: v.Duration,
+		}
+	}
+
+	return vodMap, nil
 }
 
 func getVodsForUserID(userID string) ([]*Vod, error) {
