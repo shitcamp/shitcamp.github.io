@@ -83,10 +83,6 @@ class Home extends React.PureComponent {
     return (
       <React.Fragment>
         <Container className="data-alert">
-          {/* <Alert variant="warning">
-            This site will be updated with more accurate stream data once
-            Shitcamp starts
-          </Alert> */}
           <Alert variant="success">
             <Countdown
               date={SHITCAMP_START_TIME}
@@ -123,6 +119,10 @@ class Home extends React.PureComponent {
           </AccordianWrapper>
 
           <AccordianWrapper title="Upcoming events">
+            {/* <Alert variant="warning">
+            This site will be updated with more accurate schedule data once
+            Shitcamp starts
+          </Alert> */}
             {Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
               <Events
                 events={scheduleEvents}

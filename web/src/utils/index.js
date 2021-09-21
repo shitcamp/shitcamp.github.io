@@ -200,7 +200,6 @@ export async function get(url, params) {
     }
 
     const jsonResponse = await response.json();
-    // console.log(jsonResponse);
     return { resp: jsonResponse.data, error: null };
   } catch (err) {
     var e = new Error(`Shitcamp API error: ${err}`);
