@@ -38,13 +38,19 @@ type CacheConfig struct {
 	DefaultCleanupInterval time.Duration `mapstructure:"default_cleanup_interval"`
 }
 
+type RateLimitConfig struct {
+	Tokens   uint64        `mapstructure:"tokens"`
+	Interval time.Duration `mapstructure:"interval"`
+}
+
 type Config struct {
-	ServerAddress string         `mapstructure:"address"`
-	Twitch        TwitchConfig   `mapstructure:"twitch"`
-	Shitcamp      ShitcampConfig `mapstructure:"shitcamp"`
-	Cache         CacheConfig    `mapstructure:"cache"`
-	Auth          gin.Accounts   `mapstructure:"auth"`
-	Debug         bool           `mapstructure:"debug"`
+	ServerAddress string          `mapstructure:"address"`
+	Twitch        TwitchConfig    `mapstructure:"twitch"`
+	Shitcamp      ShitcampConfig  `mapstructure:"shitcamp"`
+	Cache         CacheConfig     `mapstructure:"cache"`
+	Auth          gin.Accounts    `mapstructure:"auth"`
+	RateLimit     RateLimitConfig `mapstructure:"rate_limit"`
+	Debug         bool            `mapstructure:"debug"`
 }
 
 const shitcampStartTime = "2021-09-26T19:00:00.00-06:00"
@@ -55,7 +61,11 @@ var cfg = Config{
 		DefaultExpiryTime:      2 * time.Minute,
 		DefaultCleanupInterval: 5 * time.Minute,
 	},
-	Auth:  gin.Accounts{},
+	Auth: gin.Accounts{},
+	RateLimit: RateLimitConfig{
+		Tokens:   249,
+		Interval: 290 * time.Second,
+	},
 	Debug: false,
 }
 
@@ -72,6 +82,9 @@ const (
 	EnvCacheDefaultCleanupInterval = "CACHE_DEFAULT_CLEANUP_INTERVAL"
 
 	EnvAuth = "AUTH"
+
+	EnvRateLimitTokens   = "RATE_LIMIT_TOKENS"
+	EnvRateLimitInterval = "RATE_LIMIT_INTERVAL"
 
 	EnvDebug = "DEBUG"
 )
@@ -123,14 +136,14 @@ func loadConfigsFromEnv() {
 
 	if expiryTime := os.Getenv(EnvCacheDefaultExpiryTime); expiryTime != "" {
 		if d, err := time.ParseDuration(expiryTime); err != nil {
-			logger.WithField("expiryTime", expiryTime).WithError(err).Info("config_expiryTime_error")
+			logger.WithField("expiryTime", expiryTime).WithError(err).Error("config_expiryTime_error")
 		} else {
 			cfg.Cache.DefaultExpiryTime = d
 		}
 	}
 	if cleanupInterval := os.Getenv(EnvCacheDefaultCleanupInterval); cleanupInterval != "" {
 		if d, err := time.ParseDuration(cleanupInterval); err != nil {
-			logger.WithField("cleanupInterval", cleanupInterval).WithError(err).Info("config_cleanupInterval_error")
+			logger.WithField("cleanupInterval", cleanupInterval).WithError(err).Error("config_cleanupInterval_error")
 		} else {
 			cfg.Cache.DefaultCleanupInterval = d
 		}
@@ -140,15 +153,33 @@ func loadConfigsFromEnv() {
 		var auth gin.Accounts
 		err := json.Unmarshal([]byte(authStr), &auth)
 		if err != nil {
-			logger.WithField("auth", authStr).WithError(err).Info("config_auth_error")
+			logger.WithField("auth", authStr).WithError(err).Error("config_auth_error")
 		} else {
 			cfg.Auth = auth
 		}
 	}
 
+	if rateLimitTokens := os.Getenv(EnvRateLimitTokens); rateLimitTokens != "" {
+		if tokens, err := strconv.ParseUint(rateLimitTokens, 10, 64); err != nil {
+			logger.WithField("tokens", tokens).WithError(err).Error("config_rateLimitTokens_error")
+		} else {
+			cfg.RateLimit.Tokens = tokens
+		}
+	}
+	if rateLimitInterval := os.Getenv(EnvRateLimitInterval); rateLimitInterval != "" {
+		if d, err := time.ParseDuration(rateLimitInterval); err != nil {
+			logger.WithField("rateLimitInterval", rateLimitInterval).WithError(err).Error("config_rateLimitInterval_error")
+		} else {
+			cfg.RateLimit.Interval = d
+		}
+	}
+
 	if debug := os.Getenv(EnvDebug); debug != "" {
-		debugBool, _ := strconv.ParseBool(debug)
-		cfg.Debug = debugBool
+		if debugBool, err := strconv.ParseBool(debug); err != nil {
+			logger.WithField("debugBool", debugBool).WithError(err).Error("config_debugBool_error")
+		} else {
+			cfg.Debug = debugBool
+		}
 	}
 }
 

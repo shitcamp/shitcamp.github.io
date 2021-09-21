@@ -27,7 +27,7 @@ func (s *server) Start() error {
 	schedule.InitScheduleData()
 
 	s.Server.Addr = cfg.ServerAddress
-	s.Server.Handler = newRouter(cfg.Auth)
+	s.Server.Handler = newRouter(cfg.Auth, cfg.RateLimit)
 
 	log.WithFields(log.Fields{"address": s.Server.Addr}).Info("starting_server")
 

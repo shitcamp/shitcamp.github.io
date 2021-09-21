@@ -5,6 +5,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/shitcamp-unofficial/shitcamp/pkg/config"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/middleware"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/server/handlers"
@@ -15,7 +18,7 @@ const (
 	gTwitch   = "/twitch"
 )
 
-func newRouter(auth gin.Accounts) *gin.Engine {
+func newRouter(auth gin.Accounts, rateLimitCfg config.RateLimitConfig) *gin.Engine {
 	router := gin.Default()
 
 	router.Use(
@@ -25,9 +28,9 @@ func newRouter(auth gin.Accounts) *gin.Engine {
 			AllowCredentials: true,
 			AllowOriginFunc: func(origin string) bool {
 				switch origin {
-					case "https://shitcamp.github.io",
-						"https://shitcamp-unofficial.github.io":
-						return true
+				case "https://shitcamp.github.io",
+					"https://shitcamp-unofficial.github.io":
+					return true
 
 				default:
 					return strings.HasPrefix(origin, "http://localhost")
@@ -35,7 +38,9 @@ func newRouter(auth gin.Accounts) *gin.Engine {
 			},
 			MaxAge: 12 * time.Hour,
 		}),
-		gin.BasicAuth(auth))
+		gin.BasicAuth(auth),
+		middleware.NewRateLimiter(rateLimitCfg.Tokens, rateLimitCfg.Interval),
+	)
 
 	api := router.Group("/api")
 
