@@ -24,10 +24,14 @@ func newRouter(auth gin.Accounts) *gin.Engine {
 			AllowHeaders:     []string{"Authorization"},
 			AllowCredentials: true,
 			AllowOriginFunc: func(origin string) bool {
-				if origin == "https://shitcamp-unofficial.github.io" {
-					return true
+				switch origin {
+					case "https://shitcamp.github.io",
+						"https://shitcamp-unofficial.github.io":
+						return true
+
+				default:
+					return strings.HasPrefix(origin, "http://localhost")
 				}
-				return strings.HasPrefix(origin, "http://localhost")
 			},
 			MaxAge: 12 * time.Hour,
 		}),
