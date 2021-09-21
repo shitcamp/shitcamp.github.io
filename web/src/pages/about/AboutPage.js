@@ -112,9 +112,39 @@ function AboutPage(props) {
         . Once Shitcamp starts, the team captains will pick their teams.
       </p>
 
+      <h5>
+        Will{" "}
+        <a
+          href={"https://twitch.tv/Mizkif"}
+          target="_blank"
+          rel="noreferrer"
+          className="link"
+        >
+          Mizkif
+        </a>{" "}
+        be at Shitcamp?
+      </h5>
+      <p>
+        No, he wasn't invited{" "}
+        <a
+          href={"https://twitter.com/REALMizkif/status/1439696953525276674"}
+          target="_blank"
+          rel="noreferrer"
+        >
+          /s
+        </a>
+      </p>
+
       <h5>Who made this website?</h5>
       <p>
-        me <img src={smile} alt="smile" className="smile" />
+        <a
+          href={"https://twitter.com/amrut_prabhu"}
+          target="_blank"
+          rel="noreferrer"
+          className="link"
+        >
+          me <img src={smile} alt="smile" className="smile" />
+        </a>
       </p>
     </Container>
   );
