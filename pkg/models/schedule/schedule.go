@@ -21,7 +21,10 @@ func updateScheduleData(s []*DateSchedule) error {
 	var videoIDsToGet []string
 	for _, dateS := range s {
 		for _, e := range dateS.Events {
-			e.FeaturedUsers = shitcamp.GetFeaturedStreamersForVod(e.VideoID)
+			featuredUsers := shitcamp.GetFeaturedStreamersForVod(e.VideoID)
+			if len(featuredUsers) > 0 {
+				e.FeaturedUsers = featuredUsers
+			}
 
 			if e.VideoID != "" {
 				videoIDsToGet = append(videoIDsToGet, e.VideoID)
