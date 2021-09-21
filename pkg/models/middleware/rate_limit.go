@@ -14,7 +14,7 @@ import (
 	"github.com/sethvargo/go-limiter/memorystore"
 )
 
-func NewRateLimiter(tokens uint64, interval time.Duration) gin.HandlerFunc {
+func RateLimit(tokens uint64, interval time.Duration) gin.HandlerFunc {
 	store, err := memorystore.New(&memorystore.Config{
 		Tokens:   tokens,
 		Interval: interval,

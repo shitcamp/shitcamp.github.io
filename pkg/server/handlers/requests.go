@@ -4,6 +4,10 @@ import (
 	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
 )
 
+type HealthCheckReq struct {
+	Users []string `form:"user"`
+}
+
 type SetScheduleReq struct {
 	Dates []*schedule.DateSchedule `json:"dates"`
 }

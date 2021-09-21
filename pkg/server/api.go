@@ -38,9 +38,11 @@ func newRouter(auth gin.Accounts, rateLimitCfg config.RateLimitConfig) *gin.Engi
 			},
 			MaxAge: 12 * time.Hour,
 		}),
-		gin.BasicAuth(auth),
-		middleware.NewRateLimiter(rateLimitCfg.Tokens, rateLimitCfg.Interval),
+		middleware.Auth(auth, "/healthcheck"),
+		middleware.RateLimit(rateLimitCfg.Tokens, rateLimitCfg.Interval),
 	)
+
+	router.GET("/healthcheck", handlers.HealthCheck)
 
 	api := router.Group("/api")
 
