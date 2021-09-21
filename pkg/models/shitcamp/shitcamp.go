@@ -36,6 +36,37 @@ func GetStreamers() []*User {
 	return streamers
 }
 
+func GetFeaturedStreamersForStreams() map[string][]string {
+	return streamIDFeaturedMap
+}
+
+func GetFeaturedStreamersForStream(streamID string) []string {
+	featuredStreamers, ok := streamIDFeaturedMap[streamID]
+	if !ok {
+		return []string{}
+	}
+
+	return featuredStreamers
+}
+
+func SetFeaturedUsersForStream(streamID string, userNames []string) error {
+	streamIDFeaturedMap[streamID] = userNames
+
+	mapStr, err := json.Marshal(streamIDFeaturedMap)
+	l := logger.WithField("streamIDFeaturedMap", string(mapStr))
+	if err != nil {
+		l.WithError(err).Error("SetFeaturedUsersForStream_error")
+		return err
+	}
+	l.WithField("streamID", streamID).Info("SetFeaturedUsersForStream_success")
+
+	return nil
+}
+
+func GetFeaturedStreamersForVods() map[string][]string {
+	return vodIDFeaturedMap
+}
+
 func GetFeaturedStreamersForVod(vodID string) []string {
 	featuredStreamers, ok := vodIDFeaturedMap[vodID]
 	if !ok {

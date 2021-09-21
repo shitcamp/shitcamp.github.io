@@ -3,6 +3,8 @@ package handlers
 import (
 	"net/http"
 
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
+
 	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
 
 	"github.com/gin-gonic/gin"
@@ -27,7 +29,15 @@ type GetStreamersResp struct {
 }
 
 type GetScheduleResp struct {
-	Dates []*shitcamp.DateSchedule `json:"dates"`
+	Dates []*schedule.DateSchedule `json:"dates"`
+}
+
+type GetFeaturedUsersForStreamsResp struct {
+	FeaturedStreamers map[string][]string `json:"featured_streamers_by_stream_id"`
+}
+
+type GetFeaturedUsersForVodsResp struct {
+	FeaturedStreamers map[string][]string `json:"featured_streamers_by_video_id"`
 }
 
 type GetLiveStreamsResp struct {

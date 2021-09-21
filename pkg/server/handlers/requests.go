@@ -1,13 +1,20 @@
 package handlers
 
-import "github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
+import (
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
+)
 
 type SetScheduleReq struct {
-	Dates []*shitcamp.DateSchedule `json:"dates"`
+	Dates []*schedule.DateSchedule `json:"dates"`
 }
 
 type SetFeaturedUsersForVodReq struct {
 	VideoID       string   `json:"id"`
+	FeaturedUsers []string `json:"featured_users"`
+}
+
+type SetFeaturedUsersForStreamReq struct {
+	StreamID      string   `json:"id"`
 	FeaturedUsers []string `json:"featured_users"`
 }
 

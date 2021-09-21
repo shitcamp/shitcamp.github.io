@@ -9,9 +9,9 @@ import (
 type Event struct {
 	Title         string      `json:"title"`
 	StartTime     time.Time   `json:"start_time"`
-	UserName      string      `json:"user_name"`
-	FeaturedUsers []string    `json:"featured_users"`
-	VideoID       string      `json:"video_id"`
+	UserName      string      `json:"user_name"` // TODO: remove?
+	FeaturedUsers []string    `json:"featured_users"` // TODO: remove?
+	VideoID       string      `json:"video_id"` // TODO: remove?
 	Vod           *twitch.Vod `json:"vod"`
 }
 

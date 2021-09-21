@@ -58,6 +58,7 @@ var allStreamers = map[string]*User{
 }
 
 var vodIDFeaturedMap = map[string][]string{}
+var streamIDFeaturedMap = map[string][]string{}
 
 func init() {
 	// TODO:

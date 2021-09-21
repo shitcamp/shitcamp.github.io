@@ -55,6 +55,37 @@ func SetSchedule(c *gin.Context) {
 	respSuccess(c, nil)
 }
 
+func GetFeaturedUsersForStreams(c *gin.Context) {
+	featuredStreamers := shitcamp.GetFeaturedStreamersForStreams()
+
+	resp := &GetFeaturedUsersForStreamsResp{FeaturedStreamers: featuredStreamers}
+	respSuccess(c, resp)
+}
+
+func SetFeaturedUsersForStream(c *gin.Context) {
+	req := new(SetFeaturedUsersForStreamReq)
+	if err := c.ShouldBindJSON(req); err != nil {
+		respError(c, http.StatusBadRequest, err)
+		return
+	}
+
+	err := shitcamp.SetFeaturedUsersForVod(req.StreamID, req.FeaturedUsers)
+	if err != nil {
+		logger.WithField("req", req).WithError(err).Error("SetFeaturedUsersForStream_error")
+		respError(c, http.StatusInternalServerError, err)
+		return
+	}
+
+	respSuccess(c, nil)
+}
+
+func GetFeaturedUsersForVods(c *gin.Context) {
+	featuredStreamers := shitcamp.GetFeaturedStreamersForVods()
+
+	resp := &GetFeaturedUsersForVodsResp{FeaturedStreamers: featuredStreamers}
+	respSuccess(c, resp)
+}
+
 func SetFeaturedUsersForVod(c *gin.Context) {
 	req := new(SetFeaturedUsersForVodReq)
 	if err := c.ShouldBindJSON(req); err != nil {

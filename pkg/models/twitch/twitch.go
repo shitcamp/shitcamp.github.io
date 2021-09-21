@@ -184,7 +184,7 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 			URL:               fmt.Sprintf(`https://www.twitch.tv/%s`, s.UserName),
 			ThumbnailURL:      s.ThumbnailUrl,
 			ViewCount:         s.ViewerCount,
-			FeaturedStreamers: shitcamp.GetFeaturedStreamersForVod(s.ID),
+			FeaturedStreamers: shitcamp.GetFeaturedStreamersForStream(s.ID),
 		}})
 	}
 
