@@ -9,7 +9,7 @@ type HealthCheckReq struct {
 }
 
 type SetScheduleReq struct {
-	Dates []*schedule.DateSchedule `json:"dates"`
+	*schedule.Schedule
 }
 
 type SetFeaturedUsersForVodReq struct {

@@ -37,3 +37,7 @@ func Set(k string, v interface{}, d time.Duration) {
 func SetDefault(k string, v interface{}) {
 	cache.SetDefault(k, v)
 }
+
+func Delete(k string) {
+	cache.Delete(k)
+}

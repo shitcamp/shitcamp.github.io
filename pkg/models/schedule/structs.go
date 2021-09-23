@@ -9,13 +9,18 @@ import (
 type Event struct {
 	Title         string      `json:"title"`
 	StartTime     time.Time   `json:"start_time"`
-	UserName      string      `json:"user_name"` // TODO: remove?
+	UserName      string      `json:"user_name"`      // TODO: remove?
 	FeaturedUsers []string    `json:"featured_users"` // TODO: remove?
-	VideoID       string      `json:"video_id"` // TODO: remove?
+	VideoID       string      `json:"video_id"`       // TODO: remove?
 	Vod           *twitch.Vod `json:"vod"`
 }
 
 type DateSchedule struct {
 	Date   string   `json:"date"`
 	Events []*Event `json:"events"`
+}
+
+type Schedule struct {
+	Dates            []*DateSchedule `json:"dates"`
+	IsLatestSchedule bool            `json:"is_latest_schedule"`
 }

@@ -27,14 +27,14 @@ func GetStreamers(c *gin.Context) {
 }
 
 func GetSchedule(c *gin.Context) {
-	dates, err := schedule.GetSchedule()
+	s, err := schedule.GetSchedule()
 	if err != nil {
 		logger.WithError(err).Error("GetSchedule_error")
 		respError(c, http.StatusInternalServerError, err)
 		return
 	}
 
-	resp := &GetScheduleResp{Dates: dates}
+	resp := &GetScheduleResp{Schedule: *s}
 	respSuccess(c, resp)
 }
 
@@ -45,7 +45,7 @@ func SetSchedule(c *gin.Context) {
 		return
 	}
 
-	err := schedule.SetSchedule(req.Dates)
+	err := schedule.SetSchedule(req.Schedule)
 	if err != nil {
 		logger.WithField("req", req).WithError(err).Error("SetSchedule_error")
 		respError(c, http.StatusInternalServerError, err)

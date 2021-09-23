@@ -17,9 +17,9 @@ const (
 	scheduleCacheExpiry = 5 * time.Minute
 )
 
-func updateScheduleData(s []*DateSchedule) error {
+func updateScheduleData(s *Schedule) error {
 	var videoIDsToGet []string
-	for _, dateS := range s {
+	for _, dateS := range s.Dates {
 		for _, e := range dateS.Events {
 			featuredUsers := shitcamp.GetFeaturedStreamersForVod(e.VideoID)
 			if len(featuredUsers) > 0 {
@@ -37,7 +37,7 @@ func updateScheduleData(s []*DateSchedule) error {
 		return fmt.Errorf("updateScheduleData error: %v", err)
 	}
 
-	for _, dateS := range s {
+	for _, dateS := range s.Dates {
 		for _, e := range dateS.Events {
 			if video, ok := videosMap[e.VideoID]; ok {
 				e.Vod = video
@@ -48,10 +48,13 @@ func updateScheduleData(s []*DateSchedule) error {
 	return nil
 }
 
-func GetSchedule() ([]*DateSchedule, error) {
-	cacheKey := "shitcamp_schedule"
-	if v := cache.Get(cacheKey); v != nil {
-		return v.([]*DateSchedule), nil
+const (
+	scheduleCacheKey = "shitcamp_schedule"
+)
+
+func GetSchedule() (*Schedule, error) {
+	if v := cache.Get(scheduleCacheKey); v != nil {
+		return v.(*Schedule), nil
 	}
 
 	err := updateScheduleData(schedule)
@@ -59,17 +62,18 @@ func GetSchedule() ([]*DateSchedule, error) {
 		return nil, err
 	}
 
-	cache.Set(cacheKey, schedule, scheduleCacheExpiry)
+	cache.Set(scheduleCacheKey, schedule, scheduleCacheExpiry)
 	return schedule, nil
 }
 
-func SetSchedule(s []*DateSchedule) error {
+func SetSchedule(s *Schedule) error {
 	err := updateScheduleData(s)
 	if err != nil {
 		return err
 	}
 
 	schedule = s
+	cache.Delete(scheduleCacheKey)
 
 	scheduleStr, err := json.Marshal(schedule)
 	l := logger.WithField("schedule", string(scheduleStr))

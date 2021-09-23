@@ -3,12 +3,15 @@ package schedule
 import (
 	"encoding/json"
 
-	data2 "github.com/shitcamp-unofficial/shitcamp/pkg/data"
+	data "github.com/shitcamp-unofficial/shitcamp/pkg/data"
 
 	logger "github.com/sirupsen/logrus"
 )
 
-var schedule = make([]*DateSchedule, 0)
+var schedule = &Schedule{
+	Dates:            make([]*DateSchedule, 0),
+	IsLatestSchedule: true,
+}
 
 //"id": "43740004317",
 //"user_name": "QTCinderella",
@@ -19,8 +22,8 @@ var schedule = make([]*DateSchedule, 0)
 //"view_count": 102
 
 func InitScheduleData() {
-	var newSchedule = make([]*DateSchedule, 0)
-	err := json.Unmarshal([]byte(data2.InitialScheduleStr), &newSchedule)
+	newSchedule := &Schedule{}
+	err := json.Unmarshal([]byte(data.InitialScheduleStr), &newSchedule)
 	if err != nil {
 		logger.WithError(err).Error("init_unmarshal_schedule_error")
 		return
