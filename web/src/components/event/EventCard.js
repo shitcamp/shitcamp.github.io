@@ -82,7 +82,7 @@ function EventCard(props) {
   if (displayStartDate) {
     startTimeStr += d.toDateString().split(/ (.+)/)[1] + ", ";
   }
-  startTimeStr += d.toTimeString().split("(")[0];
+  startTimeStr += d.toTimeString();
 
   return (
     <Card>

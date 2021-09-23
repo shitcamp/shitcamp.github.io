@@ -8,6 +8,7 @@ import StreamEmbed from "components/twitch/StreamEmbed";
 import Streams from "components/videos/Streams";
 import Vods from "components/videos/Vods";
 import Events from "components/event/Events";
+import ScheduleAlert from "components/event/ScheduleAlert";
 
 import { getLiveStreams, getSchedule } from "apis";
 
@@ -23,6 +24,7 @@ class Home extends React.PureComponent {
       selectedUserStream: "",
       liveStreams: [],
       scheduleEvents: [],
+      isLatestSchedule: true,
     };
   }
 
@@ -45,7 +47,7 @@ class Home extends React.PureComponent {
     if (ret.error != null) {
       console.error(ret.error);
     } else {
-      const { dates } = ret.resp;
+      const { dates, is_latest_schedule } = ret.resp;
 
       let events = [];
       for (const dateSchedule of dates) {
@@ -58,6 +60,7 @@ class Home extends React.PureComponent {
 
       this.setState({
         scheduleEvents: events,
+        isLatestSchedule: Boolean(is_latest_schedule),
       });
     }
   }
@@ -78,7 +81,12 @@ class Home extends React.PureComponent {
 
   render() {
     const { userNames } = this.props;
-    const { selectedUserStream, liveStreams, scheduleEvents } = this.state;
+    const {
+      selectedUserStream,
+      liveStreams,
+      scheduleEvents,
+      isLatestSchedule,
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -124,11 +132,15 @@ class Home extends React.PureComponent {
             Shitcamp starts
           </Alert> */}
             {Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
-              <Events
-                events={scheduleEvents}
-                onVideoClick={() => {}}
-                displayStartDate={true}
-              />
+              <React.Fragment>
+                <ScheduleAlert isLatestSchedule={isLatestSchedule} />
+
+                <Events
+                  events={scheduleEvents}
+                  onVideoClick={() => {}}
+                  displayStartDate={true}
+                />
+              </React.Fragment>
             ) : (
               <h5>No upcoming events</h5>
             )}

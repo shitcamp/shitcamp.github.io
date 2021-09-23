@@ -1,3 +1,8 @@
+export function getRelUrl(path) {
+  // use prefix for GitHub Pages homepage, and query param to redirect to 404.html to fix routing.
+  return process.env.PUBLIC_URL + "/?" + path;
+}
+
 function pad(n) {
   return n > 9 ? "" + n : "0" + n;
 }

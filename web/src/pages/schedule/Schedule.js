@@ -2,7 +2,8 @@ import React from "react";
 import { Container } from "react-bootstrap";
 
 import StreamEmbed from "components/twitch/StreamEmbed";
-import DateSchedule from "components/event/Events";
+import Events from "components/event/Events";
+import ScheduleAlert from "components/event/ScheduleAlert";
 import AccordianWrapper from "components/accordian/AccordianWrapper";
 
 import { getSchedule } from "apis";
@@ -22,6 +23,7 @@ class Schedule extends React.PureComponent {
 
     this.state = {
       scheduleDates: [],
+      isLatestSchedule: true,
       selectedVideoID: "",
     };
   }
@@ -31,7 +33,7 @@ class Schedule extends React.PureComponent {
     if (ret.error != null) {
       console.error(ret.error);
     } else {
-      const { dates } = ret.resp;
+      const { dates, is_latest_schedule } = ret.resp;
 
       let scheduleDates = [];
       for (const dateSchedule of dates) {
@@ -45,7 +47,7 @@ class Schedule extends React.PureComponent {
             "-" +
             pad(d.getDate());
           if (
-            scheduleDates.length == 0 ||
+            scheduleDates.length === 0 ||
             scheduleDates[scheduleDates.length - 1].date !== date
           ) {
             scheduleDates.push({ date: date, events: [] });
@@ -55,11 +57,9 @@ class Schedule extends React.PureComponent {
         }
       }
 
-      console.log(dates);
-      console.log(scheduleDates);
-
       this.setState({
         scheduleDates: scheduleDates,
+        isLatestSchedule: Boolean(is_latest_schedule),
       });
     }
   }
@@ -73,7 +73,7 @@ class Schedule extends React.PureComponent {
   };
 
   render() {
-    const { selectedVideoID, scheduleDates } = this.state;
+    const { selectedVideoID, scheduleDates, isLatestSchedule } = this.state;
 
     return (
       <React.Fragment>
@@ -85,14 +85,18 @@ class Schedule extends React.PureComponent {
           <h3>Schedule</h3>
 
           {Array.isArray(scheduleDates) && scheduleDates.length > 0 ? (
-            scheduleDates.map((d) => (
-              <AccordianWrapper key={d.date} title={d.date}>
-                <DateSchedule
-                  events={d.events}
-                  onVideoClick={this.handleVideoClick}
-                />
-              </AccordianWrapper>
-            ))
+            <React.Fragment>
+              <ScheduleAlert isLatestSchedule={isLatestSchedule} />
+
+              {scheduleDates.map((d) => (
+                <AccordianWrapper key={d.date} title={d.date}>
+                  <Events
+                    events={d.events}
+                    onVideoClick={this.handleVideoClick}
+                  />
+                </AccordianWrapper>
+              ))}
+            </React.Fragment>
           ) : (
             <h5>Schedule is not available</h5>
           )}

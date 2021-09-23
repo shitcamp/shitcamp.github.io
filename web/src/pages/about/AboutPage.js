@@ -1,6 +1,8 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
+import { getRelUrl } from "utils";
+
 import "pages/about/AboutPage.css";
 import peepoGiggles from "assets/peepoGiggles.gif";
 import smile from "assets/smile.png";
@@ -59,13 +61,23 @@ function AboutPage(props) {
         the course of the week. There will be one main event per day, and a few
         side events that other streamers can optionally join. Apart from the
         scheduled events, streamers can also do their own thing and stream using
-        the desktop setups and IRL backpacks available at the event.
+        the desktop setups and IRL backpacks available at the venue.
       </p>
 
       <h5>When is Shitcamp?</h5>
       <p>
         Shitcamp is from 26-29 September 2021, and the streams will be during
         the PST timezone (UTC-7).
+      </p>
+
+      <h5>What are the planned events and where can I watch them?</h5>
+      <p>
+        You can vist the <a href={getRelUrl("/schedule")}>Schedule page</a> for
+        the latest info about the events schedule and watch the vods from past
+        events.
+        <br />
+        Events that are currently live are showcased on the{" "}
+        <a href={getRelUrl("/")}>Home page</a>.
       </p>
 
       <h5>Who will be at Shitcamp?</h5>

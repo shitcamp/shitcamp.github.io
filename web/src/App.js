@@ -7,14 +7,11 @@ import AboutPage from "pages/about/AboutPage";
 import Schedule from "pages/schedule/Schedule";
 import ClipsPage from "pages/clips/ClipsPage";
 
+import { getRelUrl } from "utils";
+
 import "App.css";
 import peepoShy from "assets/peepoShy.gif";
 import { ReactComponent as ShitcampSvg } from "assets/logo.svg";
-
-function getRelUrl(path) {
-  // use prefix for GitHub Pages homepage, and query param to redirect to 404.html to fix routing.
-  return process.env.PUBLIC_URL + "/?" + path;
-}
 
 const SHITCAMP_STREAMERS = [
   "AdeptTheBest",
