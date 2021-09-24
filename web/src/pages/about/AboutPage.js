@@ -149,14 +149,7 @@ function AboutPage(props) {
 
       <h5>Who made this website?</h5>
       <p>
-        <a
-          href={"https://twitter.com/amrut_prabhu"}
-          target="_blank"
-          rel="noreferrer"
-          className="link"
-        >
-          me <img src={smile} alt="smile" className="smile" />
-        </a>
+        me <img src={smile} alt="smile" className="smile" />
       </p>
     </Container>
   );
