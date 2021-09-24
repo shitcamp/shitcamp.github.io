@@ -164,7 +164,7 @@ const InitialScheduleStr = `
                     ]
                 },
                 {
-                    "title": "IRL stream- hike",
+                    "title": "IRL stream- Hike",
                     "start_time": "2021-09-28T08:00:00.00-07:00",
                     "user_name": "Myth",
                     "featured_users": [
@@ -203,6 +203,7 @@ const InitialScheduleStr = `
                     "title": "PJ Party",
                     "start_time": "2021-09-28T20:00:00.00-07:00",
                     "user_name": "Sodapoppin",
+                    "description": "Face masks, Nail painting, Never have I ever, Who's most likely to",
                     "featured_users": [
                         "Sodapoppin"
                     ]
