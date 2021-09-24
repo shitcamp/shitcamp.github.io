@@ -11,43 +11,49 @@ const THUMBNAIL_SIZE = {
 };
 
 function EventCard(props) {
-  const { event, displayStartDate } = props;
+  const { event, displayStartDate, onVideoClick } = props;
   const {
     title: event_title,
     start_time,
     user_name,
     featured_users: event_featured_users,
     video_id,
+    thumbnail_url,
     vod,
     description,
   } = event;
 
-  let featuredUsers = event_featured_users;
-
-  let video_url = `https://twitch.tv/${user_name}`;
+  let videoUrl = `https://twitch.tv/${user_name}`;
   if (video_id) {
-    video_url = `https://twitch.tv/videos/${video_id}`;
+    videoUrl = `https://twitch.tv/videos/${video_id}`;
   }
 
-  let thumbnailUrl = `https://static-cdn.jtvnw.net/previews-ttv/live_user_${user_name}-${THUMBNAIL_SIZE.width}x${THUMBNAIL_SIZE.height}.jpg`;
+  let featuredUsers = event_featured_users;
+  let handleVideoClick = () => {};
 
-  let thumbnailComponent = (
-    <div className="thumbnail">
-      <a href={video_url} target="_blank" rel="noreferrer" className="link">
-        <Card.Img variant="top" alt="thumbnail" src={thumbnailUrl} />
-      </a>
-      <small className="indicator created-at">
-        Starts in {utils.getRelativeTimeFromNow(start_time)}
-      </small>
-    </div>
-  );
+  let duration = "";
+  let viewCount = "";
+  let createdAt = "";
+  let thumbnailUrl = thumbnail_url;
 
   if (vod) {
+    if (vod.url) {
+      videoUrl = vod.url;
+    }
+
     if (Array.isArray(vod.featured_users) && vod.featured_users.length > 0) {
       featuredUsers = vod.featured_users;
     }
 
-    video_url = vod.url;
+    if (vod.id) {
+      handleVideoClick = (e) => onVideoClick(e, vod.id);
+    }
+
+    duration = vod.duration;
+    viewCount = vod.view_count;
+    if (Date.parse(vod.created_at) > 0) {
+      createdAt = vod.created_at;
+    }
 
     if (vod.thumbnail_url) {
       thumbnailUrl = vod.thumbnail_url;
@@ -58,25 +64,42 @@ function EventCard(props) {
       thumbnailUrl = thumbnailUrl.replace("%{height}", THUMBNAIL_SIZE.height);
       thumbnailUrl = thumbnailUrl.replace("{height}", THUMBNAIL_SIZE.height);
     }
-
-    thumbnailComponent = (
-      <div className="thumbnail">
-        {/* onClick={(e) => onVideoClick(e, vod.id)}> */}
-        <a href={video_url} target="_blank" rel="noreferrer" className="link">
-          <Card.Img variant="top" alt="thumbnail" src={thumbnailUrl} />
-        </a>
-        <small className="indicator duration">
-          {utils.getDisplayedDuration(vod.duration)}
-        </small>
-        <small className="indicator views">
-          {utils.getDisplayedViewCount(vod.view_count)}
-        </small>
-        <small className="indicator created-at">
-          {utils.getRelativeTimeBeforeNow(vod.created_at)}
-        </small>
-      </div>
-    );
   }
+
+  if (!thumbnailUrl) {
+    thumbnailUrl = `https://static-cdn.jtvnw.net/previews-ttv/live_user_${user_name}-${THUMBNAIL_SIZE.width}x${THUMBNAIL_SIZE.height}.jpg`;
+  }
+
+  let thumbnailComponent = (
+    <div className="thumbnail">
+      {/* onClick={handleVideoClick} */}
+      <a href={videoUrl} target="_blank" rel="noreferrer" className="link">
+        <Card.Img variant="top" alt="thumbnail" src={thumbnailUrl} />
+      </a>
+
+      {!!duration && (
+        <small className="indicator duration">
+          {utils.getDisplayedDuration(duration)}
+        </small>
+      )}
+
+      {!!viewCount && (
+        <small className="indicator views">
+          {utils.getDisplayedViewCount(viewCount)}
+        </small>
+      )}
+
+      <small className="indicator created-at">
+        {!!createdAt ? (
+          utils.getRelativeTimeBeforeNow(createdAt)
+        ) : (
+          <React.Fragment>
+            Starts in {utils.getRelativeTimeFromNow(start_time)}
+          </React.Fragment>
+        )}
+      </small>
+    </div>
+  );
 
   let startTimeStr = "";
   const d = new Date(start_time);
@@ -91,7 +114,7 @@ function EventCard(props) {
 
       <Card.Body>
         <Card.Title className="card-title">
-          <a href={video_url} target="_blank" rel="noreferrer" className="link">
+          <a href={videoUrl} target="_blank" rel="noreferrer" className="link">
             <h6>{event_title}</h6>
           </a>
         </Card.Title>

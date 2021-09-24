@@ -4,8 +4,6 @@ import { Container } from "react-bootstrap";
 import { getRelUrl } from "utils";
 
 import "pages/about/AboutPage.css";
-import peepoGiggles from "assets/peepoGiggles.gif";
-import smile from "assets/smile.png";
 
 function AboutPage(props) {
   const { userNames: featuredStreamers } = props;
@@ -36,7 +34,7 @@ function AboutPage(props) {
         16 creators staying in a house together and live streaming "organized"
         events- what could go wrong?
         <img
-          src={peepoGiggles}
+          src="./peepoGiggles.gif"
           alt="peepoGiggles"
           className="peepo-giggles-gif"
         />
@@ -149,7 +147,7 @@ function AboutPage(props) {
 
       <h5>Who made this website?</h5>
       <p>
-        me <img src={smile} alt="smile" className="smile" />
+        me <img src="./smile.png" alt="smile" className="smile" />
       </p>
     </Container>
   );

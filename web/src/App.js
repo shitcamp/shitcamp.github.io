@@ -10,7 +10,6 @@ import ClipsPage from "pages/clips/ClipsPage";
 import { getRelUrl } from "utils";
 
 import "App.css";
-import peepoShy from "assets/peepoShy.gif";
 import { ReactComponent as ShitcampSvg } from "assets/logo.svg";
 
 const SHITCAMP_STREAMERS = [
@@ -88,7 +87,7 @@ class App extends React.PureComponent {
                   >
                     Get Merch{" "}
                     <img
-                      src={peepoShy}
+                      src="./peepoShy.gif"
                       alt="peepoShy"
                       className="peepo-shy-gif"
                     />
