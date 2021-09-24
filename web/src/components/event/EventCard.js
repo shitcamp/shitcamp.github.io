@@ -19,6 +19,7 @@ function EventCard(props) {
     featured_users: event_featured_users,
     video_id,
     vod,
+    description,
   } = event;
 
   let featuredUsers = event_featured_users;
@@ -99,14 +100,20 @@ function EventCard(props) {
           {Date.parse(start_time) > Date.now() && (
             <React.Fragment>
               <small>
-                <span className="subtitle">Starts at</span>: {startTimeStr}
+                <span className="sub-title">Starts at</span>: {startTimeStr}
               </small>
               <br />
             </React.Fragment>
           )}
           {Array.isArray(featuredUsers) && featuredUsers.length > 0 && (
             <small>
-              <span className="subtitle">Featuring</span>:{" "}
+              {description && description !== "" && (
+                <React.Fragment>
+                  <span className="sub-title">Description</span>: {description}
+                  <br />
+                </React.Fragment>
+              )}
+              <span className="sub-title">Featuring</span>:{" "}
               {featuredUsers.map((user, i, users) => (
                 <React.Fragment key={user}>
                   <a

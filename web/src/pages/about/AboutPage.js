@@ -70,7 +70,7 @@ function AboutPage(props) {
         the PST timezone (UTC-7).
       </p>
 
-      <h5>What are the planned events and where can I watch them?</h5>
+      <h5>What are the events planned and where can I watch them?</h5>
       <p>
         You can vist the <a href={getRelUrl("/schedule")}>Schedule page</a> for
         the latest info about the events schedule and watch the vods from past
