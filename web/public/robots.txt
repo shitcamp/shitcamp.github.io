@@ -1,3 +1,5 @@
 # https://www.robotstxt.org/robotstxt.html
+
+# Allow all robots complete access
 User-agent: *
 Disallow:
