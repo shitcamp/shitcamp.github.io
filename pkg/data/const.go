@@ -69,7 +69,7 @@ const InitialScheduleStr = `
                     "title": "Opening Ceremony",
                     "start_time": "2021-09-26T19:00:00.00-07:00",
                     "user_name": "xQcOW",
-					"description": "Opening night with trivia and mafia games",
+                    "description": "Opening night with trivia and mafia games",
                     "featured_users": [
                         "Adeptthebest",
                         "AustinShow",
@@ -88,7 +88,8 @@ const InitialScheduleStr = `
                         "WillNeff",
                         "xQcOW"
                     ],
-                    "video_id": ""
+                    "video_id": "",
+					"thumbnail_url": "./opening-ceremony.png"
                 }
             ]
         },
@@ -100,18 +101,22 @@ const InitialScheduleStr = `
                     "start_time": "2021-09-27T08:00:00.00-07:00",
                     "user_name": "Nmplol",
                     "featured_users": [
-                        "Nmplol", "Malena"
+                        "Nmplol",
+                        "Malena"
                     ],
-                    "video_id": ""
+                    "video_id": "",
+					"thumbnail_url": "./pancake-breakfast.png"
                 },
                 {
                     "title": "Chopped competition",
                     "start_time": "2021-09-27T12:00:00.00-07:00",
                     "user_name": "QTCinderella",
                     "featured_users": [
-                        "QTCinderella", "JustaMinx"
+                        "QTCinderella",
+                        "JustaMinx"
                     ],
-                    "video_id": ""
+                    "video_id": "",
+					"thumbnail_url": "./chopped-competition.png"
                 },
                 {
                     "title": "Mogul Money",
@@ -122,7 +127,8 @@ const InitialScheduleStr = `
                         "Sodapoppin",
                         "xQcOW"
                     ],
-                    "video_id": ""
+                    "video_id": "",
+					"thumbnail_url": "./mogul-money.jpg"
                 },
                 {
                     "title": "IRL Stream- Scavenger Hunt",
@@ -131,16 +137,18 @@ const InitialScheduleStr = `
                     "featured_users": [
                         "HasanAbi"
                     ],
-                    "video_id": ""
+                    "video_id": "",
+					"thumbnail_url": "./scavenger-hunt.jpg"
                 },
-                                {
+                {
                     "title": "IRL Stream- Scavenger Hunt",
                     "start_time": "2021-09-27T12:00:00.00-07:00",
                     "user_name": "xQcOW",
                     "featured_users": [
                         "xQcOW"
                     ],
-                    "video_id": ""
+                    "video_id": "",
+					"thumbnail_url": "./scavenger-hunt.jpg"
                 },
                 {
                     "title": "Ghost stories and Smores",
@@ -148,7 +156,9 @@ const InitialScheduleStr = `
                     "user_name": "WillNeff",
                     "featured_users": [
                         "WillNeff"
-                    ]
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./ghost-stories.png"
                 }
             ]
         },
@@ -160,8 +170,11 @@ const InitialScheduleStr = `
                     "start_time": "2021-09-28T08:00:00.00-07:00",
                     "user_name": "Nmplol",
                     "featured_users": [
-                        "Nmplol", "Malena"
-                    ]
+                        "Nmplol",
+                        "Malena"
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./french-toast-breakfast.png"
                 },
                 {
                     "title": "IRL stream- Hike",
@@ -169,15 +182,9 @@ const InitialScheduleStr = `
                     "user_name": "Myth",
                     "featured_users": [
                         "Myth"
-                    ]
-                },
-                {
-                    "title": "Without a Recipe contest",
-                    "start_time": "2021-09-28T12:00:00.00-07:00",
-                    "user_name": "QTCinderella",
-                    "featured_users": [
-                        "QTCinderella"
-                    ]
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./hike.png"
                 },
                 {
                     "title": "IRL Stream- Gun range",
@@ -185,19 +192,25 @@ const InitialScheduleStr = `
                     "user_name": "HasanAbi",
                     "featured_users": [
                         "HasanAbi"
-                    ]
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./gun-range.jpg"
                 },
                 {
                     "title": "Tie Dye Shirts",
                     "start_time": "2021-09-28T15:30:00.00-07:00",
                     "user_name": "",
-                    "featured_users": []
+                    "featured_users": [],
+                    "video_id": "",
+					"thumbnail_url": "./tie-dye.png"
                 },
                 {
                     "title": "Taco Dinner",
                     "start_time": "2021-09-28T17:30:00.00-07:00",
                     "user_name": "",
-                    "featured_users": []
+                    "featured_users": [],
+                    "video_id": "",
+					"thumbnail_url": "./taco-party.png"
                 },
                 {
                     "title": "PJ Party",
@@ -206,7 +219,9 @@ const InitialScheduleStr = `
                     "description": "Face masks, Nail painting, Never have I ever, Who's most likely to",
                     "featured_users": [
                         "Sodapoppin"
-                    ]
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./pj-party.jpg"
                 }
             ]
         },
@@ -218,14 +233,19 @@ const InitialScheduleStr = `
                     "start_time": "2021-09-29T08:00:00.00-07:00",
                     "user_name": "Nmplol",
                     "featured_users": [
-                        "Nmplol", "Malena"
-                    ]
+                        "Nmplol",
+                        "Malena"
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./grand-slam-breakfast.png"
                 },
                 {
                     "title": "Secret event",
                     "start_time": "2021-09-29T11:30:00.00-07:00",
                     "user_name": "",
-                    "featured_users": []
+                    "featured_users": [],
+                    "video_id": "",
+					"thumbnail_url": "./secret-event.jpg"
                 },
                 {
                     "title": "Closing Ceremony",
@@ -233,7 +253,9 @@ const InitialScheduleStr = `
                     "user_name": "QTCinderella",
                     "featured_users": [
                         "QTCinderella"
-                    ]
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./closing-ceremony.jpg"
                 }
             ]
         }
