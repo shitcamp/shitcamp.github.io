@@ -4,4 +4,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://example.com/my_sitemap.xml
+Sitemap: https://shitcamp.github.io/sitemap.xml
