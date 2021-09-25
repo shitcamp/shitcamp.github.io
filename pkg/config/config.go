@@ -20,6 +20,7 @@ type TwitchConfig struct {
 
 type ShitcampConfig struct {
 	OldestUploadTime string `mapstructure:"oldest_upload_time"`
+	NewestUploadTime string `mapstructure:"newest_upload_time"`
 }
 
 func (s *ShitcampConfig) GetOldestUploadTime() time.Time {
@@ -27,6 +28,17 @@ func (s *ShitcampConfig) GetOldestUploadTime() time.Time {
 	if err != nil {
 		logger.WithField("time", s.OldestUploadTime).Warn("parse_GetOldestUploadTime_error")
 		t, _ = time.Parse(time.RFC3339, shitcampStartTime)
+		return t
+	}
+
+	return t
+}
+
+func (s *ShitcampConfig) GetNewestUploadTime() time.Time {
+	t, err := time.Parse(time.RFC3339, s.NewestUploadTime)
+	if err != nil {
+		logger.WithField("time", s.NewestUploadTime).Warn("parse_GetNewestUploadTime_error")
+		t, _ = time.Parse(time.RFC3339, shitcampEndTime)
 		return t
 	}
 
@@ -54,9 +66,13 @@ type Config struct {
 }
 
 const shitcampStartTime = "2021-09-26T19:00:00.00-06:00"
+const shitcampEndTime = "2021-09-30T23:00:00.00-06:00"
 
 var cfg = Config{
-	Shitcamp: ShitcampConfig{OldestUploadTime: shitcampStartTime},
+	Shitcamp: ShitcampConfig{
+		OldestUploadTime: shitcampStartTime,
+		NewestUploadTime: shitcampEndTime,
+	},
 	Cache: CacheConfig{
 		DefaultExpiryTime:      2 * time.Minute,
 		DefaultCleanupInterval: 5 * time.Minute,
@@ -77,6 +93,7 @@ const (
 	EnvTwitchAccessToken = "TWITCH_ACCESS_TOKEN"
 
 	EnvShitcampOldestUploadTime = "SHITCAMP_OLDEST_UPLOAD_TIME"
+	EnvShitcampNewestUploadTime = "SHITCAMP_NEWEST_UPLOAD_TIME"
 
 	EnvCacheDefaultExpiryTime      = "CACHE_DEFAULT_EXPIRY_TIME"
 	EnvCacheDefaultCleanupInterval = "CACHE_DEFAULT_CLEANUP_INTERVAL"
@@ -132,6 +149,9 @@ func loadConfigsFromEnv() {
 
 	if oldestUploadTime := os.Getenv(EnvShitcampOldestUploadTime); oldestUploadTime != "" {
 		cfg.Shitcamp.OldestUploadTime = oldestUploadTime
+	}
+	if newestUploadTime := os.Getenv(EnvShitcampNewestUploadTime); newestUploadTime != "" {
+		cfg.Shitcamp.NewestUploadTime = newestUploadTime
 	}
 
 	if expiryTime := os.Getenv(EnvCacheDefaultExpiryTime); expiryTime != "" {

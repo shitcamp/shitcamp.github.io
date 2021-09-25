@@ -197,7 +197,7 @@ const InitialScheduleStr = `
 					"thumbnail_url": "./gun-range.jpg"
                 },
                 {
-                    "title": "Tie Dye Shirts",
+                    "title": "Tie Dye Shirts (unconfirmed)",
                     "start_time": "2021-09-28T15:30:00.00-07:00",
                     "user_name": "",
                     "featured_users": [],
@@ -205,7 +205,7 @@ const InitialScheduleStr = `
 					"thumbnail_url": "./tie-dye.png"
                 },
                 {
-                    "title": "Taco Dinner",
+                    "title": "Taco Dinner (unconfirmed)",
                     "start_time": "2021-09-28T17:30:00.00-07:00",
                     "user_name": "",
                     "featured_users": [],
@@ -243,7 +243,24 @@ const InitialScheduleStr = `
                     "title": "Secret event",
                     "start_time": "2021-09-29T11:30:00.00-07:00",
                     "user_name": "",
-                    "featured_users": [],
+                    "featured_users": [
+                        "Adeptthebest",
+                        "AustinShow",
+                        "Cyr",
+                        "EsfandTV",
+                        "HasanAbi",
+                        "Jschlatt ",
+                        "JustaMinx",
+                        "Kaceytron",
+                        "Ludwig",
+                        "Malena",
+                        "Nmplol",
+                        "Myth",
+                        "QTCinderella",
+                        "Sodapoppin",
+                        "WillNeff",
+                        "xQcOW"
+                    ],
                     "video_id": "",
 					"thumbnail_url": "./secret-event.jpg"
                 },
@@ -252,7 +269,22 @@ const InitialScheduleStr = `
                     "start_time": "2021-09-29T18:00:00.00-07:00",
                     "user_name": "QTCinderella",
                     "featured_users": [
-                        "QTCinderella"
+                        "Adeptthebest",
+                        "AustinShow",
+                        "Cyr",
+                        "EsfandTV",
+                        "HasanAbi",
+                        "Jschlatt ",
+                        "JustaMinx",
+                        "Kaceytron",
+                        "Ludwig",
+                        "Malena",
+                        "Nmplol",
+                        "Myth",
+                        "QTCinderella",
+                        "Sodapoppin",
+                        "WillNeff",
+                        "xQcOW"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./closing-ceremony.jpg"

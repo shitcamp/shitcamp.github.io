@@ -282,7 +282,7 @@ func getVodsForUserID(userID string) ([]*Vod, error) {
 					URL:               v.URL,
 					ThumbnailURL:      v.ThumbnailURL,
 					ViewCount:         v.ViewCount,
-					FeaturedStreamers: shitcamp.GetFeaturedStreamersForVod(v.ID),
+					FeaturedStreamers: nil,
 				},
 				Duration: v.Duration,
 			},
@@ -361,6 +361,7 @@ func getClipsForBroadcaster(broadcasterID string, maxNumClips int) ([]*Clip, err
 	params := url.Values{}
 	params.Add("broadcaster_id", broadcasterID)
 	params.Add("started_at", config.GetConfig().Shitcamp.GetOldestUploadTime().Format(time.RFC3339))
+	params.Add("ended_at", config.GetConfig().Shitcamp.GetNewestUploadTime().Format(time.RFC3339))
 	params.Add("first", fmt.Sprintf("%d", min(maxNumClips, twitchMaxClips)))
 
 	queryURL := "/clips" + "?" + params.Encode()

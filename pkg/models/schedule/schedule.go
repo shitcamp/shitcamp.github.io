@@ -5,8 +5,6 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
-
 	"github.com/shitcamp-unofficial/shitcamp/pkg/models/twitch"
 
 	"github.com/shitcamp-unofficial/shitcamp/pkg/cache"
@@ -21,11 +19,6 @@ func updateScheduleData(s *Schedule) error {
 	var videoIDsToGet []string
 	for _, dateS := range s.Dates {
 		for _, e := range dateS.Events {
-			featuredUsers := shitcamp.GetFeaturedStreamersForVod(e.VideoID)
-			if len(featuredUsers) > 0 {
-				e.FeaturedUsers = featuredUsers
-			}
-
 			if e.VideoID != "" {
 				videoIDsToGet = append(videoIDsToGet, e.VideoID)
 			}
