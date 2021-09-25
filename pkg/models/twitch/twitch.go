@@ -282,7 +282,7 @@ func getVodsForUserID(userID string) ([]*Vod, error) {
 					URL:               v.URL,
 					ThumbnailURL:      v.ThumbnailURL,
 					ViewCount:         v.ViewCount,
-					FeaturedStreamers: nil,
+					FeaturedStreamers: shitcamp.GetFeaturedStreamersForVod(v.ID),
 				},
 				Duration: v.Duration,
 			},

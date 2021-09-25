@@ -295,8 +295,16 @@ const InitialScheduleStr = `
 }
 `
 
-// TODO:
+// Featured users for live streams
+const InitialStreamIDFeaturedMapStr = `
+{
+    "40013385979": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"]
+}
+`
+
+// Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+    "1158909839": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"]
 }
 `

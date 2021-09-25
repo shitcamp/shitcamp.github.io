@@ -69,7 +69,7 @@ func SetFeaturedUsersForStream(c *gin.Context) {
 		return
 	}
 
-	err := shitcamp.SetFeaturedUsersForVod(req.StreamID, req.FeaturedUsers)
+	err := shitcamp.SetFeaturedUsersForStream(req.StreamID, req.FeaturedUsers)
 	if err != nil {
 		logger.WithField("req", req).WithError(err).Error("SetFeaturedUsersForStream_error")
 		respError(c, http.StatusInternalServerError, err)

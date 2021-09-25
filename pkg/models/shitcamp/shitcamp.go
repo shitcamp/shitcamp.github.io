@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"sort"
 
-	data2 "github.com/shitcamp-unofficial/shitcamp/pkg/data"
+	data "github.com/shitcamp-unofficial/shitcamp/pkg/data"
 
 	logger "github.com/sirupsen/logrus"
 )
@@ -13,16 +13,21 @@ var vodIDFeaturedMap = map[string][]string{}
 var streamIDFeaturedMap = map[string][]string{}
 
 func init() {
-	err := json.Unmarshal([]byte(data2.InitialVodIDFeaturedMapStr), &vodIDFeaturedMap)
+	err := json.Unmarshal([]byte(data.InitialVodIDFeaturedMapStr), &vodIDFeaturedMap)
 	if err != nil {
-		logger.WithError(err).Error("init_featured_map_error")
+		logger.WithError(err).Error("init_vod_featured_map_error")
+	}
+
+	err = json.Unmarshal([]byte(data.InitialStreamIDFeaturedMapStr), &streamIDFeaturedMap)
+	if err != nil {
+		logger.WithError(err).Error("init_stream_featured_map_error")
 	}
 }
 
 func GetStreamerNames() []string {
 	streamers := make([]string, 0)
 
-	for n, _ := range data2.AllStreamers {
+	for n, _ := range data.AllStreamers {
 		streamers = append(streamers, n)
 	}
 
@@ -31,10 +36,10 @@ func GetStreamerNames() []string {
 	return streamers
 }
 
-func GetStreamers() []*data2.User {
-	streamers := make([]*data2.User, 0)
+func GetStreamers() []*data.User {
+	streamers := make([]*data.User, 0)
 
-	for _, s := range data2.AllStreamers {
+	for _, s := range data.AllStreamers {
 		streamers = append(streamers, s)
 	}
 
