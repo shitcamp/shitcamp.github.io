@@ -96,13 +96,13 @@ function VideoCard(props) {
 }
 
 function Videos(props) {
-  const { videos, titleMsg, emptyErrMsg, onVideoClick } = props;
+  const { videos, title, emptyErrMsg, onVideoClick } = props;
 
   return (
     <React.Fragment>
       {Array.isArray(videos) && videos.length > 0 ? (
         <React.Fragment>
-          {titleMsg != null && <h5>{titleMsg}</h5>}
+          {title}
           <Container>
             <Row xs={1} sm={2} md={3} lg={5} xl={8} className="g-4">
               {videos.map((v) => (

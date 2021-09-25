@@ -197,6 +197,7 @@ class Clips extends React.Component {
         )}
         {videos.length > 0 ? (
           <Container>
+            <p>{"Select a clip to watch"}</p>
             <Row xs={1} sm={2} md={3} lg={5} xl={8} className="g-4">
               {videos.map((c) => (
                 <Col

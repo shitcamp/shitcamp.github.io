@@ -8,7 +8,12 @@ function Streams(props) {
   return (
     <Videos
       videos={streams}
-      titleMsg="Shit's gettin' litty, come thru <3"
+      title={
+        <React.Fragment>
+          <h5>{"Shit's gettin' litty, come thru <3"}</h5>
+          <p>{"Select a stream to watch"}</p>
+        </React.Fragment>
+      }
       emptyErrMsg="No live streams found"
       onVideoClick={handleStreamClick}
     />

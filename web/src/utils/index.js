@@ -158,7 +158,7 @@ export function getRelativeTimeFromNow(t) {
   if (diffDays >= 1) {
     diffDays = Math.round(diffDays);
     if (diffDays === 1) {
-      return `Tomorrow`;
+      return `${diffDays} day`;
     }
     return `${diffDays} days`;
   }
