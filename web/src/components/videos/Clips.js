@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Container, Row, Col } from "react-bootstrap";
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+import debounce from "lodash.debounce";
 
 import { getClips } from "apis";
 import * as utils from "utils";
@@ -74,6 +75,8 @@ function ClipCard(props) {
     </Card>
   );
 }
+
+const DEBOUNCE_DELAY = 500;
 
 class Clips extends React.Component {
   constructor(props) {
@@ -158,7 +161,6 @@ class Clips extends React.Component {
 
     const { selectedUserNames } = this.state;
 
-    // TODO: debounce
     let ret = await getClips(selectedUserNames);
     if (ret.error != null) {
       console.error(ret.error);
@@ -188,9 +190,9 @@ class Clips extends React.Component {
             selected={selectedUserNames}
             placeholder="Filter by streamer"
             placeholderMultipleChecked="Filter by streamer"
-            handleOnChange={(selected) => {
+            handleOnChange={debounce((selected) => {
               this.handleSelectionChange(selected);
-            }}
+            }, DEBOUNCE_DELAY)}
             name="streamers"
             className="dropdown"
           />

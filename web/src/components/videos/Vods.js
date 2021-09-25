@@ -1,11 +1,14 @@
 import React from "react";
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
+import debounce from "lodash.debounce";
 
 import Videos from "components/videos/Videos";
 
 import { getVods } from "apis";
 
 import "components/videos/Vods.css";
+
+const DEBOUNCE_DELAY = 500; // milliseconds to wait for before executing function
 
 class Vods extends React.Component {
   constructor(props) {
@@ -100,7 +103,6 @@ class Vods extends React.Component {
 
     const { selectedUserNames } = this.state;
 
-    // TODO: debounce
     let ret = await getVods(selectedUserNames);
     if (ret.error != null) {
       console.error(ret.error);
@@ -128,9 +130,9 @@ class Vods extends React.Component {
             selected={selectedUserNames}
             placeholder="Filter by streamer"
             placeholderMultipleChecked="Filter by streamer"
-            handleOnChange={(selected) => {
+            handleOnChange={debounce((selected) => {
               this.handleSelectionChange(selected);
-            }}
+            }, DEBOUNCE_DELAY)}
             name="streamers"
             className="dropdown"
           />
