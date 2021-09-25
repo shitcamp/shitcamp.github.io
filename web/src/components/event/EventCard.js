@@ -11,7 +11,8 @@ const THUMBNAIL_SIZE = {
 };
 
 function EventCard(props) {
-  const { event, displayStartDate, onVideoClick } = props;
+  // onVideoClick
+  const { event, displayStartDate } = props;
   const {
     title: event_title,
     start_time,
@@ -29,7 +30,7 @@ function EventCard(props) {
   }
 
   let featuredUsers = event_featured_users;
-  let handleVideoClick = () => {};
+  // let handleVideoClick = () => {};
 
   let duration = "";
   let viewCount = "";
@@ -45,9 +46,9 @@ function EventCard(props) {
       featuredUsers = vod.featured_users;
     }
 
-    if (vod.id) {
-      handleVideoClick = (e) => onVideoClick(e, vod.id);
-    }
+    // if (vod.id) {
+    // handleVideoClick = (e) => onVideoClick(e, vod.id);
+    // }
 
     duration = vod.duration;
     viewCount = vod.view_count;
@@ -106,7 +107,7 @@ function EventCard(props) {
   if (displayStartDate) {
     startTimeStr += d.toDateString().split(/ (.+)/)[1] + ", ";
   }
-  startTimeStr += d.toTimeString();
+  startTimeStr += utils.formatAMPM(d);
 
   return (
     <Card>

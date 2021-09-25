@@ -7,6 +7,21 @@ function pad(n) {
   return n > 9 ? "" + n : "0" + n;
 }
 
+export function formatAMPM(date) {
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+
+  var ampm = hours >= 12 ? "pm" : "am";
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // the hour '0' should be '12'
+
+  minutes = pad(minutes);
+
+  var strTime = hours + ":" + minutes + "" + ampm;
+  return strTime;
+}
+
 // 2021-09-02T19:56:12Z -> 7h3m28s
 export function getElapsedDuration(t) {
   var date1 = Date.parse(t);

@@ -75,6 +75,8 @@ class Schedule extends React.PureComponent {
   render() {
     const { selectedVideoID, scheduleDates, isLatestSchedule } = this.state;
 
+    const timeZone = new Date().toTimeString().split(/ (.+)/)[1];
+
     return (
       <React.Fragment>
         {selectedVideoID !== "" && (
@@ -87,6 +89,9 @@ class Schedule extends React.PureComponent {
           {Array.isArray(scheduleDates) && scheduleDates.length > 0 ? (
             <React.Fragment>
               <ScheduleAlert isLatestSchedule={isLatestSchedule} />
+              <p>
+                The times shown are for your timezone: <b>{timeZone}</b>
+              </p>
 
               {scheduleDates.map((d) => (
                 <AccordianWrapper key={d.date} title={d.date}>

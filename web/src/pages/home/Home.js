@@ -88,6 +88,8 @@ class Home extends React.PureComponent {
       isLatestSchedule,
     } = this.state;
 
+    const timeZone = new Date().toTimeString().split(/ (.+)/)[1];
+
     return (
       <React.Fragment>
         <Container className="data-alert">
@@ -127,13 +129,12 @@ class Home extends React.PureComponent {
           </AccordianWrapper>
 
           <AccordianWrapper title="Upcoming events">
-            {/* <Alert variant="warning">
-            This site will be updated with more accurate schedule data once
-            Shitcamp starts
-          </Alert> */}
             {Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
               <React.Fragment>
                 <ScheduleAlert isLatestSchedule={isLatestSchedule} />
+                <p>
+                  The times shown are for your timezone: <b>{timeZone}</b>
+                </p>
 
                 <Events
                   events={scheduleEvents}

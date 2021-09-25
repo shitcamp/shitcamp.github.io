@@ -188,10 +188,10 @@ const InitialScheduleStr = `
                 },
                 {
                     "title": "IRL Stream- Gun range",
-                    "start_time": "2021-09-28T12:00:00.00-07:00",
+                    "start_time": "2021-09-28T13:00:00.00-07:00",
                     "user_name": "HasanAbi",
                     "featured_users": [
-                        "HasanAbi"
+                        "HasanAbi", "xQcOW"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./gun-range.jpg"
