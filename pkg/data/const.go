@@ -228,6 +228,7 @@ const InitialScheduleStr = `
                     "title": "Kickball tournament ft. 100 Thieves, OfflineTV",
                     "start_time": "2021-09-29T11:00:00.00-07:00",
                     "user_name": "Ludwig",
+                    "description": "The Most Ambitious Crossover Event in History: 4 teams. 32 streamers. Kickball.",
                     "featured_users": [
                         "Adeptthebest",
                         "AustinShow",
