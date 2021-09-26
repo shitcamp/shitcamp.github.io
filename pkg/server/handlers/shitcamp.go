@@ -26,6 +26,30 @@ func GetStreamers(c *gin.Context) {
 	respSuccess(c, resp)
 }
 
+func GetTeamsInfo(c *gin.Context) {
+	teamsInfo := shitcamp.GetTeamsInfo()
+
+	resp := &GetTeamsInfoResp{TeamsInfo: *teamsInfo}
+	respSuccess(c, resp)
+}
+
+func SetTeamsInfo(c *gin.Context) {
+	req := new(SetTeamsInfoReq)
+	if err := c.ShouldBindJSON(req); err != nil {
+		respError(c, http.StatusBadRequest, err)
+		return
+	}
+
+	err := shitcamp.SetTeamsInfo(req.TeamsInfo)
+	if err != nil {
+		logger.WithField("req", req).WithError(err).Error("SetTeams_error")
+		respError(c, http.StatusInternalServerError, err)
+		return
+	}
+
+	respSuccess(c, nil)
+}
+
 func GetSchedule(c *gin.Context) {
 	s, err := schedule.GetSchedule()
 	if err != nil {

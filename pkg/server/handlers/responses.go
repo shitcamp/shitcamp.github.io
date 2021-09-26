@@ -3,12 +3,11 @@ package handlers
 import (
 	"net/http"
 
-	data "github.com/shitcamp-unofficial/shitcamp/pkg/data"
-
-	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
-
 	"github.com/gin-gonic/gin"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/common"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/data"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/models/twitch"
 )
 
@@ -26,6 +25,10 @@ type GetStreamerNamesResp struct {
 
 type GetStreamersResp struct {
 	Users []*data.User `json:"users"`
+}
+
+type GetTeamsInfoResp struct {
+	shitcamp.TeamsInfo
 }
 
 type GetScheduleResp struct {

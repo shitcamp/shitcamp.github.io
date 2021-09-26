@@ -31,10 +31,16 @@ func newRouter(auth gin.Accounts, rateLimitCfg config.RateLimitConfig) *gin.Engi
 	{
 		shitcampRouter.GET("/get_streamer_names", handlers.GetStreamerNames)
 		shitcampRouter.GET("/get_streamers", handlers.GetStreamers)
+
+		shitcampRouter.GET("/get_teams_info", handlers.GetTeamsInfo)
+		shitcampRouter.POST("/set_teams_info", handlers.SetTeamsInfo)
+
 		shitcampRouter.GET("/get_schedule", handlers.GetSchedule)
 		shitcampRouter.POST("/set_schedule", handlers.SetSchedule)
+
 		shitcampRouter.GET("/get_featured_users_for_vods", handlers.GetFeaturedUsersForVods)
 		shitcampRouter.POST("/set_featured_users_for_vod", handlers.SetFeaturedUsersForVod)
+
 		shitcampRouter.GET("/get_featured_users_for_streams", handlers.GetFeaturedUsersForStreams)
 		shitcampRouter.POST("/set_featured_users_for_stream", handlers.SetFeaturedUsersForStream)
 	}

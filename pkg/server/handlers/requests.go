@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/shitcamp-unofficial/shitcamp/pkg/models/schedule"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/models/shitcamp"
 )
 
 type HealthCheckReq struct {
@@ -10,6 +11,10 @@ type HealthCheckReq struct {
 
 type SetScheduleReq struct {
 	*schedule.Schedule
+}
+
+type SetTeamsInfoReq struct {
+	*shitcamp.TeamsInfo
 }
 
 type SetFeaturedUsersForVodReq struct {

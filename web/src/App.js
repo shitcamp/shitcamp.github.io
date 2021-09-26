@@ -6,6 +6,7 @@ import Home from "pages/home/Home";
 import AboutPage from "pages/about/AboutPage";
 import Schedule from "pages/schedule/Schedule";
 import ClipsPage from "pages/clips/ClipsPage";
+import TeamsPage from "pages/teams/TeamsPage";
 
 import { getRelUrl } from "utils";
 
@@ -40,16 +41,16 @@ class App extends React.PureComponent {
     };
   }
 
-  async componentDidMount() {
-    // let ret = await getUsers();
-    // if (ret.error != null) {
-    //   console.error(ret.error);
-    // } else {
-    //   this.setState({
-    //     userNames: ret.resp.users,
-    //   });
-    // }
-  }
+  // async componentDidMount() {
+  // let ret = await getUsers();
+  // if (ret.error != null) {
+  //   console.error(ret.error);
+  // } else {
+  //   this.setState({
+  //     userNames: ret.resp.users,
+  //   });
+  // }
+  // }
 
   render() {
     let { userNames } = this.state;
@@ -57,7 +58,6 @@ class App extends React.PureComponent {
     return (
       <Router basename={"/" + process.env.PUBLIC_URL}>
         <div className="push">
-          {/* <Router> */}
           <Navbar
             collapseOnSelect
             expand="sm"
@@ -77,6 +77,7 @@ class App extends React.PureComponent {
                   <Nav.Link href={getRelUrl("/")}>Home</Nav.Link>
                   <Nav.Link href={getRelUrl("/schedule")}>Schedule</Nav.Link>
                   <Nav.Link href={getRelUrl("/about")}>About</Nav.Link>
+                  <Nav.Link href={getRelUrl("/teams")}>Teams</Nav.Link>
                   <Nav.Link href={getRelUrl("/clips")}>Top Clips</Nav.Link>
                 </Nav>
                 <Nav>
@@ -111,10 +112,15 @@ class App extends React.PureComponent {
               path={process.env.PUBLIC_URL + "/clips"}
               render={() => <ClipsPage userNames={userNames} />}
             />
+            <Route
+              path={process.env.PUBLIC_URL + "/teams"}
+              component={TeamsPage}
+            />
             <Route path="/" render={() => <Home userNames={userNames} />} />
             <Route path="" render={() => <Home userNames={userNames} />} />
           </Switch>
         </div>
+
         <div>
           <Navbar bg="shitcamp" variant="dark" className="bottom-navbar">
             <Container>

@@ -282,6 +282,13 @@ const InitialScheduleStr = `
 }
 `
 
+const InitialTeamsInfo = `
+{
+    "teams": [
+    ]
+}
+`
+
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
@@ -299,38 +306,5 @@ const InitialVodIDFeaturedMapStr = `
     "1158523015": ["QTCinderella", "JustaMinx"],
     "1158517155": ["QTCinderella", "JustaMinx"],
     "1158517135": ["JustaMinx", "QTCinderella"]
-}
-`
-
-const InitialTeams = `
-{
-    "teams": [
-        {
-            "name": "Team A",
-            "users": [
-                "AdeptTheBest",
-                "AustinShow",
-                "Cyr",
-                "EsfandTV",
-                "HasanAbi",
-                "JustaMinx",
-                "Jschlatt",
-                "Kaceytron"
-            ]
-        },
-        {
-            "name": "Team B",
-            "users": [
-                "Ludwig",
-                "Malena",
-                "Myth",
-                "Nmplol",
-                "QTCinderella",
-                "Sodapoppin",
-                "WillNeff",
-                "xQcOW"
-            ]
-        }
-    ]
 }
 `

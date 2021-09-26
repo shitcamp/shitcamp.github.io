@@ -9,21 +9,6 @@ import (
 	logger "github.com/sirupsen/logrus"
 )
 
-var vodIDFeaturedMap = map[string][]string{}
-var streamIDFeaturedMap = map[string][]string{}
-
-func init() {
-	err := json.Unmarshal([]byte(data.InitialVodIDFeaturedMapStr), &vodIDFeaturedMap)
-	if err != nil {
-		logger.WithError(err).Error("init_vod_featured_map_error")
-	}
-
-	err = json.Unmarshal([]byte(data.InitialStreamIDFeaturedMapStr), &streamIDFeaturedMap)
-	if err != nil {
-		logger.WithError(err).Error("init_stream_featured_map_error")
-	}
-}
-
 func GetStreamerNames() []string {
 	streamers := make([]string, 0)
 
@@ -51,6 +36,24 @@ func GetStreamers() []*data.User {
 	})
 
 	return streamers
+}
+
+func GetTeamsInfo() *TeamsInfo {
+	return teamsInfo
+}
+
+func SetTeamsInfo(newTeamsInfo *TeamsInfo) error {
+	str, err := json.Marshal(newTeamsInfo)
+	l := logger.WithField("newTeams", string(str))
+	if err != nil {
+		l.WithError(err).Error("SetTeamsInfo_error")
+		return err
+	}
+
+	teamsInfo = newTeamsInfo
+
+	l.Info("SetTeamsInfo_success")
+	return nil
 }
 
 func GetFeaturedStreamersForStreams() map[string][]string {

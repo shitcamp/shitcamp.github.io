@@ -44,3 +44,44 @@ export async function getSchedule() {
   const ret = await get("/api/shitcamp/get_schedule");
   return ret;
 }
+
+export async function getTeamsInfo() {
+  // const resp = {
+  //   teams: [
+  //     {
+  //       name: "Team A",
+  //       users: [
+  //         "AdeptTheBest",
+  //         "AustinShow",
+  //         "Cyr",
+  //         "EsfandTV",
+  //         "HasanAbi",
+  //         "JustaMinx",
+  //         "Jschlatt",
+  //         "Kaceytron",
+  //       ],
+  //     },
+  //     {
+  //       name: "Team B",
+  //       users: [
+  //         "Ludwig",
+  //         "Malena",
+  //         "Myth",
+  //         "Nmplol",
+  //         "QTCinderella",
+  //         "Sodapoppin",
+  //         "WillNeff",
+  //         "xQcOW",
+  //       ],
+  //     },
+  //   ],
+  // };
+
+  // return {
+  //   resp: resp,
+  //   err: null,
+  // };
+
+  const ret = await get("/api/shitcamp/get_teams_info");
+  return ret;
+}
