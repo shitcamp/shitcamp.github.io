@@ -33,3 +33,4 @@ yarn-error.log*
 deploy-*.sh
 
 /logs
+get-logs.sh
