@@ -406,6 +406,8 @@ func getClipsForBroadcaster(broadcasterID string, maxNumClips int) ([]*Clip, err
 	return clips, nil
 }
 
+const maxNumClips = 200
+
 func GetClips(broadcasterNames []string) ([]*Clip, error) {
 	clips := make([]*Clip, 0)
 
@@ -423,7 +425,7 @@ func GetClips(broadcasterNames []string) ([]*Clip, error) {
 		return nil, err
 	}
 
-	var maxNumClips = (twitchMaxClips / len(broadcasterNames)) + 10
+	var maxNumClipsPerUser = (maxNumClips / len(broadcasterNames)) + 10
 
 	var wg sync.WaitGroup
 	var mu sync.Mutex
@@ -434,7 +436,7 @@ func GetClips(broadcasterNames []string) ([]*Clip, error) {
 		go func(userName, userID string) {
 			defer wg.Done()
 
-			userClips, err := getClipsForBroadcaster(userID, maxNumClips)
+			userClips, err := getClipsForBroadcaster(userID, maxNumClipsPerUser)
 			if err != nil {
 				logger.WithError(err).WithFields(logger.Fields{
 					"userID":   userID,
@@ -461,8 +463,8 @@ func GetClips(broadcasterNames []string) ([]*Clip, error) {
 		return c1.ViewCount >= c2.ViewCount
 	})
 
-	if len(clips) > twitchMaxClips {
-		clips = clips[:twitchMaxClips]
+	if len(clips) > maxNumClips {
+		clips = clips[:maxNumClips]
 	}
 
 	cache.Set(cacheKey, clips, clipsCacheExpiry)
