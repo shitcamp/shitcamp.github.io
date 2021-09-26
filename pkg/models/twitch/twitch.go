@@ -201,6 +201,14 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 		}})
 	}
 
+	sort.SliceStable(liveStreams, func(i, j int) bool {
+		s1 := liveStreams[i]
+		s2 := liveStreams[j]
+
+		// Sort so that streams featuring Shitcamp users appear first
+		return len(s1.FeaturedStreamers) >= len(s2.FeaturedStreamers)
+	})
+
 	cache.SetDefault(cacheKey, liveStreams)
 	return liveStreams, nil
 }

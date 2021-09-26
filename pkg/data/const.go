@@ -67,7 +67,7 @@ const InitialScheduleStr = `
             "events": [
                 {
                     "title": "Opening Ceremony",
-                    "start_time": "2021-09-26T19:00:00.00-07:00",
+                    "start_time": "2021-09-26T18:00:00.00-07:00",
                     "user_name": "xQcOW",
                     "description": "Opening night with trivia and mafia games",
                     "featured_users": [
@@ -242,7 +242,7 @@ const InitialScheduleStr = `
                 {
                     "title": "Secret event",
                     "start_time": "2021-09-29T11:30:00.00-07:00",
-                    "user_name": "",
+                    "user_name": "Ludwig",
                     "featured_users": [
                         "Adeptthebest",
                         "AustinShow",
@@ -305,6 +305,10 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
-    "1158909839": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"]
+    "1158517135": ["JustaMinx", "QTCinderella"],
+    "1158517155": ["QTCinderella", "JustaMinx"],
+    "1158523015": ["QTCinderella", "JustaMinx"],
+    "1158909839": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"],
+    "1159263358": ["Sodapoppin", "Ludwig", "Nmplol"]
 }
 `
