@@ -3,7 +3,7 @@ export function getRelUrl(path) {
   return process.env.PUBLIC_URL + "/?" + path;
 }
 
-function pad(n) {
+export function pad(n) {
   return n > 9 ? "" + n : "0" + n;
 }
 

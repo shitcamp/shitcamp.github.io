@@ -7,15 +7,19 @@ import ScheduleAlert from "components/event/ScheduleAlert";
 import AccordianWrapper from "components/accordian/AccordianWrapper";
 
 import { getSchedule } from "apis";
+import { pad } from "utils";
 
 import "pages/schedule/Schedule.css";
 
-function pad(n) {
-  if (n <= 9) {
-    return "0" + n;
-  }
-  return n;
-}
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 class Schedule extends React.PureComponent {
   constructor(props) {
@@ -41,6 +45,8 @@ class Schedule extends React.PureComponent {
           const d = new Date(e.start_time);
 
           const date =
+            days[d.getDay()] +
+            ", " +
             d.getFullYear() +
             "-" +
             pad(d.getMonth() + 1) +
