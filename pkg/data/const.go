@@ -177,7 +177,7 @@ const InitialScheduleStr = `
                 },
                 {
                     "title": "IRL stream- Morning Hike",
-                    "start_time": "2021-09-28T08:30:00.00-07:00",
+                    "start_time": "2021-09-28T09:00:00.00-07:00",
                     "user_name": "Myth",
                     "featured_users": [
                         "Myth"

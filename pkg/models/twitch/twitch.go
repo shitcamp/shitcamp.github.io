@@ -22,6 +22,8 @@ const (
 	// never changes
 	usersCacheExpiry = 6 * time.Hour
 
+	streamsCacheExpiry = 2 * time.Minute
+
 	// available videos only change when there is a new stream.
 	// note that the video data (eg. view_count) can change more frequently though
 	videosCacheExpiry = 10 * time.Minute
@@ -209,7 +211,7 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 		return len(s1.FeaturedStreamers) >= len(s2.FeaturedStreamers)
 	})
 
-	cache.SetDefault(cacheKey, liveStreams)
+	cache.Set(cacheKey, liveStreams, streamsCacheExpiry)
 	return liveStreams, nil
 }
 
