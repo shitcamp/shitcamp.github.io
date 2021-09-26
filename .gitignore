@@ -34,3 +34,5 @@ deploy-*.sh
 
 /logs
 get-logs.sh
+
+*.jfif

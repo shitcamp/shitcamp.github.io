@@ -8,7 +8,11 @@ function ScheduleAlert(props) {
       This is the latest schedule based on the available info. It will be
       updated as more details are released officially.
     </Alert>
-  ) : null;
+  ) : (
+    <Alert variant="success">
+      The schedule has been updated to reflect the latest timings.
+    </Alert>
+  );
 }
 
 export default ScheduleAlert;

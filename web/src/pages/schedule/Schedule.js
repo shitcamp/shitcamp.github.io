@@ -95,9 +95,12 @@ class Schedule extends React.PureComponent {
           {Array.isArray(scheduleDates) && scheduleDates.length > 0 ? (
             <React.Fragment>
               <ScheduleAlert isLatestSchedule={isLatestSchedule} />
-              <p className="timezone-info">
-                The times are shown for your timezone: <b>{timeZone}</b>
-              </p>
+              <div className="page-description">
+                <p>You can click on past events to watch their vods.</p>
+                <p>
+                  The times are shown for your timezone: <b>{timeZone}</b>
+                </p>
+              </div>
 
               {scheduleDates.map((d) => (
                 <AccordianWrapper key={d.date} title={d.date}>
