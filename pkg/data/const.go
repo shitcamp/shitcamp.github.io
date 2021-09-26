@@ -57,10 +57,9 @@ var AllStreamers = map[string]*User{
 	},
 }
 
-// TODO: update is_latest_schedules
 const InitialScheduleStr = `
 {
-    "is_latest_schedule": false,
+    "is_latest_schedule": true,
     "dates": [
         {
             "date": "2021-09-26",
@@ -132,7 +131,7 @@ const InitialScheduleStr = `
                 },
                 {
                     "title": "IRL Stream- Scavenger Hunt",
-                    "start_time": "2021-09-27T12:00:00.00-07:00",
+                    "start_time": "2021-09-27T17:00:00.00-07:00",
                     "user_name": "HasanAbi",
                     "featured_users": [
                         "HasanAbi"
@@ -142,7 +141,7 @@ const InitialScheduleStr = `
                 },
                 {
                     "title": "IRL Stream- Scavenger Hunt",
-                    "start_time": "2021-09-27T12:00:00.00-07:00",
+                    "start_time": "2021-09-27T17:00:00.00-07:00",
                     "user_name": "xQcOW",
                     "featured_users": [
                         "xQcOW"
@@ -152,7 +151,7 @@ const InitialScheduleStr = `
                 },
                 {
                     "title": "Ghost stories and Smores",
-                    "start_time": "2021-09-27T19:00:00.00-07:00",
+                    "start_time": "2021-09-27T20:30:00.00-07:00",
                     "user_name": "WillNeff",
                     "featured_users": [
                         "WillNeff"
@@ -177,8 +176,8 @@ const InitialScheduleStr = `
 					"thumbnail_url": "./french-toast-breakfast.png"
                 },
                 {
-                    "title": "IRL stream- Hike",
-                    "start_time": "2021-09-28T08:00:00.00-07:00",
+                    "title": "IRL stream- Morning Hike",
+                    "start_time": "2021-09-28T08:30:00.00-07:00",
                     "user_name": "Myth",
                     "featured_users": [
                         "Myth"
@@ -197,24 +196,8 @@ const InitialScheduleStr = `
 					"thumbnail_url": "./gun-range.jpg"
                 },
                 {
-                    "title": "Tie Dye Shirts (unconfirmed)",
-                    "start_time": "2021-09-28T15:30:00.00-07:00",
-                    "user_name": "",
-                    "featured_users": [],
-                    "video_id": "",
-					"thumbnail_url": "./tie-dye.png"
-                },
-                {
-                    "title": "Taco Dinner (unconfirmed)",
-                    "start_time": "2021-09-28T17:30:00.00-07:00",
-                    "user_name": "",
-                    "featured_users": [],
-                    "video_id": "",
-					"thumbnail_url": "./taco-party.png"
-                },
-                {
                     "title": "PJ Party",
-                    "start_time": "2021-09-28T20:00:00.00-07:00",
+                    "start_time": "2021-09-28T19:00:00.00-07:00",
                     "user_name": "Sodapoppin",
                     "description": "Face masks, Nail painting, Never have I ever, Who's most likely to",
                     "featured_users": [
@@ -241,7 +224,7 @@ const InitialScheduleStr = `
                 },
                 {
                     "title": "Secret event",
-                    "start_time": "2021-09-29T11:30:00.00-07:00",
+                    "start_time": "2021-09-29T11:00:00.00-07:00",
                     "user_name": "Ludwig",
                     "featured_users": [
                         "Adeptthebest",
@@ -266,7 +249,7 @@ const InitialScheduleStr = `
                 },
                 {
                     "title": "Closing Ceremony",
-                    "start_time": "2021-09-29T18:00:00.00-07:00",
+                    "start_time": "2021-09-29T19:00:00.00-07:00",
                     "user_name": "QTCinderella",
                     "featured_users": [
                         "Adeptthebest",
