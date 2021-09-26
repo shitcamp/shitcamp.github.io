@@ -60,7 +60,7 @@ var AllStreamers = map[string]*User{
 const InitialScheduleStr = `
 {
     "is_latest_schedule": true,
-	"last_update_time": "2021-09-26T11:30:00.00-07:00",
+	"last_update_time": "2021-09-26T13:45:00.00-07:00",
     "dates": [
         {
             "date": "2021-09-26",
@@ -225,7 +225,7 @@ const InitialScheduleStr = `
 					"thumbnail_url": "./grand-slam-breakfast.png"
                 },
                 {
-                    "title": "Secret event",
+                    "title": "Kickball tournament ft. 100 Thieves, OfflineTV",
                     "start_time": "2021-09-29T11:00:00.00-07:00",
                     "user_name": "Ludwig",
                     "featured_users": [
@@ -247,7 +247,7 @@ const InitialScheduleStr = `
                         "xQcOW"
                     ],
                     "video_id": "",
-					"thumbnail_url": "./secret-event.jpg"
+					"thumbnail_url": "./kickball-tournament.jfif"
                 },
                 {
                     "title": "Closing Ceremony",
