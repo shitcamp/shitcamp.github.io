@@ -61,20 +61,22 @@ function VideoCard(props) {
 
         {Array.isArray(featured_users) && featured_users.length > 0 ? (
           <Card.Text className="truncate">
-            <span className="subtitle">Featuring</span>:{" "}
-            {featured_users.map((user, i, users) => (
-              <React.Fragment key={user}>
-                <a
-                  href={`https://www.twitch.tv/${user}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="link"
-                >
-                  {user}
-                </a>
-                {i !== users.length - 1 ? ", " : ""}
-              </React.Fragment>
-            ))}
+            <small>
+              <span className="description">Featuring</span>:{" "}
+              {featured_users.map((user, i, users) => (
+                <React.Fragment key={user}>
+                  <a
+                    href={`https://www.twitch.tv/${user}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link"
+                  >
+                    {user}
+                  </a>
+                  {i !== users.length - 1 ? ", " : ""}
+                </React.Fragment>
+              ))}
+            </small>
           </Card.Text>
         ) : null}
       </Card.Body>

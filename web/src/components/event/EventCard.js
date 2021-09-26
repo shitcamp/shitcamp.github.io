@@ -124,7 +124,7 @@ function EventCard(props) {
           {Date.parse(start_time) > Date.now() && (
             <React.Fragment>
               <small>
-                <span className="sub-title">Starts at</span>: {startTimeStr}
+                <span className="description">Starts at</span>: {startTimeStr}
               </small>
               <br />
             </React.Fragment>
@@ -133,11 +133,11 @@ function EventCard(props) {
             <small>
               {description && description !== "" && (
                 <React.Fragment>
-                  <span className="sub-title">Description</span>: {description}
+                  <span className="description">Description</span>: {description}
                   <br />
                 </React.Fragment>
               )}
-              <span className="sub-title">Featuring</span>:{" "}
+              <span className="description">Featuring</span>:{" "}
               {featuredUsers.map((user, i, users) => (
                 <React.Fragment key={user}>
                   <a
