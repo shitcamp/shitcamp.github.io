@@ -20,6 +20,11 @@
   font-weight: 600;
 }
 
+.timezone-info {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
 @media screen and (min-width: 450px) {
   .countdown-val {
     font-size: 40px;

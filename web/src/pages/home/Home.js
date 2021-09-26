@@ -140,8 +140,8 @@ class Home extends React.PureComponent {
             {Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
               <React.Fragment>
                 <ScheduleAlert isLatestSchedule={isLatestSchedule} />
-                <p>
-                  The times shown are for your timezone: <b>{timeZone}</b>
+                <p className="timezone-info">
+                  The times are shown for your timezone: <b>{timeZone}</b>
                 </p>
 
                 <Events
