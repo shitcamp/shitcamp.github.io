@@ -60,13 +60,14 @@ var AllStreamers = map[string]*User{
 const InitialScheduleStr = `
 {
     "is_latest_schedule": true,
+	"last_update_time": "2021-09-26T11:30:00.00-07:00",
     "dates": [
         {
             "date": "2021-09-26",
             "events": [
                 {
                     "title": "Opening Ceremony",
-                    "start_time": "2021-09-26T18:00:00.00-07:00",
+                    "start_time": "2021-09-26T19:00:00.00-07:00",
                     "user_name": "xQcOW",
                     "description": "Opening night with trivia and mafia games",
                     "featured_users": [
@@ -134,7 +135,8 @@ const InitialScheduleStr = `
                     "start_time": "2021-09-27T17:00:00.00-07:00",
                     "user_name": "HasanAbi",
                     "featured_users": [
-                        "HasanAbi"
+                        "HasanAbi",
+                        "QTCinderella"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./scavenger-hunt.jpg"
@@ -167,10 +169,9 @@ const InitialScheduleStr = `
                 {
                     "title": "French toast breakfast",
                     "start_time": "2021-09-28T08:00:00.00-07:00",
-                    "user_name": "Nmplol",
+                    "user_name": "EsfandTV",
                     "featured_users": [
-                        "Nmplol",
-                        "Malena"
+                        "EsfandTV"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./french-toast-breakfast.png"
@@ -199,9 +200,10 @@ const InitialScheduleStr = `
                     "title": "PJ Party",
                     "start_time": "2021-09-28T19:00:00.00-07:00",
                     "user_name": "Sodapoppin",
-                    "description": "Face masks, Nail painting, Never have I ever, Who's most likely to",
+                    "description": "Face masks, Nail painting, Never have I ever, Who's most likely to.",
                     "featured_users": [
-                        "Sodapoppin"
+                        "Sodapoppin",
+                        "QTCinderella"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./pj-party.jpg"
@@ -295,5 +297,38 @@ const InitialVodIDFeaturedMapStr = `
     "1158523015": ["QTCinderella", "JustaMinx"],
     "1158517155": ["QTCinderella", "JustaMinx"],
     "1158517135": ["JustaMinx", "QTCinderella"]
+}
+`
+
+const InitialTeams = `
+{
+    "teams": [
+        {
+            "name": "Team A",
+            "users": [
+                "AdeptTheBest",
+                "AustinShow",
+                "Cyr",
+                "EsfandTV",
+                "HasanAbi",
+                "JustaMinx",
+                "Jschlatt",
+                "Kaceytron"
+            ]
+        },
+        {
+            "name": "Team B",
+            "users": [
+                "Ludwig",
+                "Malena",
+                "Myth",
+                "Nmplol",
+                "QTCinderella",
+                "Sodapoppin",
+                "WillNeff",
+                "xQcOW"
+            ]
+        }
+    ]
 }
 `

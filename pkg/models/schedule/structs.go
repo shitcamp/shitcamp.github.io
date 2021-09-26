@@ -25,4 +25,5 @@ type DateSchedule struct {
 type Schedule struct {
 	Dates            []*DateSchedule `json:"dates"`
 	IsLatestSchedule bool            `json:"is_latest_schedule"`
+	LastUpdated      time.Time       `json:"last_update_time"`
 }

@@ -28,6 +28,7 @@ class Schedule extends React.PureComponent {
     this.state = {
       scheduleDates: [],
       isLatestSchedule: true,
+      lastUpdated: "",
       selectedVideoID: "",
     };
   }
@@ -37,7 +38,7 @@ class Schedule extends React.PureComponent {
     if (ret.error != null) {
       console.error(ret.error);
     } else {
-      const { dates, is_latest_schedule } = ret.resp;
+      const { dates, is_latest_schedule, last_update_time } = ret.resp;
 
       let scheduleDates = [];
       for (const dateSchedule of dates) {
@@ -66,6 +67,7 @@ class Schedule extends React.PureComponent {
       this.setState({
         scheduleDates: scheduleDates,
         isLatestSchedule: Boolean(is_latest_schedule),
+        lastUpdated: last_update_time,
       });
     }
   }
@@ -79,7 +81,8 @@ class Schedule extends React.PureComponent {
   };
 
   render() {
-    const { selectedVideoID, scheduleDates, isLatestSchedule } = this.state;
+    const { selectedVideoID, scheduleDates, isLatestSchedule, lastUpdated } =
+      this.state;
 
     const timeZone = new Date().toTimeString().split(/ (.+)/)[1];
 
@@ -94,7 +97,10 @@ class Schedule extends React.PureComponent {
 
           {Array.isArray(scheduleDates) && scheduleDates.length > 0 ? (
             <React.Fragment>
-              <ScheduleAlert isLatestSchedule={isLatestSchedule} />
+              <ScheduleAlert
+                isLatestSchedule={isLatestSchedule}
+                lastUpdated={lastUpdated}
+              />
               <div className="page-description">
                 <p>You can click on past events to watch their vods.</p>
                 <p>

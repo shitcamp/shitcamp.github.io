@@ -115,9 +115,19 @@ function EventCard(props) {
 
       <Card.Body>
         <Card.Title className="card-title">
-          <a href={videoUrl} target="_blank" rel="noreferrer" className="link">
-            <h6>{event_title}</h6>
-          </a>
+          <h6>
+            <a
+              href={videoUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="link"
+            >
+              {event_title}
+            </a>
+            {event_title === "PJ Party" && (
+              <img src="./jammies.gif" alt="jammies" className="jammies-gif" />
+            )}
+          </h6>
         </Card.Title>
 
         <Card.Text>
@@ -133,7 +143,23 @@ function EventCard(props) {
             <small>
               {description && description !== "" && (
                 <React.Fragment>
-                  <span className="description">Description</span>: {description}
+                  <span className="description">Description</span>:{" "}
+                  {description}
+                  {event_title === "PJ Party" && (
+                    <React.Fragment>
+                      <br />
+                      {"Get your own matching PJs at the "}
+                      <b>
+                        <a
+                          href="https://shitcamp.gg/product/peepo-pjs"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          Shitcamp Merch Store
+                        </a>
+                      </b>
+                    </React.Fragment>
+                  )}
                   <br />
                 </React.Fragment>
               )}

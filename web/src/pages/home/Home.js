@@ -14,7 +14,7 @@ import { getLiveStreams, getSchedule } from "apis";
 
 import "pages/home/Home.css";
 
-const SHITCAMP_START_TIME = "2021-09-26T18:00:00.00-07:00";
+const SHITCAMP_START_TIME = "2021-09-26T19:00:00.00-07:00";
 
 class Home extends React.PureComponent {
   constructor(props) {
@@ -23,6 +23,7 @@ class Home extends React.PureComponent {
     this.state = {
       selectedUserStream: "",
       shitcampStartTime: SHITCAMP_START_TIME,
+      scheduleLastUpdated: "",
       liveStreams: [],
       scheduleEvents: [],
       isLatestSchedule: true,
@@ -48,7 +49,7 @@ class Home extends React.PureComponent {
     if (ret.error != null) {
       console.error(ret.error);
     } else {
-      const { dates, is_latest_schedule } = ret.resp;
+      const { dates, is_latest_schedule, last_update_time } = ret.resp;
 
       let startTime = "";
       let events = [];
@@ -66,6 +67,7 @@ class Home extends React.PureComponent {
 
       this.setState({
         shitcampStartTime: startTime,
+        scheduleLastUpdated: last_update_time,
         scheduleEvents: events,
         isLatestSchedule: Boolean(is_latest_schedule),
       });
@@ -94,6 +96,7 @@ class Home extends React.PureComponent {
       liveStreams,
       scheduleEvents,
       isLatestSchedule,
+      scheduleLastUpdated,
     } = this.state;
 
     const timeZone = new Date().toTimeString().split(/ (.+)/)[1];
@@ -139,7 +142,10 @@ class Home extends React.PureComponent {
           <AccordianWrapper title="Upcoming events">
             {Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
               <React.Fragment>
-                <ScheduleAlert isLatestSchedule={isLatestSchedule} />
+                <ScheduleAlert
+                  isLatestSchedule={isLatestSchedule}
+                  lastUpdated={scheduleLastUpdated}
+                />
                 <p className="timezone-info">
                   The times are shown for your timezone: <b>{timeZone}</b>
                 </p>
