@@ -35,7 +35,8 @@ class TeamsPage extends React.PureComponent {
         <h3>Teams</h3>
 
         {teams.length === 0 ? (
-          <h5>Teams are not available yet</h5>
+          // <h5>Teams are not available</h5>
+          <p>The teams have not been chosen yet.</p>
         ) : (
           <Row className="g-4">
             {teams.map((team) => (

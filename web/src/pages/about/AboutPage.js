@@ -12,10 +12,22 @@ function AboutPage(props) {
     {
       userName: "PhinTTV",
       description: "will be the cameraman",
+      link: "https://twitch.tv/PhinTTV",
     },
     {
       userName: "ConnorEatsPants",
-      description: "will feature in some events",
+      description: "will feature in the kickball tournament",
+      link: "https://twitch.tv/ConnorEatsPants",
+    },
+    {
+      userName: "100 Thieves",
+      description: "some members will feature in the kickball tournament",
+      link: "https://twitter.com/100Thieves",
+    },
+    {
+      userName: "OfflineTV",
+      description: "some members will feature in the kickball tournament",
+      link: "https://twitter.com/OfflineTV",
     },
   ];
 
@@ -99,12 +111,7 @@ function AboutPage(props) {
       <ul>
         {specialGuests.map((g) => (
           <li key={g.userName}>
-            <a
-              href={`https://twitch.tv/${g.userName}`}
-              target="_blank"
-              rel="noreferrer"
-              className="link"
-            >
+            <a href={g.link} target="_blank" rel="noreferrer" className="link">
               {g.userName}
             </a>{" "}
             ({g.description})
