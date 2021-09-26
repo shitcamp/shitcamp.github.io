@@ -14,7 +14,7 @@ import { getLiveStreams, getSchedule } from "apis";
 
 import "pages/home/Home.css";
 
-const SHITCAMP_START_TIME = "2021-09-26T19:00:00.00-07:00";
+const SHITCAMP_START_TIME = "2021-09-26T18:00:00.00-07:00";
 
 class Home extends React.PureComponent {
   constructor(props) {
@@ -22,6 +22,7 @@ class Home extends React.PureComponent {
 
     this.state = {
       selectedUserStream: "",
+      shitcampStartTime: SHITCAMP_START_TIME,
       liveStreams: [],
       scheduleEvents: [],
       isLatestSchedule: true,
@@ -49,9 +50,14 @@ class Home extends React.PureComponent {
     } else {
       const { dates, is_latest_schedule } = ret.resp;
 
+      let startTime = "";
       let events = [];
       for (const dateSchedule of dates) {
         for (const e of dateSchedule.events) {
+          if (startTime === "") {
+            startTime = e.start_time;
+          }
+
           if (Date.parse(e.start_time) > Date.now()) {
             events.push(e);
           }
@@ -59,6 +65,7 @@ class Home extends React.PureComponent {
       }
 
       this.setState({
+        shitcampStartTime: startTime,
         scheduleEvents: events,
         isLatestSchedule: Boolean(is_latest_schedule),
       });
@@ -82,6 +89,7 @@ class Home extends React.PureComponent {
   render() {
     const { userNames } = this.props;
     const {
+      shitcampStartTime,
       selectedUserStream,
       liveStreams,
       scheduleEvents,
@@ -92,16 +100,16 @@ class Home extends React.PureComponent {
 
     return (
       <React.Fragment>
-        <Container className="data-alert">
-          <Alert variant="success">
-            <Countdown
-              date={SHITCAMP_START_TIME}
-              renderer={({ days, hours, minutes, seconds, completed }) => {
-                if (completed) {
-                  return <React.Fragment />;
-                }
+        <Countdown
+          date={shitcampStartTime}
+          renderer={({ days, hours, minutes, seconds, completed }) => {
+            if (completed) {
+              return <React.Fragment />;
+            }
 
-                return (
+            return (
+              <Container className="data-alert">
+                <Alert variant="success">
                   <div className="countdown-container">
                     Shitcamp starts in
                     <div>
@@ -111,11 +119,11 @@ class Home extends React.PureComponent {
                       <span className="countdown-val">{seconds}</span> seconds
                     </div>
                   </div>
-                );
-              }}
-            />
-          </Alert>
-        </Container>
+                </Alert>
+              </Container>
+            );
+          }}
+        />
 
         {selectedUserStream !== "" && (
           <StreamEmbed channel={selectedUserStream} id={"homepage-stream"} />

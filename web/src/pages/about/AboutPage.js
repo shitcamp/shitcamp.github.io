@@ -114,7 +114,7 @@ function AboutPage(props) {
 
       <h5>What are the teams for the events?</h5>
       <p>
-        The 4 team captains have not been announced yet. You can vote for a
+        The team captains have not been announced yet. You can vote for a
         streamer to be a team captain when you buy merch at the{" "}
         <a href="https://shitcamp.gg" target="_blank" rel="noreferrer">
           Official Shitcamp Merch Store

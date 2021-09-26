@@ -31,3 +31,5 @@ yarn-error.log*
 # deploy configs
 /deploy
 deploy-*.sh
+
+/logs
