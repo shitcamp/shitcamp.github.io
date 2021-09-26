@@ -121,12 +121,18 @@ function AboutPage(props) {
 
       <h5>What are the teams for the events?</h5>
       <p>
-        The team captains have not been announced yet. You can vote for a
-        streamer to be a team captain when you buy merch at the{" "}
+        The streamers that receive the most votes become team captains. You can
+        vote for a streamer to be a team captain when you place a merch order at
+        the{" "}
         <a href="https://shitcamp.gg" target="_blank" rel="noreferrer">
           Official Shitcamp Merch Store
         </a>
-        . Once Shitcamp starts, the team captains will pick their teams.
+        . Once Shitcamp starts, the team captains will pick their teams to
+        compete in various competitions during Shitcamp.
+      </p>
+      <p>
+        You can find more details about the teams in the{" "}
+        <a href={getRelUrl("/teams")}>Teams page</a>.
       </p>
 
       <h5>

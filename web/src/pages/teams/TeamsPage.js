@@ -46,6 +46,18 @@ class TeamsPage extends React.PureComponent {
                   <Card.Body>
                     <Card.Text>
                       <ul className="no-bullets">
+                        <li>
+                          <Card.Subtitle>
+                            <a
+                              href={`https://www.twitch.tv/${team.captain}`}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="link"
+                            >
+                              {team.captain} (captain)
+                            </a>
+                          </Card.Subtitle>
+                        </li>
                         {team.users.map((user) => (
                           <li>
                             <a
