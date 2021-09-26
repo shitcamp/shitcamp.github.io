@@ -21,6 +21,7 @@ var schedule = &Schedule{
 //"thumbnail_url":"https://static-cdn.jtvnw.net/previews-ttv/live_user_tonytigre-{width}x{height}.jpg",
 //"view_count": 102
 
+// InitScheduleData initialises the schedule data, and fetches the vod info using the twitch API.
 func InitScheduleData() {
 	newSchedule := &Schedule{}
 	err := json.Unmarshal([]byte(data.InitialScheduleStr), &newSchedule)

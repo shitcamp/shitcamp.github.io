@@ -281,6 +281,7 @@ const InitialScheduleStr = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+    "40018159803": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
     "40013385979": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"]
 }
 `
@@ -288,10 +289,11 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
-    "1158517135": ["JustaMinx", "QTCinderella"],
-    "1158517155": ["QTCinderella", "JustaMinx"],
-    "1158523015": ["QTCinderella", "JustaMinx"],
+    "1159913213": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
+    "1159263358": ["Sodapoppin", "Ludwig", "Nmplol"],
     "1158909839": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"],
-    "1159263358": ["Sodapoppin", "Ludwig", "Nmplol"]
+    "1158523015": ["QTCinderella", "JustaMinx"],
+    "1158517155": ["QTCinderella", "JustaMinx"],
+    "1158517135": ["JustaMinx", "QTCinderella"]
 }
 `
