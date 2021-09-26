@@ -1,15 +1,10 @@
 package server
 
 import (
-	"net/http"
-	"strings"
-	"time"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/middleware"
 
-	"github.com/shitcamp-unofficial/shitcamp/pkg/config"
-	"github.com/shitcamp-unofficial/shitcamp/pkg/models/middleware"
-
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+	"github.com/shitcamp-unofficial/shitcamp/pkg/config"
 	"github.com/shitcamp-unofficial/shitcamp/pkg/server/handlers"
 )
 
@@ -22,22 +17,7 @@ func newRouter(auth gin.Accounts, rateLimitCfg config.RateLimitConfig) *gin.Engi
 	router := gin.Default()
 
 	router.Use(
-		cors.New(cors.Config{
-			AllowMethods:     []string{http.MethodGet, http.MethodPost, http.MethodOptions},
-			AllowHeaders:     []string{"Authorization"},
-			AllowCredentials: true,
-			AllowOriginFunc: func(origin string) bool {
-				switch origin {
-				case "https://shitcamp.github.io",
-					"https://shitcamp-unofficial.github.io":
-					return true
-
-				default:
-					return strings.HasPrefix(origin, "http://localhost")
-				}
-			},
-			MaxAge: 12 * time.Hour,
-		}),
+		middleware.CORS(),
 		middleware.Auth(auth, "/healthcheck"),
 		middleware.RateLimit(rateLimitCfg.Tokens, rateLimitCfg.Interval),
 	)
@@ -46,7 +26,7 @@ func newRouter(auth gin.Accounts, rateLimitCfg config.RateLimitConfig) *gin.Engi
 
 	api := router.Group("/api")
 
-	// Routes
+	// API Routes
 	shitcampRouter := api.Group(gShitcamp)
 	{
 		shitcampRouter.GET("/get_streamer_names", handlers.GetStreamerNames)
