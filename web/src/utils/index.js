@@ -34,10 +34,10 @@ export function getElapsedDuration(t) {
 
   s = (diffMs / 1000).toFixed(0);
 
-  m = (s / 60).toFixed(0);
+  m = s >= 60 ? (s / 60).toFixed(0) : 0;
   s = (s % 60).toFixed(0);
 
-  h = (m / 60).toFixed(0);
+  h = m >= 60 ? (m / 60).toFixed(0) : 0;
   m = (m % 60).toFixed(0);
 
   if (h > 0) {

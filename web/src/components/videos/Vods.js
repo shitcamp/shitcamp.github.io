@@ -63,7 +63,7 @@ class Vods extends React.Component {
       userNames: nextUserNames,
     } = nextState;
 
-    if (currIsLoading != nextIsLoading) {
+    if (currIsLoading !== nextIsLoading) {
       return true;
     }
 
