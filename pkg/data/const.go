@@ -88,7 +88,7 @@ const InitialScheduleStr = `
                         "WillNeff",
                         "xQcOW"
                     ],
-                    "video_id": "",
+                    "video_id": "1160400711",
 					"thumbnail_url": "./opening-ceremony.png"
                 }
             ]
@@ -318,6 +318,24 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+    "1160400711": [
+        "Adeptthebest",
+        "AustinShow",
+        "Cyr",
+        "EsfandTV",
+        "HasanAbi",
+        "Jschlatt ",
+        "JustaMinx",
+        "Kaceytron",
+        "Ludwig",
+        "Malena",
+        "Nmplol",
+        "Myth",
+        "QTCinderella",
+        "Sodapoppin",
+        "WillNeff",
+        "xQcOW"
+    ],
     "1159913213": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
     "1159263358": ["Sodapoppin", "Ludwig", "Nmplol"],
     "1158909839": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"],
