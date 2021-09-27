@@ -3,6 +3,8 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 import debounce from "lodash.debounce";
 
+import LoadingSpinner from "components/spinner/Spinner";
+
 import { getClips } from "apis";
 import * as utils from "utils";
 
@@ -85,6 +87,7 @@ class Clips extends React.Component {
     const { userNames } = this.props;
 
     this.state = {
+      isLoading: true,
       selectedUserNames: userNames,
       videos: [],
     };
@@ -103,6 +106,10 @@ class Clips extends React.Component {
         videos: clips,
       });
     }
+
+    this.setState({
+      isLoading: false,
+    });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -113,11 +120,20 @@ class Clips extends React.Component {
       return true;
     }
 
-    const { selectedUserNames: currSelectedUserNames, videos: currClips } =
-      this.state;
-    const { selectedUserNames: nextSelectedUserNames, videos: nextClips } =
-      nextState;
+    const {
+      isLoading: currIsLoading,
+      selectedUserNames: currSelectedUserNames,
+      videos: currClips,
+    } = this.state;
+    const {
+      isLoading: nextIsLoading,
+      selectedUserNames: nextSelectedUserNames,
+      videos: nextClips,
+    } = nextState;
 
+    if (currIsLoading !== nextIsLoading) {
+      return true;
+    }
     if (currSelectedUserNames.length !== nextSelectedUserNames.length) {
       return true;
     }
@@ -180,7 +196,11 @@ class Clips extends React.Component {
 
   render() {
     const { userNames, onClipClick } = this.props;
-    const { videos, selectedUserNames } = this.state;
+    const { isLoading, videos, selectedUserNames } = this.state;
+
+    if (isLoading) {
+      return <LoadingSpinner />;
+    }
 
     return (
       <React.Fragment>

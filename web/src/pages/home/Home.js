@@ -13,6 +13,7 @@ import ScheduleAlert from "components/event/ScheduleAlert";
 import { getLiveStreams, getSchedule } from "apis";
 
 import "pages/home/Home.css";
+import LoadingSpinner from "components/spinner/Spinner";
 
 const SHITCAMP_START_TIME = "2021-09-26T19:00:00.00-07:00";
 
@@ -21,6 +22,8 @@ class Home extends React.PureComponent {
     super(props);
 
     this.state = {
+      isLiveStreamLoading: true,
+      isScheduleLoading: true,
       selectedUserStream: "",
       shitcampStartTime: SHITCAMP_START_TIME,
       scheduleLastUpdated: "",
@@ -44,6 +47,10 @@ class Home extends React.PureComponent {
         selectedUserStream: streams.length === 0 ? "" : streams[0].user_name,
       });
     }
+
+    this.setState({
+      isLiveStreamLoading: false,
+    });
 
     ret = await getSchedule();
     if (ret.error != null) {
@@ -72,6 +79,10 @@ class Home extends React.PureComponent {
         isLatestSchedule: Boolean(is_latest_schedule),
       });
     }
+
+    this.setState({
+      isScheduleLoading: false,
+    });
   }
 
   handleStreamClick = (e, stream) => {
@@ -91,6 +102,8 @@ class Home extends React.PureComponent {
   render() {
     const { userNames } = this.props;
     const {
+      isLiveStreamLoading,
+      isScheduleLoading,
       shitcampStartTime,
       selectedUserStream,
       liveStreams,
@@ -133,14 +146,20 @@ class Home extends React.PureComponent {
         )}
         <Container className="home">
           <AccordianWrapper title="Live Now">
-            <Streams
-              streams={liveStreams}
-              handleStreamClick={this.handleStreamClick}
-            />
+            {isLiveStreamLoading ? (
+              <LoadingSpinner />
+            ) : (
+              <Streams
+                streams={liveStreams}
+                handleStreamClick={this.handleStreamClick}
+              />
+            )}
           </AccordianWrapper>
 
           <AccordianWrapper title="Upcoming events">
-            {Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
+            {isScheduleLoading ? (
+              <LoadingSpinner />
+            ) : Array.isArray(scheduleEvents) && scheduleEvents.length > 0 ? (
               <React.Fragment>
                 <ScheduleAlert
                   isLatestSchedule={isLatestSchedule}

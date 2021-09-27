@@ -3,6 +3,7 @@ import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
 import debounce from "lodash.debounce";
 
 import Videos from "components/videos/Videos";
+import LoadingSpinner from "components/spinner/Spinner";
 
 import { getVods } from "apis";
 
@@ -17,6 +18,7 @@ class Vods extends React.Component {
     const { userNames } = this.props;
 
     this.state = {
+      isLoading: true,
       userNames: userNames,
       selectedUserNames: userNames,
       pastStreams: [],
@@ -34,6 +36,10 @@ class Vods extends React.Component {
         pastStreams: ret.resp.vods,
       });
     }
+
+    this.setState({
+      isLoading: false,
+    });
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -45,15 +51,21 @@ class Vods extends React.Component {
     }
 
     const {
+      isLoading: currIsLoading,
       selectedUserNames: currSelectedUserNames,
       pastStreams: currStreams,
       userNames: currUserNames,
     } = this.state;
     const {
+      isLoading: nextIsLoading,
       selectedUserNames: nextSelectedUserNames,
       pastStreams: nextStreams,
       userNames: nextUserNames,
     } = nextState;
+
+    if (currIsLoading != nextIsLoading) {
+      return true;
+    }
 
     if (currUserNames.length !== nextUserNames.length) {
       return true;
@@ -120,28 +132,34 @@ class Vods extends React.Component {
   };
 
   render() {
-    const { userNames, pastStreams, selectedUserNames } = this.state;
+    const { isLoading, userNames, pastStreams, selectedUserNames } = this.state;
 
     return (
       <React.Fragment>
-        {userNames.length !== 0 && (
-          <DropdownMultiselect
-            options={userNames}
-            selected={selectedUserNames}
-            placeholder="Filter by streamer"
-            placeholderMultipleChecked="Filter by streamer"
-            handleOnChange={debounce((selected) => {
-              this.handleSelectionChange(selected);
-            }, DEBOUNCE_DELAY)}
-            name="streamers"
-            className="dropdown"
-          />
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <React.Fragment>
+            {userNames.length !== 0 && (
+              <DropdownMultiselect
+                options={userNames}
+                selected={selectedUserNames}
+                placeholder="Filter by streamer"
+                placeholderMultipleChecked="Filter by streamer"
+                handleOnChange={debounce((selected) => {
+                  this.handleSelectionChange(selected);
+                }, DEBOUNCE_DELAY)}
+                name="streamers"
+                className="dropdown"
+              />
+            )}
+            <Videos
+              videos={pastStreams}
+              emptyErrMsg="No past live streams found"
+              onVideoClick={() => {}}
+            />
+          </React.Fragment>
         )}
-        <Videos
-          videos={pastStreams}
-          emptyErrMsg="No past live streams found"
-          onVideoClick={() => {}}
-        />
       </React.Fragment>
     );
   }

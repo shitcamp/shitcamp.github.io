@@ -4,12 +4,14 @@ import { Card, Container, Col, Row } from "react-bootstrap";
 import { getTeamsInfo } from "apis";
 
 import "pages/teams/TeamsPage.css";
+import LoadingSpinner from "components/spinner/Spinner";
 
 class TeamsPage extends React.PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
+      isLoading: true,
       teams: [],
     };
   }
@@ -25,18 +27,23 @@ class TeamsPage extends React.PureComponent {
         teams: teams,
       });
     }
+
+    this.setState({
+      isLoading: false,
+    });
   }
 
   render() {
-    const { teams } = this.state;
+    const { isLoading, teams } = this.state;
 
     return (
       <Container className="teams-page">
         <h3>Teams</h3>
 
-        {teams.length === 0 ? (
-          // <h5>Teams are not available</h5>
-          <p>The teams have not been chosen yet.</p>
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : teams.length === 0 ? (
+          <h5>Teams are not available</h5>
         ) : (
           <Row className="g-4">
             {teams.map((team) => (
