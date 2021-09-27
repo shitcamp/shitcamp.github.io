@@ -60,6 +60,10 @@ func GetSchedule() (*Schedule, error) {
 }
 
 func SetSchedule(s *Schedule) error {
+	if !s.LastUpdated.After(schedule.LastUpdated) {
+		return fmt.Errorf("last_update_time should be later than the current one: %v", schedule.LastUpdated)
+	}
+
 	err := updateScheduleData(s)
 	if err != nil {
 		return err

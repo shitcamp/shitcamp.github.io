@@ -104,7 +104,7 @@ const InitialScheduleStr = `
                         "Nmplol",
                         "Malena"
                     ],
-                    "video_id": "",
+                    "video_id": "1160772412",
 					"thumbnail_url": "./pancake-breakfast.png"
                 },
                 {
@@ -119,7 +119,7 @@ const InitialScheduleStr = `
 					"thumbnail_url": "./chopped-competition.png"
                 },
                 {
-                    "title": "Mogul Money (may be swapped with an event from the next day)",
+                    "title": "Mogul Money (will probably be swapped with an event from the next day)",
                     "start_time": "2021-09-27T12:00:00.00-07:00",
                     "user_name": "Ludwig",
                     "featured_users": [
@@ -320,6 +320,11 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+    "40022423755": [
+        "Nmplol",
+        "EsfandTV",
+        "Myth"
+    ],
     "40020209259": [
         "Adeptthebest",
         "AustinShow",
@@ -347,6 +352,11 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+    "1160772412": [
+        "Nmplol",
+        "EsfandTV",
+        "Myth"
+    ],
     "1160549541": [
         "EsfandTV",
         "AustinShow"
