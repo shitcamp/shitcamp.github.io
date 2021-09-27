@@ -43,6 +43,11 @@ class TeamsPage extends React.PureComponent {
               <Col xs={12} sm={6} lg={4}>
                 <Card>
                   <Card.Header as="h5">{team.name}</Card.Header>
+                  <Card.Img
+                    variant="top"
+                    alt="thumbnail"
+                    src={team.thumbnail_url}
+                  />
                   <Card.Body>
                     <Card.Text>
                       <ul className="no-bullets">

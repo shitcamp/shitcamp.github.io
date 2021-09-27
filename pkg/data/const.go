@@ -59,7 +59,7 @@ var AllStreamers = map[string]*User{
 
 const InitialScheduleStr = `
 {
-    "is_latest_schedule": true,
+    "is_latest_schedule": false,
 	"last_update_time": "2021-09-26T13:45:00.00-07:00",
     "dates": [
         {
@@ -69,7 +69,7 @@ const InitialScheduleStr = `
                     "title": "Opening Ceremony",
                     "start_time": "2021-09-26T19:00:00.00-07:00",
                     "user_name": "xQcOW",
-                    "description": "Opening night with trivia and mafia games",
+                    "description": "Opening night with team selection, and games like trivia, roulette, hide 'n seek and mafia",
                     "featured_users": [
                         "Adeptthebest",
                         "AustinShow",
@@ -119,7 +119,7 @@ const InitialScheduleStr = `
 					"thumbnail_url": "./chopped-competition.png"
                 },
                 {
-                    "title": "Mogul Money",
+                    "title": "Mogul Money (may be swapped with an event from the next day)",
                     "start_time": "2021-09-27T12:00:00.00-07:00",
                     "user_name": "Ludwig",
                     "featured_users": [
@@ -284,8 +284,36 @@ const InitialScheduleStr = `
 
 const InitialTeamsInfo = `
 {
-    "teams": [
-    ]
+	"teams": [
+		{
+			"name": "Team America",
+			"captain": "HasanAbi",
+			"users": [
+				"WillNeff",
+				"Myth",
+				"Malena",
+				"EsfandTV",
+				"AustinShow",
+				"AdeptTheBest",
+				"Cyr"
+			],
+			"thumbnail_url": "./team-america.png"
+		},
+		{
+			"name": "Team Cummunism",
+			"captain": "Ludwig",
+			"users": [
+				"Jschlatt",
+				"Nmplol",
+				"QTCinderella",
+				"Sodapoppin",
+				"JustaMinx",
+				"Kaceytron",
+				"xQcOW"
+			],
+			"thumbnail_url": "./team-cummunism.png"
+		}
+	]
 }
 `
 
@@ -308,7 +336,8 @@ const InitialStreamIDFeaturedMapStr = `
         "QTCinderella",
         "Sodapoppin",
         "WillNeff",
-        "xQcOW"
+        "xQcOW",
+        "PhinTTV"
     ],
     "40018159803": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
     "40013385979": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"]
@@ -318,6 +347,10 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+    "1160549541": [
+        "EsfandTV",
+        "AustinShow"
+    ],
     "1160400711": [
         "Adeptthebest",
         "AustinShow",
@@ -334,7 +367,8 @@ const InitialVodIDFeaturedMapStr = `
         "QTCinderella",
         "Sodapoppin",
         "WillNeff",
-        "xQcOW"
+        "xQcOW",
+        "PhinTTV"
     ],
     "1159913213": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
     "1159263358": ["Sodapoppin", "Ludwig", "Nmplol"],
