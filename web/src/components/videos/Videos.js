@@ -60,7 +60,7 @@ function VideoCard(props) {
         </Card.Title>
 
         {Array.isArray(featured_users) && featured_users.length > 0 ? (
-          <Card.Text className="truncate">
+          <Card.Text>
             <small>
               <span className="description">Featuring</span>:{" "}
               {featured_users.map((user, i, users) => (

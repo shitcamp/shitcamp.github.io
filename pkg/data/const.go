@@ -292,6 +292,24 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+    "40020209259": [
+        "Adeptthebest",
+        "AustinShow",
+        "Cyr",
+        "EsfandTV",
+        "HasanAbi",
+        "Jschlatt ",
+        "JustaMinx",
+        "Kaceytron",
+        "Ludwig",
+        "Malena",
+        "Nmplol",
+        "Myth",
+        "QTCinderella",
+        "Sodapoppin",
+        "WillNeff",
+        "xQcOW"
+    ],
     "40018159803": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
     "40013385979": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"]
 }
