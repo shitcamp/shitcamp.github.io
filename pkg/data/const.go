@@ -59,8 +59,6 @@ var AllStreamers = map[string]*User{
 
 const InitialScheduleStr = `
 {
-    "is_latest_schedule": false,
-	"last_update_time": "2021-09-26T13:45:00.00-07:00",
     "dates": [
         {
             "date": "2021-09-26",
@@ -98,7 +96,7 @@ const InitialScheduleStr = `
             "events": [
                 {
                     "title": "Pancake breakfast",
-                    "start_time": "2021-09-27T08:00:00.00-07:00",
+                    "start_time": "2021-09-27T09:00:00.00-07:00",
                     "user_name": "Nmplol",
                     "featured_users": [
                         "Nmplol",
@@ -113,30 +111,23 @@ const InitialScheduleStr = `
                     "user_name": "QTCinderella",
                     "featured_users": [
                         "QTCinderella",
-                        "JustaMinx"
+                        "Ludwig",
+                        "xQcOW",
+                        "JustaMinx",
+                        "Cyr",
+                        "Sodapoppin",
+                        "Adeptthebest",
+                        "EsfandTV"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./chopped-competition.png"
-                },
-                {
-                    "title": "Mogul Money (will probably be swapped with an event from the next day)",
-                    "start_time": "2021-09-27T12:00:00.00-07:00",
-                    "user_name": "Ludwig",
-                    "featured_users": [
-                        "Ludwig",
-                        "Sodapoppin",
-                        "xQcOW"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./mogul-money.jpg"
                 },
                 {
                     "title": "IRL Stream- Scavenger Hunt",
                     "start_time": "2021-09-27T17:00:00.00-07:00",
                     "user_name": "HasanAbi",
                     "featured_users": [
-                        "HasanAbi",
-                        "QTCinderella"
+                        "HasanAbi"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./scavenger-hunt.jpg"
@@ -146,7 +137,8 @@ const InitialScheduleStr = `
                     "start_time": "2021-09-27T17:00:00.00-07:00",
                     "user_name": "xQcOW",
                     "featured_users": [
-                        "xQcOW"
+                        "xQcOW",
+                        "QTCinderella"
                     ],
                     "video_id": "",
 					"thumbnail_url": "./scavenger-hunt.jpg"
@@ -185,6 +177,18 @@ const InitialScheduleStr = `
                     ],
                     "video_id": "",
 					"thumbnail_url": "./hike.png"
+                },
+                {
+                    "title": "Mogul Money (time unconfirmed)",
+                    "start_time": "2021-09-28T12:00:00.00-07:00",
+                    "user_name": "Ludwig",
+                    "featured_users": [
+                        "Ludwig",
+                        "Sodapoppin",
+                        "xQcOW"
+                    ],
+                    "video_id": "",
+					"thumbnail_url": "./mogul-money.jpg"
                 },
                 {
                     "title": "IRL Stream- Gun range",
@@ -278,7 +282,9 @@ const InitialScheduleStr = `
                 }
             ]
         }
-    ]
+    ],
+    "is_latest_schedule": true,
+	"last_update_time": "2021-09-27T11:05:00.00-07:00"
 }
 `
 
@@ -317,11 +323,22 @@ const InitialTeamsInfo = `
 }
 `
 
+// TODO: struct with stream_id, video_id, featured_streamers to reduce duplication
+
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+    "40022962763": [
+        "Kaceytron",
+        "JustaMinx",
+        "AustinShow",
+        "Jschlatt",
+        "QTCinderella"
+    ],
     "40022423755": [
         "Nmplol",
+        "Malena",
+        "AustinShow",
         "EsfandTV",
         "Myth"
     ],
@@ -349,13 +366,24 @@ const InitialStreamIDFeaturedMapStr = `
 }
 `
 
+// 1160772412: QTCinderella, JustaMinx, Ludwig, Kaceytron, PhinTTV
+
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+    "1160901842": [
+        "Kaceytron",
+        "JustaMinx",
+        "AustinShow",
+        "Jschlatt",
+        "QTCinderella"
+    ],
     "1160772412": [
         "Nmplol",
         "EsfandTV",
-        "Myth"
+        "Myth",
+        "AustinShow",
+        "Malena"
     ],
     "1160549541": [
         "EsfandTV",
