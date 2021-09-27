@@ -86,7 +86,36 @@ const InitialScheduleStr = `
                         "WillNeff",
                         "xQcOW"
                     ],
-                    "video_id": "1160400711",
+                    "video_id": "",
+					"vod": {
+						"id": "1160400711",
+						"user_name": "xQcOW",
+						"title": "Sh*t Camp 2021 Opening Ceremony",
+						"created_at": "2021-09-27T01:56:02Z",
+						"url": "https://www.youtube.com/watch?v=qA6SVvB3Ff8&ab_channel=QTCinderellaVODs",
+						"thumbnail_url": "https://i.ytimg.com/vi/qA6SVvB3Ff8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCKTISmtPNiAP4JfctRiZudcQalwQ",
+						"view_count": 1518951,
+						"featured_users": [
+							"Adeptthebest",
+							"AustinShow",
+							"Cyr",
+							"EsfandTV",
+							"HasanAbi",
+							"Jschlatt ",
+							"JustaMinx",
+							"Kaceytron",
+							"Ludwig",
+							"Malena",
+							"Nmplol",
+							"Myth",
+							"QTCinderella",
+							"Sodapoppin",
+							"WillNeff",
+							"xQcOW",
+							"PhinTTV"
+						],
+						"duration": "3h49m56s"
+					},
 					"thumbnail_url": "./opening-ceremony.png"
                 }
             ]
@@ -119,7 +148,7 @@ const InitialScheduleStr = `
                         "Adeptthebest",
                         "EsfandTV"
                     ],
-                    "video_id": "",
+                    "video_id": "1160962922",
 					"thumbnail_url": "./chopped-competition.png"
                 },
                 {
@@ -284,7 +313,7 @@ const InitialScheduleStr = `
         }
     ],
     "is_latest_schedule": true,
-	"last_update_time": "2021-09-27T11:05:00.00-07:00"
+	"last_update_time": "2021-09-27T12:45:00.00-07:00"
 }
 `
 
@@ -328,11 +357,26 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+    "43862301165": [
+        "QTCinderella",
+        "Ludwig",
+        "xQcOW",
+        "WillNeff",
+        "Cyr",
+        "AustinShow",
+        "EsfandTV",
+        "Sodapoppin",
+        "JustaMinx",
+        "Adeptthebest"
+    ]
     "40022962763": [
         "Kaceytron",
         "JustaMinx",
         "AustinShow",
         "Jschlatt",
+        "Cyr",
+        "Myth",
+        "Malena",
         "QTCinderella"
     ],
     "40022423755": [
@@ -367,16 +411,32 @@ const InitialStreamIDFeaturedMapStr = `
 `
 
 // 1160772412: QTCinderella, JustaMinx, Ludwig, Kaceytron, PhinTTV
+// "1160901842": ["Kaceytron", "JustaMinx", "AustinShow", "Jschlatt", "Cyr", "Myth", "Malena", "QTCinderella"]
+// "1160962922": Nmplol, Jschlatt
 
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+    "1160962922": [
+        "QTCinderella",
+        "Ludwig",
+        "xQcOW",
+        "WillNeff",
+        "Cyr",
+        "AustinShow",
+        "EsfandTV",
+        "Sodapoppin",
+        "JustaMinx",
+        "Adeptthebest",
+        "PhinTTV"
+    ]
     "1160901842": [
         "Kaceytron",
         "JustaMinx",
         "AustinShow",
         "Jschlatt",
-        "QTCinderella"
+        "Myth",
+        "Malena"
     ],
     "1160772412": [
         "Nmplol",

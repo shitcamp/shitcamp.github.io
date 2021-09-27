@@ -170,8 +170,6 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 	}
 
 	params := url.Values{}
-	params.Add("sort", "time")
-	params.Add("period", "week")
 	for _, user := range userNames {
 		params.Add("user_login", user)
 	}
@@ -208,7 +206,7 @@ func GetStreams(userNames []string) ([]*LiveStream, error) {
 		s2 := liveStreams[j]
 
 		// Sort so that streams featuring Shitcamp users appear first
-		return len(s1.FeaturedStreamers) >= len(s2.FeaturedStreamers)
+		return len(s1.FeaturedStreamers) > len(s2.FeaturedStreamers)
 	})
 
 	cache.Set(cacheKey, liveStreams, streamsCacheExpiry)
