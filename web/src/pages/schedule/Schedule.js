@@ -5,6 +5,7 @@ import StreamEmbed from "components/twitch/StreamEmbed";
 import Events from "components/event/Events";
 import ScheduleAlert from "components/event/ScheduleAlert";
 import AccordianWrapper from "components/accordian/AccordianWrapper";
+import LoadingSpinner from "components/spinner/Spinner";
 
 import { getSchedule } from "apis";
 import { pad } from "utils";
@@ -26,6 +27,7 @@ class Schedule extends React.PureComponent {
     super(props);
 
     this.state = {
+      isLoading: true,
       scheduleDates: [],
       isLatestSchedule: true,
       lastUpdated: "",
@@ -70,6 +72,10 @@ class Schedule extends React.PureComponent {
         lastUpdated: last_update_time,
       });
     }
+
+    this.setState({
+      isLoading: false,
+    });
   }
 
   handleVideoClick = (e, video_id) => {
@@ -81,8 +87,13 @@ class Schedule extends React.PureComponent {
   };
 
   render() {
-    const { selectedVideoID, scheduleDates, isLatestSchedule, lastUpdated } =
-      this.state;
+    const {
+      isLoading,
+      selectedVideoID,
+      scheduleDates,
+      isLatestSchedule,
+      lastUpdated,
+    } = this.state;
 
     const timeZone = new Date().toTimeString().split(/ (.+)/)[1];
 
@@ -94,8 +105,9 @@ class Schedule extends React.PureComponent {
 
         <Container className="schedule-page">
           <h3>Schedule</h3>
-
-          {Array.isArray(scheduleDates) && scheduleDates.length > 0 ? (
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : Array.isArray(scheduleDates) && scheduleDates.length > 0 ? (
             <React.Fragment>
               <ScheduleAlert
                 isLatestSchedule={isLatestSchedule}
