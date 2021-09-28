@@ -1,6 +1,7 @@
 package log
 
 import (
+	"io"
 	"os"
 	"path/filepath"
 
@@ -25,12 +26,14 @@ func Init(logFile string) {
 	}
 	lumberjackLogger := &lumberjack.Logger{
 		Filename:   logPath,
-		MaxSize:    1, // MB
+		MaxSize:    50, // MB
 		MaxBackups: 3,
 		MaxAge:     30, // days
 		Compress:   false,
 	}
-	log.SetOutput(lumberjackLogger)
+
+	mw := io.MultiWriter(os.Stdout, lumberjackLogger)
+	log.SetOutput(mw)
 }
 
 func SetDebug(debug bool) {
