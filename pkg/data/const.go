@@ -195,29 +195,18 @@ const InitialScheduleStr = `
              {
                 "title":"French toast breakfast",
                 "start_time":"2021-09-28T08:00:00-07:00",
-                "description":"",
+                "description":"EsfandTV and QTCinderella contribute equally towards feeding the campers on a breakfast stream that definitely started on time YEP.",
                 "thumbnail_url":"./french-toast-breakfast.png",
                 "user_name":"EsfandTV",
                 "featured_users":[
                    "EsfandTV"
                 ],
-                "video_id":""
-             },
-             {
-                "title":"IRL stream- Morning Hike",
-                "start_time":"2021-09-28T09:00:00-07:00",
-                "description":"",
-                "thumbnail_url":"./hike.png",
-                "user_name":"Myth",
-                "featured_users":[
-                   "Myth"
-                ],
-                "video_id":""
+                "video_id":"1161751195"
              },
              {
                 "title":"IRL Stream- Gun range",
                 "start_time":"2021-09-28T11:30:00-07:00",
-                "description":"",
+                "description":"Noobs with guns try to not shoot the cameraman. The teams compete in a shoot-off.",
                 "thumbnail_url":"./gun-range.jpg",
                 "user_name":"HasanAbi",
                 "featured_users":[
@@ -226,11 +215,11 @@ const InitialScheduleStr = `
                    "Ludwig",
                    "Nmplol"
                 ],
-                "video_id":""
+                "video_id":"1161828036"
              },
              {
-                "title":"Mogul Money (time unconfirmed)",
-                "start_time":"2021-09-28T15:00:00-07:00",
+                "title":"Mogul Money",
+                "start_time":"2021-09-28T17:00:00-07:00",
                 "description":"",
                 "thumbnail_url":"./mogul-money.jpg",
                 "user_name":"Ludwig",
@@ -239,6 +228,14 @@ const InitialScheduleStr = `
                    "Sodapoppin",
                    "xQcOW"
                 ],
+                "video_id":""
+             },
+             {
+                "title":"Fashion show / Workout stream / Something else (event and time unconfirmed)",
+                "start_time":"2021-09-28T17:00:00-07:00",
+                "description":"",
+                "thumbnail_url":"./secret-event.jpg",
+                "user_name":"Myth",
                 "video_id":""
              },
              {
@@ -300,7 +297,7 @@ const InitialScheduleStr = `
              {
                 "title":"Closing Ceremony",
                 "start_time":"2021-09-29T19:00:00-07:00",
-                "description":"",
+                "description":"Family fued",
                 "thumbnail_url":"./closing-ceremony.jpg",
                 "user_name":"QTCinderella",
                 "featured_users":[
@@ -327,7 +324,7 @@ const InitialScheduleStr = `
        }
     ],
     "is_latest_schedule":true,
-    "last_update_time":"2021-09-27T20:00:00.2-07:00"
+    "last_update_time":"2021-09-28T15:00:00.2-07:00"
  }
 `
 
@@ -372,19 +369,19 @@ const InitialTeamsInfo = `
                "contest_name": "Hide 'n seek",
                "points": 100,
                "description": "Malena was the last one to be found.",
-               "vod_url": ""
+               "vod_url": "https://www.youtube.com/watch?v=qA6SVvB3Ff8&ab_channel=QTCinderellaVODs"
             },
             {
                "contest_name": "Chopped",
                "points": 50,
                "description": "WillNeff came in 2nd place.",
-               "vod_url": ""
+               "vod_url": "https://www.twitch.tv/videos/1160962922"
             },
             {
                "contest_name": "Boat race",
                "points": 120,
                "description": "",
-               "vod_url": ""
+               "vod_url": "https://www.twitch.tv/videos/1161394966"
             }
          ]
       },
@@ -396,19 +393,19 @@ const InitialTeamsInfo = `
                "contest_name": "Trivia",
                "points": 100,
                "description": "",
-               "vod_url": ""
+               "vod_url": "https://www.youtube.com/watch?v=qA6SVvB3Ff8&ab_channel=QTCinderellaVODs"
             },
             {
                "contest_name": "Chopped",
                "points": 100,
                "description": "xQcOW won the cooking contest.",
-               "vod_url": ""
+               "vod_url": "https://www.twitch.tv/videos/1160962922"
             },
             {
                "contest_name": "Scavenger Hunt",
                "points": 200,
                "description": "",
-               "vod_url": ""
+               "vod_url": "https://www.twitch.tv/videos/1161192739"
             }
          ]
       }
@@ -421,6 +418,10 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+   "43875063085": [
+      "Kaceytron",
+      "JustaMinx"
+   ],
    "43868406781":[
       "WillNeff",
       "xQcOW",
@@ -529,6 +530,37 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+   "1161967843": [
+      "Kaceytron",
+      "JustaMinx",
+      "QTCinderella"
+   ],
+   "1161931874": [
+      "Kaceytron",
+      "JustaMinx"
+   ],
+   "1161828036": [
+      "HasanAbi",
+      "xQcOW",
+      "Ludwig",
+      "Sodapoppin",
+      "EsfandTV",
+      "Myth",
+      "Cyr",
+      "WillNeff",
+      "Adeptthebest",
+      "AustinShow",
+      "PhinTTV"
+   ],
+   "1161751195": [
+      "EsfandTV",
+      "QTCinderella",
+      "AustinShow",
+      "Ludwig",
+      "Myth",
+      "WillNeff",
+      "PhinTTV"
+   ],
    "1161394966":[
       "WillNeff",
       "xQcOW",
