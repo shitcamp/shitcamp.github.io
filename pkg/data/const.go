@@ -59,262 +59,245 @@ var AllStreamers = map[string]*User{
 
 const InitialScheduleStr = `
 {
-    "dates": [
-        {
-            "date": "2021-09-26",
-            "events": [
-                {
-                    "title": "Opening Ceremony",
-                    "start_time": "2021-09-26T19:00:00.00-07:00",
-                    "user_name": "xQcOW",
-                    "description": "Opening night with team selection, and games like trivia, roulette, hide 'n seek and mafia",
-                    "featured_users": [
-                        "Adeptthebest",
-                        "AustinShow",
-                        "Cyr",
-                        "EsfandTV",
-                        "HasanAbi",
-                        "Jschlatt ",
-                        "JustaMinx",
-                        "Kaceytron",
-                        "Ludwig",
-                        "Malena",
-                        "Nmplol",
-                        "Myth",
-                        "QTCinderella",
-                        "Sodapoppin",
-                        "WillNeff",
-                        "xQcOW"
-                    ],
-                    "video_id": "",
-					"vod": {
-						"id": "1160400711",
-						"user_name": "xQcOW",
-						"title": "Sh*t Camp 2021 Opening Ceremony",
-						"created_at": "2021-09-27T01:56:02Z",
-						"url": "https://www.youtube.com/watch?v=qA6SVvB3Ff8&ab_channel=QTCinderellaVODs",
-						"thumbnail_url": "https://i.ytimg.com/vi/qA6SVvB3Ff8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCKTISmtPNiAP4JfctRiZudcQalwQ",
-						"view_count": 1518951,
-						"featured_users": [
-							"Adeptthebest",
-							"AustinShow",
-							"Cyr",
-							"EsfandTV",
-							"HasanAbi",
-							"Jschlatt ",
-							"JustaMinx",
-							"Kaceytron",
-							"Ludwig",
-							"Malena",
-							"Nmplol",
-							"Myth",
-							"QTCinderella",
-							"Sodapoppin",
-							"WillNeff",
-							"xQcOW",
-							"PhinTTV"
-						],
-						"duration": "3h49m56s"
-					},
-					"thumbnail_url": "./opening-ceremony.png"
-                }
-            ]
-        },
-        {
-            "date": "2021-09-27",
-            "events": [
-                {
-                    "title": "Pancake breakfast",
-                    "start_time": "2021-09-27T09:00:00.00-07:00",
-                    "user_name": "Nmplol",
-                    "featured_users": [
-                        "Nmplol",
-                        "Malena"
-                    ],
-                    "video_id": "1160772412",
-					"thumbnail_url": "./pancake-breakfast.png"
-                },
-                {
-                    "title": "Chopped competition",
-                    "start_time": "2021-09-27T12:00:00.00-07:00",
-                    "user_name": "QTCinderella",
-                    "featured_users": [
-                        "QTCinderella",
-                        "Ludwig",
-                        "xQcOW",
-                        "JustaMinx",
-                        "Cyr",
-                        "Sodapoppin",
-                        "Adeptthebest",
-                        "EsfandTV"
-                    ],
-                    "video_id": "1160962922",
-					"thumbnail_url": "./chopped-competition.png"
-                },
-                {
-                    "title": "IRL Stream- Scavenger Hunt",
-                    "start_time": "2021-09-27T17:00:00.00-07:00",
-                    "user_name": "HasanAbi",
-                    "featured_users": [
-                        "HasanAbi"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./scavenger-hunt.jpg"
-                },
-                {
-                    "title": "IRL Stream- Scavenger Hunt",
-                    "start_time": "2021-09-27T17:00:00.00-07:00",
-                    "user_name": "xQcOW",
-                    "featured_users": [
-                        "xQcOW",
-                        "QTCinderella"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./scavenger-hunt.jpg"
-                },
-                {
-                    "title": "Ghost stories and Smores",
-                    "start_time": "2021-09-27T20:30:00.00-07:00",
-                    "user_name": "WillNeff",
-                    "featured_users": [
-                        "WillNeff"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./ghost-stories.png"
-                }
-            ]
-        },
-        {
-            "date": "2021-09-28",
-            "events": [
-                {
-                    "title": "French toast breakfast",
-                    "start_time": "2021-09-28T08:00:00.00-07:00",
-                    "user_name": "EsfandTV",
-                    "featured_users": [
-                        "EsfandTV"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./french-toast-breakfast.png"
-                },
-                {
-                    "title": "IRL stream- Morning Hike",
-                    "start_time": "2021-09-28T09:00:00.00-07:00",
-                    "user_name": "Myth",
-                    "featured_users": [
-                        "Myth"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./hike.png"
-                },
-                {
-                    "title": "Mogul Money (time unconfirmed)",
-                    "start_time": "2021-09-28T12:00:00.00-07:00",
-                    "user_name": "Ludwig",
-                    "featured_users": [
-                        "Ludwig",
-                        "Sodapoppin",
-                        "xQcOW"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./mogul-money.jpg"
-                },
-                {
-                    "title": "IRL Stream- Gun range",
-                    "start_time": "2021-09-28T13:00:00.00-07:00",
-                    "user_name": "HasanAbi",
-                    "featured_users": [
-                        "HasanAbi", "xQcOW"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./gun-range.jpg"
-                },
-                {
-                    "title": "PJ Party",
-                    "start_time": "2021-09-28T19:00:00.00-07:00",
-                    "user_name": "Sodapoppin",
-                    "description": "Face masks, Nail painting, Never have I ever, Who's most likely to.",
-                    "featured_users": [
-                        "Sodapoppin",
-                        "QTCinderella"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./pj-party.jpg"
-                }
-            ]
-        },
-        {
-            "date": "2021-09-29",
-            "events": [
-                {
-                    "title": "Grand Slam breakfast",
-                    "start_time": "2021-09-29T08:00:00.00-07:00",
-                    "user_name": "Nmplol",
-                    "featured_users": [
-                        "Nmplol",
-                        "Malena"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./grand-slam-breakfast.png"
-                },
-                {
-                    "title": "Kickball tournament ft. 100 Thieves, OfflineTV",
-                    "start_time": "2021-09-29T11:00:00.00-07:00",
-                    "user_name": "Ludwig",
-                    "description": "32 streamers. Kickball. The Most Ambitious Crossover Event in History.",
-                    "featured_users": [
-                        "Adeptthebest",
-                        "AustinShow",
-                        "ConnorEatsPants",
-                        "Cyr",
-                        "EsfandTV",
-                        "HasanAbi",
-                        "Jschlatt ",
-                        "JustaMinx",
-                        "Kaceytron",
-                        "Ludwig",
-                        "Malena",
-                        "Nmplol",
-                        "Myth",
-                        "QTCinderella",
-                        "Sodapoppin",
-                        "WillNeff",
-                        "xQcOW"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./kickball-tournament.jfif"
-                },
-                {
-                    "title": "Closing Ceremony",
-                    "start_time": "2021-09-29T19:00:00.00-07:00",
-                    "user_name": "QTCinderella",
-                    "featured_users": [
-                        "Adeptthebest",
-                        "AustinShow",
-                        "Cyr",
-                        "EsfandTV",
-                        "HasanAbi",
-                        "Jschlatt ",
-                        "JustaMinx",
-                        "Kaceytron",
-                        "Ludwig",
-                        "Malena",
-                        "Nmplol",
-                        "Myth",
-                        "QTCinderella",
-                        "Sodapoppin",
-                        "WillNeff",
-                        "xQcOW"
-                    ],
-                    "video_id": "",
-					"thumbnail_url": "./closing-ceremony.jpg"
-                }
-            ]
-        }
+    "dates":[
+       {
+          "date":"2021-09-26",
+          "events":[
+             {
+                "title":"Opening Ceremony",
+                "start_time":"2021-09-26T19:00:00-07:00",
+                "description":"Opening night with team selection, and games like trivia, roulette, hide 'n seek and mafia",
+                "thumbnail_url":"./opening-ceremony.png",
+                "user_name":"xQcOW",
+                "featured_users":[
+                   "Adeptthebest",
+                   "AustinShow",
+                   "Cyr",
+                   "EsfandTV",
+                   "HasanAbi",
+                   "Jschlatt ",
+                   "JustaMinx",
+                   "Kaceytron",
+                   "Ludwig",
+                   "Malena",
+                   "Nmplol",
+                   "Myth",
+                   "QTCinderella",
+                   "Sodapoppin",
+                   "WillNeff",
+                   "xQcOW"
+                ],
+                "video_id":""
+             }
+          ]
+       },
+       {
+          "date":"2021-09-27",
+          "events":[
+             {
+                "title":"Pancake breakfast",
+                "start_time":"2021-09-27T09:00:00-07:00",
+                "description":"The campers prepare a scuffed breakfast and discuss Malena's drunken behavior from the previous night",
+                "thumbnail_url":"./pancake-breakfast.png",
+                "user_name":"Nmplol",
+                "featured_users":[
+                   "Nmplol",
+                   "Malena"
+                ],
+                "video_id":"1160772412"
+             },
+             {
+                "title":"Chopped competition",
+                "start_time":"2021-09-27T12:45:00-07:00",
+                "description":"Extremely talented hardcore gamers whip up Michelin star dishes using random ingredients",
+                "thumbnail_url":"./chopped-competition.png",
+                "user_name":"QTCinderella",
+                "featured_users":[
+                   "QTCinderella",
+                   "Ludwig",
+                   "xQcOW",
+                   "JustaMinx",
+                   "Cyr",
+                   "Sodapoppin",
+                   "Adeptthebest",
+                   "EsfandTV"
+                ],
+                "video_id":"1160962922"
+             },
+             {
+                "title":"IRL Stream- Scavenger Hunt",
+                "start_time":"2021-09-27T17:00:00-07:00",
+                "description":"Hasan is forced to go out and touch grass while leading his team for the scavenger hunt",
+                "thumbnail_url":"./scavenger-hunt.jpg",
+                "user_name":"HasanAbi",
+                "featured_users":[
+                   "HasanAbi"
+                ],
+                "video_id":"1161184256"
+             },
+             {
+                "title":"IRL Stream- Scavenger Hunt",
+                "start_time":"2021-09-27T17:00:00-07:00",
+                "description":"The juicer and his team try to speedrun shooting polaroids of items in the scavenger hunt",
+                "thumbnail_url":"./scavenger-hunt.jpg",
+                "user_name":"xQcOW",
+                "featured_users":[
+                   "xQcOW",
+                   "QTCinderella"
+                ],
+                "video_id":"1161192739"
+             },
+             {
+                "title":"Boat racing",
+                "start_time":"2021-09-27T21:30:00-07:00",
+                "description":"",
+                "thumbnail_url":"./boat-racing.jpg",
+                "user_name":"WillNeff",
+                "featured_users":[
+                   "WillNeff"
+                ],
+                "video_id":"1161394966"
+             }
+          ]
+       },
+       {
+          "date":"2021-09-28",
+          "events":[
+             {
+                "title":"French toast breakfast",
+                "start_time":"2021-09-28T08:00:00-07:00",
+                "description":"",
+                "thumbnail_url":"./french-toast-breakfast.png",
+                "user_name":"EsfandTV",
+                "featured_users":[
+                   "EsfandTV"
+                ],
+                "video_id":""
+             },
+             {
+                "title":"IRL stream- Morning Hike",
+                "start_time":"2021-09-28T09:00:00-07:00",
+                "description":"",
+                "thumbnail_url":"./hike.png",
+                "user_name":"Myth",
+                "featured_users":[
+                   "Myth"
+                ],
+                "video_id":""
+             },
+             {
+                "title":"IRL Stream- Gun range",
+                "start_time":"2021-09-28T11:30:00-07:00",
+                "description":"",
+                "thumbnail_url":"./gun-range.jpg",
+                "user_name":"HasanAbi",
+                "featured_users":[
+                   "HasanAbi",
+                   "xQcOW"
+                ],
+                "video_id":""
+             },
+             {
+                "title":"Mogul Money (time unconfirmed)",
+                "start_time":"2021-09-28T13:00:00-07:00",
+                "description":"",
+                "thumbnail_url":"./mogul-money.jpg",
+                "user_name":"Ludwig",
+                "featured_users":[
+                   "Ludwig",
+                   "Sodapoppin",
+                   "xQcOW"
+                ],
+                "video_id":""
+             },
+             {
+                "title":"PJ Party",
+                "start_time":"2021-09-28T19:00:00-07:00",
+                "description":"Face masks, Nail painting, Never have I ever, Who's most likely to.",
+                "thumbnail_url":"./pj-party.jpg",
+                "user_name":"Sodapoppin",
+                "featured_users":[
+                   "Sodapoppin",
+                   "QTCinderella"
+                ],
+                "video_id":""
+             }
+          ]
+       },
+       {
+          "date":"2021-09-29",
+          "events":[
+             {
+                "title":"Grand Slam breakfast",
+                "start_time":"2021-09-29T08:00:00-07:00",
+                "description":"",
+                "thumbnail_url":"./grand-slam-breakfast.png",
+                "user_name":"Nmplol",
+                "featured_users":[
+                   "Nmplol",
+                   "Malena"
+                ],
+                "video_id":""
+             },
+             {
+                "title":"Kickball tournament ft. 100 Thieves, OfflineTV",
+                "start_time":"2021-09-29T11:00:00-07:00",
+                "description":"32 streamers. Kickball. The Most Ambitious Crossover Event in History.",
+                "thumbnail_url":"./kickball-tournament.jfif",
+                "user_name":"Ludwig",
+                "featured_users":[
+                   "Adeptthebest",
+                   "AustinShow",
+                   "ConnorEatsPants",
+                   "Cyr",
+                   "EsfandTV",
+                   "HasanAbi",
+                   "Jschlatt ",
+                   "JustaMinx",
+                   "Kaceytron",
+                   "Ludwig",
+                   "Malena",
+                   "Nmplol",
+                   "Myth",
+                   "QTCinderella",
+                   "Sodapoppin",
+                   "WillNeff",
+                   "xQcOW"
+                ],
+                "video_id":""
+             },
+             {
+                "title":"Closing Ceremony",
+                "start_time":"2021-09-29T19:00:00-07:00",
+                "description":"",
+                "thumbnail_url":"./closing-ceremony.jpg",
+                "user_name":"QTCinderella",
+                "featured_users":[
+                   "Adeptthebest",
+                   "AustinShow",
+                   "Cyr",
+                   "EsfandTV",
+                   "HasanAbi",
+                   "Jschlatt ",
+                   "JustaMinx",
+                   "Kaceytron",
+                   "Ludwig",
+                   "Malena",
+                   "Nmplol",
+                   "Myth",
+                   "QTCinderella",
+                   "Sodapoppin",
+                   "WillNeff",
+                   "xQcOW"
+                ],
+                "video_id":""
+             }
+          ]
+       }
     ],
-    "is_latest_schedule": true,
-	"last_update_time": "2021-09-27T12:45:00.00-07:00"
-}
+    "is_latest_schedule":true,
+    "last_update_time":"2021-09-27T20:00:00.2-07:00"
+ }
 `
 
 const InitialTeamsInfo = `
@@ -357,6 +340,33 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+    "43868406781": [
+        "WillNeff",
+        "xQcOW",
+        "Sodapoppin",
+        "Myth",
+        "QTCinderella"
+    ],
+    "43384674940": [
+        "xQcOW",
+        "Ludwig",
+        "Jschlatt",
+        "Nmplol",
+        "QTCinderella",
+        "Sodapoppin",
+        "JustaMinx",
+        "Kaceytron"
+    ],
+    "40024100859": [
+        "HasanAbi",
+        "WillNeff",
+        "Myth",
+        "Malena",
+        "EsfandTV",
+        "AustinShow",
+        "AdeptTheBest",
+        "Cyr"
+    ],
     "43862301165": [
         "QTCinderella",
         "Ludwig",
@@ -368,7 +378,7 @@ const InitialStreamIDFeaturedMapStr = `
         "Sodapoppin",
         "JustaMinx",
         "Adeptthebest"
-    ]
+    ],
     "40022962763": [
         "Kaceytron",
         "JustaMinx",
@@ -417,6 +427,31 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+    "1161394966":[
+        "WillNeff",
+        "xQcOW",
+        "Sodapoppin",
+        "Myth",
+        "QTCinderella"
+    ],
+    "1161192739": [
+        "xQcOW",
+        "Ludwig",
+        "EsfandTV",
+        "Sodapoppin",
+        "JustaMinx",
+        "Kaceytron",
+        "PhinTTV"
+    ],
+    "1161184256":  [
+        "HasanAbi",
+        "QTCinderella",
+        "AustinShow",
+        "AdeptTheBest",
+        "Cyr",
+        "Myth",
+        "WillNeff"
+    ],
     "1160962922": [
         "QTCinderella",
         "Ludwig",
@@ -429,7 +464,7 @@ const InitialVodIDFeaturedMapStr = `
         "JustaMinx",
         "Adeptthebest",
         "PhinTTV"
-    ]
+    ],
     "1160901842": [
         "Kaceytron",
         "JustaMinx",
