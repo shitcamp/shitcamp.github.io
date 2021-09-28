@@ -5,8 +5,10 @@ import "components/accordian/AccordianWrapper.css";
 function AccordianWrapper(props) {
   const { title, children, isActive } = props;
 
+  let expand = isActive == null || isActive;
+
   return (
-    <Accordion defaultActiveKey={isActive ? "0" : ""} className="accordian">
+    <Accordion defaultActiveKey={expand ? "0" : ""} className="accordian">
       <Accordion.Item eventKey="0">
         <Accordion.Header>
           <h5>{title}</h5>
