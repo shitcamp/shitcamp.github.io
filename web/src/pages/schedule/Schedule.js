@@ -120,14 +120,25 @@ class Schedule extends React.PureComponent {
                 </p>
               </div>
 
-              {scheduleDates.map((d) => (
-                <AccordianWrapper key={d.date} title={d.date}>
-                  <Events
-                    events={d.events}
-                    onVideoClick={this.handleVideoClick}
-                  />
-                </AccordianWrapper>
-              ))}
+              {scheduleDates.map((d) => {
+                let lastEventDate = new Date(
+                  d.events[d.events.length - 1].start_time
+                );
+                const shouldExpand = lastEventDate > Date.now();
+
+                return (
+                  <AccordianWrapper
+                    key={d.date}
+                    title={d.date}
+                    isActive={shouldExpand}
+                  >
+                    <Events
+                      events={d.events}
+                      onVideoClick={this.handleVideoClick}
+                    />
+                  </AccordianWrapper>
+                );
+              })}
             </React.Fragment>
           ) : (
             <h5>Schedule is not available</h5>
