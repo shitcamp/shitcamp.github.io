@@ -344,8 +344,15 @@ const InitialStreamIDFeaturedMapStr = `
         "WillNeff",
         "xQcOW",
         "Sodapoppin",
+        "QTCinderella",
+        "JustaMinx",
+        "Kaceytron",
+        "HasanAbi",
+        "AustinShow",
+        "Adeptthebest",
         "Myth",
-        "QTCinderella"
+        "Cyr",
+        "EsfandTV"
     ],
     "43384674940": [
         "xQcOW",
@@ -431,8 +438,15 @@ const InitialVodIDFeaturedMapStr = `
         "WillNeff",
         "xQcOW",
         "Sodapoppin",
+        "QTCinderella",
+        "JustaMinx",
+        "Kaceytron",
+        "HasanAbi",
+        "AustinShow",
+        "Adeptthebest",
         "Myth",
-        "QTCinderella"
+        "Cyr",
+        "EsfandTV"
     ],
     "1161192739": [
         "xQcOW",
