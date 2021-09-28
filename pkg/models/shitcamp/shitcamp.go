@@ -4,8 +4,7 @@ import (
 	"encoding/json"
 	"sort"
 
-	data "github.com/shitcamp-unofficial/shitcamp/pkg/data"
-
+	"github.com/shitcamp-unofficial/shitcamp/pkg/data"
 	logger "github.com/sirupsen/logrus"
 )
 

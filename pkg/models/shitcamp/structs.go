@@ -7,9 +7,20 @@ type Team struct {
 	ThumbnailURL string   `json:"thumbnail_url"`
 }
 
+type ContestResult struct {
+	ContestName string `json:"contest_name"`
+	Points      int    `json:"points"`
+	Description string `json:"description"`
+	VodURL      string `json:"vod_url"`
+}
+
+type TeamResults struct {
+	TeamName    string           `json:"team_name"`
+	TotalPoints int              `json:"total_points"`
+	Results     []*ContestResult `json:"results"`
+}
+
 type TeamsInfo struct {
-	Teams []*Team `json:"teams"`
-	// Winner- 100 team points
-	// Trivia + Roulette
-	// Hide n seek winner
+	Teams   []*Team        `json:"teams"`
+	Results []*TeamResults `json:"team_results"`
 }

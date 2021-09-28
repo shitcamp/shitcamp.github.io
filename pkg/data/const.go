@@ -66,7 +66,7 @@ const InitialScheduleStr = `
              {
                 "title":"Opening Ceremony",
                 "start_time":"2021-09-26T19:00:00-07:00",
-                "description":"Opening night with team selection, and games like trivia, roulette, hide 'n seek and mafia",
+                "description":"Shitcamp is officially here! The captains pick their teams and then compete in games of trivia, roulette, hide 'n seek and mafia.",
                 "thumbnail_url":"./opening-ceremony.png",
                 "user_name":"xQcOW",
                 "featured_users":[
@@ -87,7 +87,36 @@ const InitialScheduleStr = `
                    "WillNeff",
                    "xQcOW"
                 ],
-                "video_id":""
+                "video_id":"",
+				"vod": {
+					"id": "1160400711",
+					"user_name": "xQcOW",
+					"title": "Sh*t Camp 2021 Opening Ceremony",
+					"created_at": "2021-09-27T01:56:02Z",
+					"url": "https://www.youtube.com/watch?v=qA6SVvB3Ff8&ab_channel=QTCinderellaVODs",
+					"thumbnail_url": "https://i.ytimg.com/vi/qA6SVvB3Ff8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCKTISmtPNiAP4JfctRiZudcQalwQ",
+					"view_count": 1518951,
+					"featured_users": [
+						"Adeptthebest",
+						"AustinShow",
+						"Cyr",
+						"EsfandTV",
+						"HasanAbi",
+						"Jschlatt ",
+						"JustaMinx",
+						"Kaceytron",
+						"Ludwig",
+						"Malena",
+						"Nmplol",
+						"Myth",
+						"QTCinderella",
+						"Sodapoppin",
+						"WillNeff",
+						"xQcOW",
+						"PhinTTV"
+					],
+					"duration": "3h49m56s"
+				}
              }
           ]
        },
@@ -97,7 +126,7 @@ const InitialScheduleStr = `
              {
                 "title":"Pancake breakfast",
                 "start_time":"2021-09-27T09:00:00-07:00",
-                "description":"The campers prepare a scuffed breakfast and discuss Malena's drunken behavior from the previous night",
+                "description":"The campers prepare a scuffed breakfast and recount Malena's drunken behavior from the previous night.",
                 "thumbnail_url":"./pancake-breakfast.png",
                 "user_name":"Nmplol",
                 "featured_users":[
@@ -109,7 +138,7 @@ const InitialScheduleStr = `
              {
                 "title":"Chopped competition",
                 "start_time":"2021-09-27T12:45:00-07:00",
-                "description":"Extremely talented hardcore gamers whip up Michelin star dishes using random ingredients",
+                "description":"Extremely talented hardcore gamers whip up Michelin star dishes from random ingredients.",
                 "thumbnail_url":"./chopped-competition.png",
                 "user_name":"QTCinderella",
                 "featured_users":[
@@ -127,7 +156,7 @@ const InitialScheduleStr = `
              {
                 "title":"IRL Stream- Scavenger Hunt",
                 "start_time":"2021-09-27T17:00:00-07:00",
-                "description":"Hasan is forced to go out and touch grass while leading his team for the scavenger hunt",
+                "description":"Hasan is forced to go outside and touch grass while leading his team in a scavenger hunt.",
                 "thumbnail_url":"./scavenger-hunt.jpg",
                 "user_name":"HasanAbi",
                 "featured_users":[
@@ -138,7 +167,7 @@ const InitialScheduleStr = `
              {
                 "title":"IRL Stream- Scavenger Hunt",
                 "start_time":"2021-09-27T17:00:00-07:00",
-                "description":"The juicer and his team try to speedrun shooting polaroids of items in the scavenger hunt",
+                "description":"The juicer and his team try to speedrun shooting polaroids of items for the scavenger hunt.",
                 "thumbnail_url":"./scavenger-hunt.jpg",
                 "user_name":"xQcOW",
                 "featured_users":[
@@ -149,8 +178,8 @@ const InitialScheduleStr = `
              },
              {
                 "title":"Boat racing",
-                "start_time":"2021-09-27T21:30:00-07:00",
-                "description":"",
+                "start_time":"2021-09-27T22:30:00-07:00",
+                "description":"Ready, Set, Sail! The two teams compete in a cardboard boat making competition while doing drunk challenges to gain an edge.",
                 "thumbnail_url":"./boat-racing.jpg",
                 "user_name":"WillNeff",
                 "featured_users":[
@@ -193,13 +222,15 @@ const InitialScheduleStr = `
                 "user_name":"HasanAbi",
                 "featured_users":[
                    "HasanAbi",
-                   "xQcOW"
+                   "xQcOW",
+                   "Ludwig",
+                   "Nmplol"
                 ],
                 "video_id":""
              },
              {
                 "title":"Mogul Money (time unconfirmed)",
-                "start_time":"2021-09-28T13:00:00-07:00",
+                "start_time":"2021-09-28T15:00:00-07:00",
                 "description":"",
                 "thumbnail_url":"./mogul-money.jpg",
                 "user_name":"Ludwig",
@@ -331,7 +362,57 @@ const InitialTeamsInfo = `
 			],
 			"thumbnail_url": "./team-cummunism.png"
 		}
-	]
+	],
+   "team_results": [
+      {
+         "team_name": "Team America",
+         "total_points": 270,
+         "results": [
+            {
+               "contest_name": "Hide 'n seek",
+               "points": 100,
+               "description": "Malena was the last one to be found.",
+               "vod_url": ""
+            },
+            {
+               "contest_name": "Chopped",
+               "points": 50,
+               "description": "WillNeff came in 2nd place.",
+               "vod_url": ""
+            },
+            {
+               "contest_name": "Boat race",
+               "points": 120,
+               "description": "",
+               "vod_url": ""
+            }
+         ]
+      },
+      {
+         "team_name": "Team Cummunism",
+         "total_points": 400,
+         "results": [
+            {
+               "contest_name": "Trivia",
+               "points": 100,
+               "description": "",
+               "vod_url": ""
+            },
+            {
+               "contest_name": "Chopped",
+               "points": 100,
+               "description": "xQcOW won the cooking contest.",
+               "vod_url": ""
+            },
+            {
+               "contest_name": "Scavenger Hunt",
+               "points": 200,
+               "description": "",
+               "vod_url": ""
+            }
+         ]
+      }
+   ]
 }
 `
 
@@ -340,93 +421,107 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
-    "43868406781": [
-        "WillNeff",
-        "xQcOW",
-        "Sodapoppin",
-        "QTCinderella",
-        "JustaMinx",
-        "Kaceytron",
-        "HasanAbi",
-        "AustinShow",
-        "Adeptthebest",
-        "Myth",
-        "Cyr",
-        "EsfandTV"
-    ],
-    "43384674940": [
-        "xQcOW",
-        "Ludwig",
-        "Jschlatt",
-        "Nmplol",
-        "QTCinderella",
-        "Sodapoppin",
-        "JustaMinx",
-        "Kaceytron"
-    ],
-    "40024100859": [
-        "HasanAbi",
-        "WillNeff",
-        "Myth",
-        "Malena",
-        "EsfandTV",
-        "AustinShow",
-        "AdeptTheBest",
-        "Cyr"
-    ],
-    "43862301165": [
-        "QTCinderella",
-        "Ludwig",
-        "xQcOW",
-        "WillNeff",
-        "Cyr",
-        "AustinShow",
-        "EsfandTV",
-        "Sodapoppin",
-        "JustaMinx",
-        "Adeptthebest"
-    ],
-    "40022962763": [
-        "Kaceytron",
-        "JustaMinx",
-        "AustinShow",
-        "Jschlatt",
-        "Cyr",
-        "Myth",
-        "Malena",
-        "QTCinderella"
-    ],
-    "40022423755": [
-        "Nmplol",
-        "Malena",
-        "AustinShow",
-        "EsfandTV",
-        "Myth"
-    ],
-    "40020209259": [
-        "Adeptthebest",
-        "AustinShow",
-        "Cyr",
-        "EsfandTV",
-        "HasanAbi",
-        "Jschlatt ",
-        "JustaMinx",
-        "Kaceytron",
-        "Ludwig",
-        "Malena",
-        "Nmplol",
-        "Myth",
-        "QTCinderella",
-        "Sodapoppin",
-        "WillNeff",
-        "xQcOW",
-        "PhinTTV"
-    ],
-    "40018159803": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
-    "40013385979": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"]
+   "43868406781":[
+      "WillNeff",
+      "xQcOW",
+      "Sodapoppin",
+      "QTCinderella",
+      "JustaMinx",
+      "Kaceytron",
+      "HasanAbi",
+      "AustinShow",
+      "Adeptthebest",
+      "Myth",
+      "Cyr",
+      "EsfandTV"
+   ],
+   "43384674940":[
+      "xQcOW",
+      "Ludwig",
+      "Jschlatt",
+      "Nmplol",
+      "QTCinderella",
+      "Sodapoppin",
+      "JustaMinx",
+      "Kaceytron"
+   ],
+   "40024100859":[
+      "HasanAbi",
+      "WillNeff",
+      "Myth",
+      "Malena",
+      "EsfandTV",
+      "AustinShow",
+      "AdeptTheBest",
+      "Cyr"
+   ],
+   "43862301165":[
+      "QTCinderella",
+      "Ludwig",
+      "xQcOW",
+      "WillNeff",
+      "Cyr",
+      "AustinShow",
+      "EsfandTV",
+      "Sodapoppin",
+      "JustaMinx",
+      "Adeptthebest"
+   ],
+   "40022962763":[
+      "Kaceytron",
+      "JustaMinx",
+      "AustinShow",
+      "Jschlatt",
+      "Cyr",
+      "Myth",
+      "Malena",
+      "QTCinderella"
+   ],
+   "40022423755":[
+      "Nmplol",
+      "Malena",
+      "AustinShow",
+      "EsfandTV",
+      "Myth"
+   ],
+   "40020209259":[
+      "Adeptthebest",
+      "AustinShow",
+      "Cyr",
+      "EsfandTV",
+      "HasanAbi",
+      "Jschlatt ",
+      "JustaMinx",
+      "Kaceytron",
+      "Ludwig",
+      "Malena",
+      "Nmplol",
+      "Myth",
+      "QTCinderella",
+      "Sodapoppin",
+      "WillNeff",
+      "xQcOW",
+      "PhinTTV"
+   ],
+   "40018159803":[
+      "Nmplol",
+      "Sodapoppin",
+      "JustaMinx",
+      "Kaceytron",
+      "Malena"
+   ],
+   "40013385979":[
+      "Nmplol",
+      "Malena",
+      "Sodapoppin",
+      "QTCinderella",
+      "Ludwig",
+      "Cyr"
+   ]
 }
 `
 
+// All featured
 // 1160772412: QTCinderella, JustaMinx, Ludwig, Kaceytron, PhinTTV
 // "1160901842": ["Kaceytron", "JustaMinx", "AustinShow", "Jschlatt", "Cyr", "Myth", "Malena", "QTCinderella"]
 // "1160962922": Nmplol, Jschlatt
@@ -434,94 +529,121 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
-    "1161394966":[
-        "WillNeff",
-        "xQcOW",
-        "Sodapoppin",
-        "QTCinderella",
-        "JustaMinx",
-        "Kaceytron",
-        "HasanAbi",
-        "AustinShow",
-        "Adeptthebest",
-        "Myth",
-        "Cyr",
-        "EsfandTV"
-    ],
-    "1161192739": [
-        "xQcOW",
-        "Ludwig",
-        "EsfandTV",
-        "Sodapoppin",
-        "JustaMinx",
-        "Kaceytron",
-        "PhinTTV"
-    ],
-    "1161184256":  [
-        "HasanAbi",
-        "QTCinderella",
-        "AustinShow",
-        "AdeptTheBest",
-        "Cyr",
-        "Myth",
-        "WillNeff"
-    ],
-    "1160962922": [
-        "QTCinderella",
-        "Ludwig",
-        "xQcOW",
-        "WillNeff",
-        "Cyr",
-        "AustinShow",
-        "EsfandTV",
-        "Sodapoppin",
-        "JustaMinx",
-        "Adeptthebest",
-        "PhinTTV"
-    ],
-    "1160901842": [
-        "Kaceytron",
-        "JustaMinx",
-        "AustinShow",
-        "Jschlatt",
-        "Myth",
-        "Malena"
-    ],
-    "1160772412": [
-        "Nmplol",
-        "EsfandTV",
-        "Myth",
-        "AustinShow",
-        "Malena"
-    ],
-    "1160549541": [
-        "EsfandTV",
-        "AustinShow"
-    ],
-    "1160400711": [
-        "Adeptthebest",
-        "AustinShow",
-        "Cyr",
-        "EsfandTV",
-        "HasanAbi",
-        "Jschlatt ",
-        "JustaMinx",
-        "Kaceytron",
-        "Ludwig",
-        "Malena",
-        "Nmplol",
-        "Myth",
-        "QTCinderella",
-        "Sodapoppin",
-        "WillNeff",
-        "xQcOW",
-        "PhinTTV"
-    ],
-    "1159913213": ["Nmplol", "Sodapoppin", "JustaMinx", "Kaceytron", "Malena"],
-    "1159263358": ["Sodapoppin", "Ludwig", "Nmplol"],
-    "1158909839": ["Nmplol", "Malena", "Sodapoppin", "QTCinderella", "Ludwig", "Cyr"],
-    "1158523015": ["QTCinderella", "JustaMinx"],
-    "1158517155": ["QTCinderella", "JustaMinx"],
-    "1158517135": ["JustaMinx", "QTCinderella"]
+   "1161394966":[
+      "WillNeff",
+      "xQcOW",
+      "Sodapoppin",
+      "QTCinderella",
+      "JustaMinx",
+      "Kaceytron",
+      "HasanAbi",
+      "AustinShow",
+      "Adeptthebest",
+      "Myth",
+      "Cyr",
+      "EsfandTV",
+      "PhinTTV"
+   ],
+   "1161192739":[
+      "xQcOW",
+      "Ludwig",
+      "EsfandTV",
+      "Sodapoppin",
+      "JustaMinx",
+      "Kaceytron",
+      "PhinTTV"
+   ],
+   "1161184256":[
+      "HasanAbi",
+      "QTCinderella",
+      "AustinShow",
+      "AdeptTheBest",
+      "Cyr",
+      "Myth",
+      "WillNeff"
+   ],
+   "1160962922":[
+      "QTCinderella",
+      "Ludwig",
+      "xQcOW",
+      "WillNeff",
+      "Cyr",
+      "AustinShow",
+      "EsfandTV",
+      "Sodapoppin",
+      "JustaMinx",
+      "Adeptthebest",
+      "PhinTTV"
+   ],
+   "1160901842":[
+      "Kaceytron",
+      "JustaMinx",
+      "AustinShow",
+      "Jschlatt",
+      "Myth",
+      "Malena"
+   ],
+   "1160772412":[
+      "Nmplol",
+      "EsfandTV",
+      "Myth",
+      "AustinShow",
+      "Malena"
+   ],
+   "1160549541":[
+      "EsfandTV",
+      "AustinShow"
+   ],
+   "1160400711":[
+      "Adeptthebest",
+      "AustinShow",
+      "Cyr",
+      "EsfandTV",
+      "HasanAbi",
+      "Jschlatt ",
+      "JustaMinx",
+      "Kaceytron",
+      "Ludwig",
+      "Malena",
+      "Nmplol",
+      "Myth",
+      "QTCinderella",
+      "Sodapoppin",
+      "WillNeff",
+      "xQcOW",
+      "PhinTTV"
+   ],
+   "1159913213":[
+      "Nmplol",
+      "Sodapoppin",
+      "JustaMinx",
+      "Kaceytron",
+      "Malena"
+   ],
+   "1159263358":[
+      "Sodapoppin",
+      "Ludwig",
+      "Nmplol"
+   ],
+   "1158909839":[
+      "Nmplol",
+      "Malena",
+      "Sodapoppin",
+      "QTCinderella",
+      "Ludwig",
+      "Cyr"
+   ],
+   "1158523015":[
+      "QTCinderella",
+      "JustaMinx"
+   ],
+   "1158517155":[
+      "QTCinderella",
+      "JustaMinx"
+   ],
+   "1158517135":[
+      "JustaMinx",
+      "QTCinderella"
+   ]
 }
 `
