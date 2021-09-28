@@ -125,7 +125,7 @@ function EventCard(props) {
               {event_title}
             </a>
             {event_title === "PJ Party" && (
-              <img src="./jammies.gif" alt="jammies" className="jammies-gif" />
+              <img src="./jammies.gif" alt="Jammies" className="jammies-gif" />
             )}
           </h6>
         </Card.Title>
@@ -158,6 +158,12 @@ function EventCard(props) {
                           Shitcamp Merch Store
                         </a>
                       </b>
+                    </React.Fragment>
+                  )}
+                  {event_title === "French toast breakfast" && (
+                    <React.Fragment>
+                      {" "}
+                      <img src="./YEP.png" alt="YEP" className="yep-image" />
                     </React.Fragment>
                   )}
                   <br />
