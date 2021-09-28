@@ -1,6 +1,6 @@
 {
   "name": "web",
-  "version": "0.1.29",
+  "version": "0.1.30",
   "homepage": "https://shitcamp.github.io",
   "private": true,
   "dependencies": {
