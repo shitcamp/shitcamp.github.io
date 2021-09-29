@@ -151,7 +151,30 @@ const InitialScheduleStr = `
                    "Adeptthebest",
                    "EsfandTV"
                 ],
-                "video_id":"1160962922"
+                "video_id":"",
+                "vod": {
+                  "id": "1160962922",
+                  "user_name": "QTCinderella",
+                  "title": "Running a little late- Chopped Next! | | !Subtember !po !clips !youtube !instagram",
+                  "created_at": "2021-09-27T19:44:02Z",
+                  "url": "https://www.youtube.com/watch?v=Hd3iUtuFj3Y&ab_channel=QTCinderellaVODs",
+                  "thumbnail_url": "https://i.ytimg.com/vi/Hd3iUtuFj3Y/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBdhspIwatvM8oSO0nOD0mYfpg7oQ",
+                  "view_count": 420417,
+                  "featured_users": [
+                      "QTCinderella",
+                      "Ludwig",
+                      "xQcOW",
+                      "WillNeff",
+                      "Cyr",
+                      "AustinShow",
+                      "EsfandTV",
+                      "Sodapoppin",
+                      "JustaMinx",
+                      "Adeptthebest",
+                      "PhinTTV"
+                  ],
+                  "duration": "2h16m57s"
+                }
              },
              {
                 "title":"IRL Stream- Scavenger Hunt",
@@ -162,7 +185,26 @@ const InitialScheduleStr = `
                 "featured_users":[
                    "HasanAbi"
                 ],
-                "video_id":"1161184256"
+                "video_id":"",
+                "vod": {
+                  "id": "1161184256",
+                  "user_name": "HasanAbi",
+                  "title": "REGULAR STREAM THEN IRL SCAVENGER HUNT AT SHITCAMP - SCHEDULE: !shitcamp",
+                  "created_at": "2021-09-28T00:15:46Z",
+                  "url": "https://www.youtube.com/watch?v=we-3i-DfyWs&ab_channel=QTCinderellaVODs",
+                  "thumbnail_url": "https://i.ytimg.com/vi/we-3i-DfyWs/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD9hOZUkkshMyL92zS39ZLGC5oGqA",
+                  "view_count": 448840,
+                  "featured_users": [
+                      "HasanAbi",
+                      "QTCinderella",
+                      "AustinShow",
+                      "AdeptTheBest",
+                      "Cyr",
+                      "Myth",
+                      "WillNeff"
+                  ],
+                  "duration": "2h24m12s"
+                }
              },
              {
                 "title":"IRL Stream- Scavenger Hunt",
@@ -195,7 +237,7 @@ const InitialScheduleStr = `
              {
                 "title":"French toast breakfast",
                 "start_time":"2021-09-28T08:00:00-07:00",
-                "description":"EsfandTV and QTCinderella contribute equally towards feeding the campers on a breakfast stream that definitely started on time YEP.",
+                "description":"EsfandTV and QTCinderella contribute equally towards feeding the campers on a breakfast stream that definitely started on time",
                 "thumbnail_url":"./french-toast-breakfast.png",
                 "user_name":"EsfandTV",
                 "featured_users":[
@@ -206,7 +248,7 @@ const InitialScheduleStr = `
              {
                 "title":"IRL Stream- Gun range",
                 "start_time":"2021-09-28T11:30:00-07:00",
-                "description":"Noobs with guns try to not shoot the cameraman. The teams compete in a shoot-off.",
+                "description":"Noobs with guns try to not shoot the cameraman. The teams then compete in a shoot-off.",
                 "thumbnail_url":"./gun-range.jpg",
                 "user_name":"HasanAbi",
                 "featured_users":[
@@ -218,9 +260,23 @@ const InitialScheduleStr = `
                 "video_id":"1161828036"
              },
              {
+               "title":"Workout stream",
+               "start_time":"2021-09-28T16:30:00-07:00",
+               "description":"Relatable streamers stall by hanging out, throwing around the old pig skin, having a taco party and then go to pump iron.",
+               "thumbnail_url":"./workout.jpg",
+               "user_name":"EsfandTV",
+                "featured_users":[
+                   "EsfandTV",
+                   "WillNeff",
+                   "AustinShow",
+                   "Myth"
+               ],
+               "video_id":"1162074919"
+            },
+             {
                 "title":"Mogul Money",
                 "start_time":"2021-09-28T17:00:00-07:00",
-                "description":"",
+                "description":"Sigma campers compete for money, a bidet and batteries on a completely original game show that is definitely not inspired by Jeopardy!",
                 "thumbnail_url":"./mogul-money.jpg",
                 "user_name":"Ludwig",
                 "featured_users":[
@@ -228,15 +284,7 @@ const InitialScheduleStr = `
                    "Sodapoppin",
                    "xQcOW"
                 ],
-                "video_id":""
-             },
-             {
-                "title":"Fashion show / Workout stream / Something else (event and time unconfirmed)",
-                "start_time":"2021-09-28T17:00:00-07:00",
-                "description":"",
-                "thumbnail_url":"./secret-event.jpg",
-                "user_name":"Myth",
-                "video_id":""
+                "video_id":"1162103704"
              },
              {
                 "title":"PJ Party",
@@ -260,17 +308,16 @@ const InitialScheduleStr = `
                 "start_time":"2021-09-29T08:00:00-07:00",
                 "description":"",
                 "thumbnail_url":"./grand-slam-breakfast.png",
-                "user_name":"Nmplol",
+                "user_name":"Myth",
                 "featured_users":[
-                   "Nmplol",
-                   "Malena"
+                   "Myth"
                 ],
                 "video_id":""
              },
              {
                 "title":"Kickball tournament ft. 100 Thieves, OfflineTV",
-                "start_time":"2021-09-29T11:00:00-07:00",
-                "description":"32 streamers. Kickball. The Most Ambitious Crossover Event in History.",
+                "start_time":"2021-09-29T12:00:00-07:00",
+                "description":"32 streamers from 4 teams compete in a Kickball tournament for $10000.",
                 "thumbnail_url":"./kickball-tournament.jfif",
                 "user_name":"Ludwig",
                 "featured_users":[
@@ -297,7 +344,7 @@ const InitialScheduleStr = `
              {
                 "title":"Closing Ceremony",
                 "start_time":"2021-09-29T19:00:00-07:00",
-                "description":"Family fued",
+                "description":"Shitcamp comes to a close with a game of Family Fued.",
                 "thumbnail_url":"./closing-ceremony.jpg",
                 "user_name":"QTCinderella",
                 "featured_users":[
@@ -418,6 +465,21 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+   "40028465115": [
+      "Ludwig",
+      "xQcOW",
+      "Sodapoppin",
+      "Cyr"
+   ],
+   "43393194316": [
+      "EsfandTV",
+      "Nmplol",
+      "WillNeff",
+      "AustinShow",
+      "Myth",
+      "Adeptthebest",
+      "PhinTTV"
+   ],
    "43875063085": [
       "Kaceytron",
       "JustaMinx"
@@ -530,6 +592,20 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+   "1162103704": [
+      "Ludwig",
+      "xQcOW",
+      "Sodapoppin",
+      "Cyr"
+   ],
+   "1162074919": [
+      "EsfandTV",
+      "Nmplol",
+      "Myth",
+      "WillNeff",
+      "AustinShow",
+      "PhinTTV"
+   ],
    "1161967843": [
       "Kaceytron",
       "JustaMinx",
