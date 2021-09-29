@@ -288,15 +288,16 @@ const InitialScheduleStr = `
              },
              {
                 "title":"PJ Party",
-                "start_time":"2021-09-28T19:00:00-07:00",
-                "description":"Face masks, Nail painting, Never have I ever, Who's most likely to.",
+                "start_time":"2021-09-28T20:00:00-07:00",
+                "description":"Girls night but some boys are allowed. Drinking, spilling tea. Spin the shot, Do or Drink, Face masks, Makeover speedruns, Nail painting, Never have I ever, Who's most likely to.",
+                "description":"The PJ party takes a turn for the worse when the boys decide to partake in \"girls night\" activities.",
                 "thumbnail_url":"./pj-party.jpg",
                 "user_name":"Sodapoppin",
                 "featured_users":[
                    "Sodapoppin",
                    "QTCinderella"
                 ],
-                "video_id":""
+                "video_id":"1162277299"
              }
           ]
        },
@@ -315,9 +316,31 @@ const InitialScheduleStr = `
                 "video_id":""
              },
              {
+               "title":"Drive to Kickball- Limo Jenga (event and timing unconfirmed)",
+               "start_time":"2021-09-29T11:00:00-07:00",
+               "description":"Exactly what the title says. Team America plays Jenga in a limo while going to the Kickball stadium...",
+               "thumbnail_url":"./limo-jenga.jpg",
+               "user_name":"Cyr",
+               "featured_users":[
+                   "Cyr"
+               ],
+               "video_id":""
+             },
+             {
+               "title":"Drive to Kickball (event and timing unconfirmed)",
+               "start_time":"2021-09-29T11:00:00-07:00",
+               "description":"Team Cummunism makes their way to the stadium for the Kickball tournament.",
+               "thumbnail_url":"./drive-to-stadium.jpg",
+               "user_name":"JustaMinx",
+               "featured_users":[
+                   "JustaMinx"
+               ],
+               "video_id":""
+             },
+             {
                 "title":"Kickball tournament ft. 100 Thieves, OfflineTV",
                 "start_time":"2021-09-29T12:00:00-07:00",
-                "description":"32 streamers from 4 teams compete in a Kickball tournament for $10000.",
+                "description":"32 streamers from 4 teams compete in a Kickball tournament to win $10000 for their charities.",
                 "thumbnail_url":"./kickball-tournament.jfif",
                 "user_name":"Ludwig",
                 "featured_users":[
@@ -371,7 +394,7 @@ const InitialScheduleStr = `
        }
     ],
     "is_latest_schedule":true,
-    "last_update_time":"2021-09-28T15:00:00.2-07:00"
+    "last_update_time":"2021-09-29T00:15:00.0-07:00"
  }
 `
 
@@ -465,6 +488,19 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+   "40029215963": [
+      "Sodapoppin",
+      "QTCinderella",
+      "Kaceytron",
+      "Adeptthebest",
+      "JustaMinx",
+      "Malena",
+      "Ludwig",
+      "HasanAbi",
+      "Myth",
+      "Cyr",
+      "PhinTTV"
+   ],
    "40028465115": [
       "Ludwig",
       "xQcOW",
@@ -592,6 +628,24 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+   "1162277299": [
+      "Sodapoppin",
+      "QTCinderella",
+      "Kaceytron",
+      "Adeptthebest",
+      "JustaMinx",
+      "Malena",
+      "Ludwig",
+      "xQcOW",
+      "Nmplol",
+      "EsfandTV",
+      "AustinShow",
+      "Myth",
+      "Cyr",
+      "HasanAbi",
+      "WillNeff",
+      "PhinTTV"
+   ],
    "1162103704": [
       "Ludwig",
       "xQcOW",
