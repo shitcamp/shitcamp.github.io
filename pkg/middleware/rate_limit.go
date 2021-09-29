@@ -28,6 +28,19 @@ func RateLimit(tokens uint64, interval time.Duration) gin.HandlerFunc {
 
 	return func(c *gin.Context) {
 		key := c.ClientIP()
+	
+		// TODO: key does not really represent "users", so rate limits should not be configured for the user level currently.
+
+		// {"addr":"10.244.11.194:53554","c_ip":"10.244.11.194","hdr":"110.54.181.116,162.158.178.74","host":"shitcamp-api-2xvip.ondigitalocean.app","level":"info","msg":"req_ip","time":"2021-09-29T13:42:42Z"}
+		// {"addr":"10.244.11.194:52406","c_ip":"10.244.11.194","hdr":"84.155.82.89,162.158.92.161","host":"shitcamp-api-2xvip.ondigitalocean.app","level":"info","msg":"req_ip","time":"2021-09-29T13:42:42Z"}
+		// {"addr":"10.244.11.194:52486","c_ip":"10.244.11.194","hdr":"2600:1702:1640:960:8ab:c2c2:3617:b1e,162.158.74.146","host":"shitcamp-api-2xvip.ondigitalocean.app","level":"info","msg":"req_ip","time":"2021-09-29T13:42:44Z"}
+		
+		// logger.WithFields(logger.Fields{
+		// 	"c_ip": key,
+		// 	"host": c.Request.Host,
+		// 	"addr": c.Request.RemoteAddr,
+		// 	"hdr":  c.Request.Header.Get("X-Forwarded-For"),
+		// }).Info("req_ip")
 
 		_, _, _, ok, err := store.Take(c, key)
 		if err != nil {
@@ -41,12 +54,5 @@ func RateLimit(tokens uint64, interval time.Duration) gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusTooManyRequests, common.Response{Error: "rate_limit_reached"})
 			return
 		}
-
-		logger.WithFields(logger.Fields{
-			"c_ip": key,
-			"host": c.Request.Host,
-			"addr": c.Request.RemoteAddr,
-			"hdr":  c.Request.Header.Get("X-Forwarded-For"),
-		}).Info("req_ip")
 	}
 }
