@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, Alert } from "react-bootstrap";
 
 import Home from "pages/home/Home";
 import AboutPage from "pages/about/AboutPage";
@@ -97,6 +97,17 @@ class App extends React.PureComponent {
               </Navbar.Collapse>
             </Container>
           </Navbar>
+
+          <Container>
+            <Alert variant="warning">
+              <b>
+                LAST DAY TO GET MERCH! Get yours at{" "}
+                <a href="https://shitcamp.gg/" target="_blank" rel="noreferrer">
+                  shitcamp.gg
+                </a>
+              </b>
+            </Alert>
+          </Container>
 
           {/* look through the children <Route>s and render the first one that matches the current URL */}
           <Switch>
