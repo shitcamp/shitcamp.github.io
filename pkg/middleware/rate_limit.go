@@ -41,5 +41,12 @@ func RateLimit(tokens uint64, interval time.Duration) gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusTooManyRequests, common.Response{Error: "rate_limit_reached"})
 			return
 		}
+
+		logger.WithFields(logger.Fields{
+			"c_ip": key,
+			"host": c.Request.Host,
+			"addr": c.Request.RemoteAddr,
+			"hdr":  c.Request.Header.Get("X-Forwarded-For"),
+		}).Info("req_ip")
 	}
 }
