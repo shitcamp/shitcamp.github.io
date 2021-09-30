@@ -306,40 +306,18 @@ const InitialScheduleStr = `
                {
                    "title": "Grand Slam breakfast",
                    "start_time": "2021-09-29T08:00:00-07:00",
-                   "description": "",
+                   "description": "The campers wake up early for the final breakfast stream and cook pancakes with homemade syrup.",
                    "thumbnail_url": "./grand-slam-breakfast.png",
                    "user_name": "Myth",
                    "featured_users": [
                        "Myth"
                    ],
-                   "video_id": ""
-               },
-               {
-                   "title": "Drive to Kickball- Limo Jenga (event and timing unconfirmed)",
-                   "start_time": "2021-09-29T11:00:00-07:00",
-                   "description": "Exactly what the title says. Team America plays Jenga in a limo while going to the Kickball stadium...",
-                   "thumbnail_url": "./limo-jenga.jpg",
-                   "user_name": "Cyr",
-                   "featured_users": [
-                       "Cyr"
-                   ],
-                   "video_id": ""
-               },
-               {
-                   "title": "Drive to Kickball (event and timing unconfirmed)",
-                   "start_time": "2021-09-29T11:00:00-07:00",
-                   "description": "Team Cummunism make their way to the stadium for the Kickball tournament.",
-                   "thumbnail_url": "./drive-to-stadium.jpg",
-                   "user_name": "JustaMinx",
-                   "featured_users": [
-                       "JustaMinx"
-                   ],
-                   "video_id": ""
+                   "video_id": "1162576914"
                },
                {
                    "title": "Kickball tournament ft. 100 Thieves, OfflineTV",
-                   "start_time": "2021-09-29T12:00:00-07:00",
-                   "description": "32 streamers from 4 teams compete in a Kickball tournament to win $10000 for their charities.",
+                   "start_time": "2021-09-29T12:30:00-07:00",
+                   "description": "32 streamers from 4 teams compete in a Kickball tournament to win $10000 for their charities. Will the Shitcamp teams be able to beat the orgs? Come find out.",
                    "thumbnail_url": "./kickball-tournament.jfif",
                    "user_name": "Ludwig",
                    "featured_users": [
@@ -364,7 +342,7 @@ const InitialScheduleStr = `
                    "video_id": ""
                },
                {
-                   "title": "Closing Ceremony",
+                   "title": "Closing Ceremony ft. Special Guests 👀",
                    "start_time": "2021-09-29T19:00:00-07:00",
                    "description": "Shitcamp comes to a close with a game of Family Fued.",
                    "thumbnail_url": "./closing-ceremony.jpg",
@@ -393,7 +371,7 @@ const InitialScheduleStr = `
        }
    ],
    "is_latest_schedule": true,
-   "last_update_time": "2021-09-29T00:15:00-07:00"
+   "last_update_time": "2021-09-29T18:35:00-07:00"
 }
 `
 
@@ -481,6 +459,49 @@ const InitialTeamsInfo = `
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
+   "1": [
+      "QTCinderella",
+      "Adeptthebest",
+      "AustinShow",
+      "Cyr",
+      "EsfandTV",
+      "HasanAbi",
+      "Jschlatt ",
+      "JustaMinx",
+      "Kaceytron",
+      "Ludwig",
+      "Malena",
+      "Nmplol",
+      "Myth",
+      "Sodapoppin",
+      "WillNeff",
+      "xQcOW",
+      "PhinTTV"
+   ],
+   "43886694045": [
+      "Ludwig",
+      "Adeptthebest",
+      "AustinShow",
+      "ConnorEatsPants",
+      "Cyr",
+      "EsfandTV",
+      "HasanAbi",
+      "Jschlatt ",
+      "JustaMinx",
+      "Kaceytron",
+      "Malena",
+      "Nmplol",
+      "Myth",
+      "QTCinderella",
+      "Sodapoppin",
+      "WillNeff",
+      "xQcOW"
+   ],
+   "43884198765": [
+       "Myth",
+       "QTCinderella",
+       "EsfandTV"
+   ],
    "40029215963": [
       "Sodapoppin",
       "QTCinderella",
@@ -621,6 +642,54 @@ const InitialStreamIDFeaturedMapStr = `
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
+   "1": [
+      "QTCinderella",
+      "Adeptthebest",
+      "AustinShow",
+      "Cyr",
+      "EsfandTV",
+      "HasanAbi",
+      "Jschlatt ",
+      "JustaMinx",
+      "Kaceytron",
+      "Ludwig",
+      "Malena",
+      "Nmplol",
+      "Myth",
+      "Sodapoppin",
+      "WillNeff",
+      "xQcOW",
+      "PhinTTV"
+   ],
+   "1162803783": [
+      "Ludwig",
+      "Adeptthebest",
+      "AustinShow",
+      "ConnorEatsPants",
+      "Cyr",
+      "EsfandTV",
+      "HasanAbi",
+      "Jschlatt ",
+      "JustaMinx",
+      "Kaceytron",
+      "Malena",
+      "Nmplol",
+      "Myth",
+      "QTCinderella",
+      "Sodapoppin",
+      "WillNeff",
+      "xQcOW",
+      "PhinTTV"
+   ],
+   "1162576914": [
+      "Myth",
+      "QTCinderella",
+      "EsfandTV",
+      "Nmplol",
+      "Malena",
+      "AustinShow",
+      "PhinTTV"
+   ],
    "1162277299": [
       "Sodapoppin",
       "QTCinderella",
