@@ -342,9 +342,9 @@ const InitialScheduleStr = `
                    "video_id": ""
                },
                {
-                   "title": "Closing Ceremony ft. Special Guests 👀",
+                   "title": "Closing Ceremony",
                    "start_time": "2021-09-29T19:00:00-07:00",
-                   "description": "Shitcamp comes to a close with a game of Family Fued.",
+                   "description": "Team American and Team Cummunism go up against one last time in games of Charades and Family Fued.",
                    "thumbnail_url": "./closing-ceremony.jpg",
                    "user_name": "QTCinderella",
                    "featured_users": [
@@ -365,13 +365,13 @@ const InitialScheduleStr = `
                        "WillNeff",
                        "xQcOW"
                    ],
-                   "video_id": ""
+                   "video_id": "1163160816"
                }
            ]
        }
    ],
    "is_latest_schedule": true,
-   "last_update_time": "2021-09-29T18:35:00-07:00"
+   "last_update_time": "2021-09-29T19:20:00-07:00"
 }
 `
 
@@ -410,8 +410,14 @@ const InitialTeamsInfo = `
    "team_results": [
       {
          "team_name": "Team America",
-         "total_points": 270,
+         "total_points": 570,
          "results": [
+            {
+               "contest_name": "Hide 'n seek",
+               "points": 100,
+               "description": "Malena was the last one to be found.",
+               "vod_url": "https://www.youtube.com/watch?v=qA6SVvB3Ff8&ab_channel=QTCinderellaVODs"
+            },
             {
                "contest_name": "Chopped",
                "points": 50,
@@ -420,15 +426,27 @@ const InitialTeamsInfo = `
             },
             {
                "contest_name": "Boat race",
-               "points": 220,
+               "points": 120,
                "description": "",
                "vod_url": "https://www.twitch.tv/videos/1161394966"
+            },
+            {
+               "contest_name": "Gun range shoot-off",
+               "points": 200,
+               "description": "",
+               "vod_url": "https://www.twitch.tv/videos/1161828036"
+            },
+            {
+               "contest_name": "Charades",
+               "points": 100,
+               "description": "",
+               "vod_url": "https://www.twitch.tv/videos/1163160816"
             }
          ]
       },
       {
          "team_name": "Team Cummunism",
-         "total_points": 400,
+         "total_points": 669,
          "results": [
             {
                "contest_name": "Trivia",
@@ -447,6 +465,18 @@ const InitialTeamsInfo = `
                "points": 200,
                "description": "",
                "vod_url": "https://www.twitch.tv/videos/1161192739"
+            },
+            {
+               "contest_name": "Kickball",
+               "points": 200,
+               "description": "",
+               "vod_url": "https://www.twitch.tv/videos/1162803783"
+            },
+            {
+               "contest_name": "Family Fued",
+               "points": 69,
+               "description": "",
+               "vod_url": "https://www.twitch.tv/videos/1163160816"
             }
          ]
       }
@@ -454,12 +484,12 @@ const InitialTeamsInfo = `
 }
 `
 
-// TODO: struct with stream_id, video_id, featured_streamers to reduce duplication
+// TODO: struct with stream_id, video_id, featured_streamers instead to reduce duplication
 
 // Featured users for live streams
 const InitialStreamIDFeaturedMapStr = `
 {
-   "1": [
+   "40033356299": [
       "QTCinderella",
       "Adeptthebest",
       "AustinShow",
@@ -634,15 +664,10 @@ const InitialStreamIDFeaturedMapStr = `
 }
 `
 
-// All featured
-// 1160772412: QTCinderella, JustaMinx, Ludwig, Kaceytron, PhinTTV
-// "1160901842": ["Kaceytron", "JustaMinx", "AustinShow", "Jschlatt", "Cyr", "Myth", "Malena", "QTCinderella"]
-// "1160962922": Nmplol, Jschlatt
-
 // Featured users for vods
 const InitialVodIDFeaturedMapStr = `
 {
-   "1": [
+   "1163160816": [
       "QTCinderella",
       "Adeptthebest",
       "AustinShow",
