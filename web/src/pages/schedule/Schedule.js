@@ -124,7 +124,8 @@ class Schedule extends React.PureComponent {
                 let lastEventDate = new Date(
                   d.events[d.events.length - 1].start_time
                 );
-                const shouldExpand = lastEventDate > Date.now();
+                let shouldExpand = lastEventDate > Date.now();
+                shouldExpand = true; // Since all events have ended now
 
                 return (
                   <AccordianWrapper
