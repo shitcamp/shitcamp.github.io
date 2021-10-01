@@ -95,7 +95,7 @@ const InitialScheduleStr = `
                        "created_at": "2021-09-27T01:56:02Z",
                        "url": "https://www.youtube.com/watch?v=qA6SVvB3Ff8&ab_channel=QTCinderellaVODs",
                        "thumbnail_url": "https://i.ytimg.com/vi/qA6SVvB3Ff8/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCKTISmtPNiAP4JfctRiZudcQalwQ",
-                       "view_count": 1518951,
+                       "view_count": 1618951,
                        "featured_users": [
                            "Adeptthebest",
                            "AustinShow",
@@ -339,12 +339,12 @@ const InitialScheduleStr = `
                        "WillNeff",
                        "xQcOW"
                    ],
-                   "video_id": ""
+                   "video_id": "1162803783"
                },
                {
                    "title": "Closing Ceremony",
                    "start_time": "2021-09-29T19:00:00-07:00",
-                   "description": "Team American and Team Cummunism go up against one last time in games of Charades and Family Fued.",
+                   "description": "Team America and Team Cummunism go up against one last time in games of Charades and Family Fued.",
                    "thumbnail_url": "./closing-ceremony.jpg",
                    "user_name": "QTCinderella",
                    "featured_users": [
@@ -365,7 +365,36 @@ const InitialScheduleStr = `
                        "WillNeff",
                        "xQcOW"
                    ],
-                   "video_id": "1163160816"
+                   "video_id": "",
+                   "vod": {
+                     "id": "1163160816",
+                     "user_name": "QTCinderella",
+                     "title": "REMINDER TODAY IS LAST DAY TO BUY SHITCAMP MERCH @ SHITCAMP.GG !merch",
+                     "created_at": "2021-09-30T02:34:32Z",
+                     "url": "https://youtu.be/pqYqvSyb-8o",
+                     "thumbnail_url": "https://i.ytimg.com/vi/pqYqvSyb-8o/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA7bDWr5HvrJKcnyWMq2IzcYjeIFQ",
+                     "view_count": 449429,
+                     "featured_users": [
+                         "QTCinderella",
+                         "Adeptthebest",
+                         "AustinShow",
+                         "Cyr",
+                         "EsfandTV",
+                         "HasanAbi",
+                         "Jschlatt ",
+                         "JustaMinx",
+                         "Kaceytron",
+                         "Ludwig",
+                         "Malena",
+                         "Nmplol",
+                         "Myth",
+                         "Sodapoppin",
+                         "WillNeff",
+                         "xQcOW",
+                         "PhinTTV"
+                     ],
+                     "duration": "2h38m32s"
+                 }
                }
            ]
        }
@@ -410,7 +439,7 @@ const InitialTeamsInfo = `
    "team_results": [
       {
          "team_name": "Team America",
-         "total_points": 570,
+         "total_points": 550,
          "results": [
             {
                "contest_name": "Hide 'n seek",
@@ -426,7 +455,7 @@ const InitialTeamsInfo = `
             },
             {
                "contest_name": "Boat race",
-               "points": 120,
+               "points": 100,
                "description": "",
                "vod_url": "https://www.twitch.tv/videos/1161394966"
             },
