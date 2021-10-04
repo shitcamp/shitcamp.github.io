@@ -1,0 +1,23 @@
+{
+  "address": "127.0.0.1:9090",
+  "twitch": {
+    "client_id": "TWITCH_API_CLIENT_ID",
+    "access_token": "TWITCH_API_ACCESS_TOKEN"
+  },
+  "shitcamp": {
+    "oldest_upload_time": "2021-09-24T00:00:00.00-07:00",
+    "newest_upload_time": "2021-09-31T00:00:00.00-07:00"
+  },
+  "cache": {
+    "default_expiry_time": "2m",
+    "default_cleanup_interval": "5m"
+  },
+  "auth": {
+    "user": "password"
+  },
+  "rate_limit": {
+    "tokens": "100",
+    "interval": "1m"
+  },
+  "debug": true
+}
