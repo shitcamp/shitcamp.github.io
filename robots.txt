@@ -3,5 +3,3 @@
 # Allow all robots complete access
 User-agent: *
 Disallow:
-
-Sitemap: https://shitcamp.github.io/sitemap.xml

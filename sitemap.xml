@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-  <loc>https://shitcamp.github.io</loc>
-  </url>
-  <url>
-  <loc>https://shitcamp.github.io/</loc>
-  </url>
-    <url>
-  <loc>https://shitcamp.github.io/about</loc>
-  </url>
-    <url>
-  <loc>https://shitcamp.github.io/schedule</loc>
-  </url>
-      <url>
-  <loc>https://shitcamp.github.io/clips</loc>
-  </url>
+   <url>
+      <loc>https://shitcamp.live</loc>
+      <priority>0.8</priority>
+      <changefreq>weekly</changefreq>
+   </url>
+   <url>
+      <loc>https://www.shitcamp.live</loc>
+      <priority>0.8</priority>
+      <changefreq>weekly</changefreq>
+   </url>
+
+   <url>
+      <loc>https://shitcamp.live/home</loc>
+   </url>
+   <url>
+      <loc>https://www.shitcamp.live/home</loc>
+   </url>
+   
+   <url>
+      <loc>https://shitcamp.live/about</loc>
+   </url>
+   <url>
+      <loc>https://www.shitcamp.live/about</loc>
+   </url>
+
+   <url>
+      <loc>https://shitcamp.live/clips</loc>
+   </url>
+   <url>
+      <loc>https://www.shitcamp.live/clips</loc>
+   </url>
+
+   <url>
+      <loc>https://shitcamp.live/videos</loc>
+   </url>
+   <url>
+      <loc>https://www.shitcamp.live/videos</loc>
+   </url>
+
+   <url>
+      <loc>https://shitcamp.live/schedule</loc>
+   </url>
+   <url>
+      <loc>https://www.shitcamp.live/schedule</loc>
+   </url>
 </urlset>
+
+   <url>
+      <loc>https://shitcamp.live/teams</loc>
+   </url>
+   <url>
+      <loc>https://www.shitcamp.live/teams</loc>
+   </url>
